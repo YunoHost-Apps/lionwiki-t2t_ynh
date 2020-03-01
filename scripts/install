@@ -260,7 +260,7 @@ fi
 chown -R root: $final_path
 
 # Wiki needs to write inside these folders. Make "Wiki" owner
-chown -R $app:root $final_path/{var}
+chown -R $app:root $final_path/var
 
 # Allow access to public assets like style sheets
 find $final_path/templates -type f -print0 | xargs -0 chmod 0644
