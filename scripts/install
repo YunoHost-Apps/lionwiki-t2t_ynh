@@ -173,7 +173,24 @@ ynh_add_fpm_config
 #=================================================
 # SPECIFIC SETUP
 #=================================================
-# ...
+# customise Lionwiki-t2t
+
+### Copy Yunohost specific configuration
+# This File cannot be modified directly by wiki, only by hand or by Yunohost
+# It will only be updated by Yunohost package or directly by adventurous users
+cp ../conf/config.php $final_path/
+
+# Set the password
+ynh_replace_string --match_string="__YNH_PASSWORD__" --replace_string="$password"    --target_file="$final_path/config.php"
+
+# Set the "admin" user
+#ynh_replace_string --match_string="__YNH_TITLE__" --replace_string="$password"    --target_file="$final_path/config.php"
+
+ynh_replace_string --match_string="__YNH_LANG__" --replace_string="$language"    --target_file="$final_path/config.php"
+
+
+
+
 #=================================================
 
 #=================================================

@@ -1,10 +1,10 @@
 <?php /* Configuration file for LionWiki. */
-$WIKI_TITLE = 'LionWiki and txt2tags sample'; // name of the site
+$WIKI_TITLE = 'Wiki'; // name of the site
 
 // SHA1 hash of password. If empty (or commented out), no password is required
 
-$PASSWORD = sha1("demo1");
-$Admin["PASSWORD"] = sha1("demo1");
+$PASSWORD = sha1("__YNH_PASSWORD__");
+$Admin["PASSWORD"] = sha1("__YNH_PASSWORD__");
 
 //$TEMPLATE = 'templates/dandelion.html'; // presentation template
 //$TEMPLATE = 'templates/fravashyo.html';
@@ -30,3 +30,4 @@ $START_PAGE = 'main'; // Which page should be default (start page)?
 
 // if needed (if autodetection doesn't work), force language 
 //$LANG = fr;
+$LANG = __YNH_LANG__;
