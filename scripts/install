@@ -259,6 +259,16 @@ fi
 # Set permissions to app files
 chown -R root: $final_path
 
+# Wiki needs to write inside these folders. Make "Wiki" owner
+chown -R $app:root $final_path/{var}
+
+# Allow access to public assets like style sheets
+find $final_path/templates -type f -print0 | xargs -0 chmod 0644
+find $final_path/templates -type d -print0 | xargs -0 chmod 0755
+# Using "find" instead of "chmod -R 755" so files does not become executable too
+# chmod :   -rwxr-xr-x  1 root root  241 May  3 08:36 index.html   => BAD
+# find  :   -rw-r--r--  1 1001 1002  241 May  3 08:36 index.html   => GOOD
+
 #=================================================
 # SETUP LOGROTATE
 #=================================================
