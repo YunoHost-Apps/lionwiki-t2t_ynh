@@ -5,7 +5,6 @@
 #=================================================
 
 # dependencies used by the app
-pkg_dependencies="deb1 deb2"
 
 #=================================================
 # PERSONAL HELPERS
