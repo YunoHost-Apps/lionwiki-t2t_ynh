@@ -1,14 +1,13 @@
 
-yunohost for lionwiki-t2t
 
-# Usage of this package (REMOVE THIS SECTION BEFORE RELEASE)
-- Copy this app before working on it.
-- Edit `conf/nginx.conf` file to match application prerequisites.
-- Edit `manifest.json` with application specific information.
-- Edit the `install`, `upgrade`, `remove`, `backup`, and `restore` scripts.
-  - Using the [script helpers documentation.](https://helpers.yunohost.org/)
-- Add a `LICENSE` file for the package.
-- Edit `README.md` and README_fr.md.
+# Lionwiki-t2t for YunoHost
+
+
+## Todo: to package it correctly: https://yunohost.org/#/packaging_apps_fr
+
+
+# Usage of this package 
+
 
 # Example app for YunoHost
 
@@ -17,7 +16,7 @@ yunohost for lionwiki-t2t
 
 *[Lire ce readme en français.](./README_fr.md)*
 
-> *This package allow you to install REPLACEBYYOURAPP quickly and simply on a YunoHost server.  
+> *This package allow you to install Lionwiki-t2t quickly and simply on a YunoHost server.  
 If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to know how to install and enjoy it.*
 
 ## Overview
