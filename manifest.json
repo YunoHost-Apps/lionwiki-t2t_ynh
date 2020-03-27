@@ -81,6 +81,19 @@
                     "fr": "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
                 },
                 "example": "Choose a password"
+            },
+            {
+                "name": "color",
+                "type": "string",
+                "ask": {
+                    "en": "Set default color base",
+                    "fr": "Définissez la couleur de base"
+                },
+                "help": {
+                    "en": "Use hexadecimal value",
+                    "fr": "Utilisez une valeur hexadecimale"
+                },
+                "example": "#D07732"
             }
         ]
     }

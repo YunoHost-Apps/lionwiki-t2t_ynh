@@ -30,6 +30,8 @@ admin=$YNH_APP_ARG_ADMIN
 is_public=$YNH_APP_ARG_IS_PUBLIC
 language=$YNH_APP_ARG_LANGUAGE
 password=$YNH_APP_ARG_PASSWORD
+label=$YNH_APP_ARG_LIONWIKI-T2T
+color=$YNH_APP_ARG_COLOR
 
 ### If it's a multi-instance app, meaning it can be installed several times independently
 ### The id of the app as stated in the manifest is available as $YNH_APP_ID
@@ -180,6 +182,8 @@ ynh_add_fpm_config
 # It will only be updated by Yunohost package or directly by adventurous users
 cp ../conf/config.php $final_path/
 
+cp ../conf/minimaxing.less $final_path/templates/minimaxing/
+
 # Set the password
 ynh_replace_string --match_string="__YNH_PASSWORD__" --replace_string="$password"    --target_file="$final_path/config.php"
 
@@ -187,6 +191,10 @@ ynh_replace_string --match_string="__YNH_PASSWORD__" --replace_string="$password
 #ynh_replace_string --match_string="__YNH_TITLE__" --replace_string="$password"    --target_file="$final_path/config.php"
 
 ynh_replace_string --match_string="__YNH_LANG__" --replace_string="$language"    --target_file="$final_path/config.php"
+
+ynh_replace_string --match_string="__YNH_LABEL__" --replace_string="$label"    --target_file="$final_path/config.php"
+
+ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color"    --target_file="$final_path/config.php"
 
 
 
@@ -196,7 +204,7 @@ ynh_replace_string --match_string="__YNH_LANG__" --replace_string="$language"   
 #=================================================
 # SETUP SYSTEMD
 #=================================================
-ynh_script_progression --message="Configuring a systemd service..." --time --weight=1
+#ynh_script_progression --message="Configuring a systemd service..." --time --weight=1
 
 ### `ynh_systemd_config` is used to configure a systemd script for an app.
 ### It can be used for apps that use sysvinit (with adaptation) or systemd.
@@ -210,7 +218,7 @@ ynh_script_progression --message="Configuring a systemd service..." --time --wei
 ###		- And the section "SETUP SYSTEMD" in the upgrade script
 
 # Create a dedicated systemd config
-ynh_add_systemd_config
+#ynh_add_systemd_config
 
 #=================================================
 # SETUP APPLICATION WITH CURL
