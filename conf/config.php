@@ -1,5 +1,5 @@
 <?php /* Configuration file for LionWiki. */
-$WIKI_TITLE = 'Wiki'; // name of the site
+$WIKI_TITLE = '__YNH_LABEL__'; // name of the site
 
 // SHA1 hash of password. If empty (or commented out), no password is required
 
