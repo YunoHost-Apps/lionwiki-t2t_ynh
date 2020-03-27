@@ -82,6 +82,19 @@
                 },
                 "example": "Choose a password"
             },
+			{
+                "name": "wiki",
+                "type": "string",
+                "ask": {
+                    "en": "Set the wiki name",
+                    "fr": "Définissez le titre de votre wiki"
+                },
+                "help": {
+                    "en": "This name will be displayed in the header of the wiki.",
+                    "fr": "Ce nom sera affiché dans l'entête de votre wiki."
+                },
+                "example": "My Wiki"
+            },
             {
                 "name": "color",
                 "type": "string",
