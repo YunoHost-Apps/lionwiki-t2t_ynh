@@ -322,7 +322,7 @@ ynh_use_logrotate
 ###		- Remove the section "REMOVE SERVICE FROM ADMIN PANEL" in the remove script
 ###		- As well as the section "ADVERTISE SERVICE IN ADMIN PANEL" in the restore script
 
-yunohost service add $app --description "A short description of the app" --log "/var/log/$app/$app.log"
+# yunohost service add $app --description "A short description of the app" --log "/var/log/$app/$app.log"
 
 ### With YunoHost 3.8 you will then be able to: 
 ### - specify a list of ports that needs to be publicly exposed (c.f. --needs_exposed_ports) 
@@ -335,7 +335,7 @@ yunohost service add $app --description "A short description of the app" --log "
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --time --weight=1
+# ynh_script_progression --message="Starting a systemd service..." --time --weight=1
 
 ### `ynh_systemd_action` is used to start a systemd service for an app.
 ### Only needed if you have configure a systemd service
@@ -346,7 +346,7 @@ ynh_script_progression --message="Starting a systemd service..." --time --weight
 ###		- And the section "STOP SYSTEMD SERVICE" and "START SYSTEMD SERVICE" in the change_url script
 
 # Start a systemd service
-ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
+# ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # SETUP FAIL2BAN
