@@ -99,14 +99,14 @@
                 "name": "color",
                 "type": "string",
                 "ask": {
-                    "en": "Set default color base",
+                    "en": "Set color base",
                     "fr": "Définissez la couleur de base"
                 },
                 "help": {
-                    "en": "Use hexadecimal value",
-                    "fr": "Utilisez une valeur hexadecimale"
+                    "en": "Use hexadecimal value (6 figures without #)",
+                    "fr": "Utilisez une valeur hexadecimale (6 chiffres sans # devant)"
                 },
-                "example": "#D07732"
+                "example": "D07732"
             }
         ]
     }

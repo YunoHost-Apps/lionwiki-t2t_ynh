@@ -5,6 +5,8 @@
 #=================================================
 
 # dependencies used by the app
+pkg_dependencies="node-less"
+
 
 #=================================================
 # PERSONAL HELPERS
