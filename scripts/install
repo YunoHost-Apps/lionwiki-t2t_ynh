@@ -198,13 +198,17 @@ ynh_replace_string --match_string="__YNH_LANG__" --replace_string="$language"   
 
 ynh_replace_string --match_string="__YNH_LABEL__" --replace_string="$wiki"    --target_file="$final_path/config.php"
 
+
+ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color"    --target_file="$final_path/templates/minimaxing/minimaxing.less"
+
 # test if the color was correctly set (6 hexadecimal values)
-if echo "$color" | grep -q -E '[A-Fa-f0-9]{6}'
-then
-	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color"    --target_file="$final_path/templates/minimaxing/minimaxing.less"
-else
-	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="555555"    --target_file="$final_path/templates/minimaxing/minimaxing.less"
-fi
+
+#if echo "$color" | grep -q -E '[A-Fa-f0-9]{6}'
+#then
+#	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color"    --target_file="$final_path/templates/minimaxing/minimaxing.less"
+#else
+#	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="555555"    --target_file="$final_path/templates/minimaxing/minimaxing.less"
+#fi
 
 lessc --js $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
 
