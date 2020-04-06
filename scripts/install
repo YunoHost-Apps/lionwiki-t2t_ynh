@@ -210,7 +210,9 @@ ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color"    -
 #	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="555555"    --target_file="$final_path/templates/minimaxing/minimaxing.less"
 #fi
 
+# soon lessc will require the --js option
 # lessc --js $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
+lessc $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
 
 
 
@@ -307,10 +309,12 @@ chown -R root: $final_path
 
 # Wiki needs to write inside these folders. Make "Wiki" owner
 chown -R $app:root $final_path/var
+chown -R $app:root $final_path/templates
 
 # Allow access to public assets like style sheets
 find $final_path/templates -type f -print0 | xargs -0 chmod 0644
 find $final_path/templates -type d -print0 | xargs -0 chmod 0755
+find $final_path/templates/minimaxing/minimaxing.css -type f -print0 | xargs -0 chmod 0755
 # Using "find" instead of "chmod -R 755" so files does not become executable too
 # chmod :   -rwxr-xr-x  1 root root  241 May  3 08:36 index.html   => BAD
 # find  :   -rw-r--r--  1 1001 1002  241 May  3 08:36 index.html   => GOOD
