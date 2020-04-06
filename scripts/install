@@ -210,7 +210,7 @@ ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color"    -
 #	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="555555"    --target_file="$final_path/templates/minimaxing/minimaxing.less"
 #fi
 
-lessc --js $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
+# lessc --js $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
 
 
 
