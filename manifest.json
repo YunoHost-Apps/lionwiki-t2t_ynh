@@ -38,8 +38,8 @@
                     "en": "Choose a path for lionwiki-t2t",
                     "fr": "Choisissez un chemin pour lionwiki-t2t"
                 },
-                "example": "/lionwiki-t2t",
-                "default": "/lionwiki-t2t"
+                "example": "/lionwiki",
+                "default": "/lionwiki"
             },
             {
                 "name": "admin",
@@ -106,7 +106,7 @@
                     "en": "Use hexadecimal value (6 figures without #)",
                     "fr": "Utilisez une valeur hexadecimale (6 chiffres sans # devant)"
                 },
-                "example": "D07732"
+                "example": "D17732"
             }
         ]
     }

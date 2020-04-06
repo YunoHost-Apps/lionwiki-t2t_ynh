@@ -3,16 +3,6 @@
 # Lionwiki-t2t for YunoHost
 
 
-## Todo: to package it correctly: https://yunohost.org/#/packaging_apps_fr
-
-
-# Usage of this package 
-
-
-# Example app for YunoHost
-
-[![Integration level](https://dash.yunohost.org/integration/REPLACEBYYOURAPP.svg)](https://dash.yunohost.org/appci/app/REPLACEBYYOURAPP)  
-[![Install REPLACEBYYOURAPP with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=REPLACEBYYOURAPP)
 
 *[Lire ce readme en français.](./README_fr.md)*
 
@@ -20,68 +10,86 @@
 If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to know how to install and enjoy it.*
 
 ## Overview
-Quick description of this app.
 
-**Shipped version:** 1.0
+LionWiki is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. This version is using the lightweight markup language TXT2TAGS.
 
-## Screenshots
 
-![](Link to an screenshot for this app)
+## Screenshot
 
-## Demo
+![](screenshot_lionwikit2t.png)
 
-* [Official demo](Link to a demo site for this app)
 
 ## Configuration
 
-How to configure this app: by an admin panel, a plain file with SSH, or any other way.
+In the root folder of this app, there are two files: config.php and config.t2t for changing password and general behavior. 
 
 ## Documentation
 
- * Official documentation: Link to the official documentation of this app
- * YunoHost documentation: If specific documentation is needed, feel free to contribute.
+ * Official documentation: https://github.com/farvardin/lionwiki-t2t
+ * More about txt2tags: https://github.com/farvardin/whatistxt2tags
+ 
 
 ## YunoHost specific features
 
 #### Multi-users support
 
-Are LDAP and HTTP auth supported?
-Can the app be used by multiple users?
+This is only a single password for editing the wiki (it's not multi-user), and one other password for administration. Both are set to the same one defined in the lionwiki-t2t during the installation by YunoHost.
+
+You can set the wiki to private (only readable when you are connected to YunoHost SSO) or public (readable by the whole internet).
+
+You can install multiple instance of this app.
+
 
 #### Supported architectures
 
-* x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/REPLACEBYYOURAPP%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/REPLACEBYYOURAPP/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/REPLACEBYYOURAPP%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/REPLACEBYYOURAPP/)
+* All. It's only using PHP.
+
 
 ## Limitations
 
-* Any known limitations.
+* No different user accounts. Configuration only by ssh.
+
 
 ## Additional information
 
-* Other information you would add about this application
+You must define a base color during the installation (in hexadecimal format). You can choose it using this online tool for example: https://www.w3schools.com/colors/colors_picker.asp
 
-**More information on the documentation page:**  
-https://yunohost.org/packaging_apps
+
+It will modify the templates/minimaxing/minimaxing.less file and compile it using the lessc command (from the node-less package).
+
+After the installation, you can edit the base color found in /var/www/lionwikit2t/templates/minimaxing/minimaxing.less file.
+
+Search for:
+
+```
+/* For YunoHost config */
+@MainColor: #D17732;
+```
+
+Go inside your installation folder (adapt it to your case, if it's the second instance you've installed, it will be named /var/www/lionwikit2t__2/):
+
+```
+cd /var/www/lionwikit2t
+```
+
+
+Then compile it with:
+
+```
+lessc templates/minimaxing/minimaxing.less > templates/minimaxing/minimaxing.css
+```
+
+If something goes wrong, you can go back to the original default file:
+
+```
+cp templates/minimaxing/minimaxing_org.css templates/minimaxing/minimaxing.css
+```
+
+
 
 ## Links
 
- * Report a bug: https://github.com/YunoHost-Apps/REPLACEBYYOURAPP_ynh/issues
- * App website: Link to the official website of this app
- * Upstream app repository: Link to the official repository of the upstream app
+ * Report a bug: https://github.com/farvardin/lionwiki-t2t_ynh/issues
+ * App website: https://github.com/farvardin/lionwiki-t2t
  * YunoHost website: https://yunohost.org/
 
----
-
-Developers info
-----------------
-
-**Only if you want to use a testing branch for coding, instead of merging directly into master.**
-Please do your pull request to the [testing branch](https://github.com/YunoHost-Apps/REPLACEBYYOURAPP_ynh/tree/testing).
-
-To try the testing branch, please proceed like that.
-```
-sudo yunohost app install https://github.com/YunoHost-Apps/REPLACEBYYOURAPP_ynh/tree/testing --debug
-or
-sudo yunohost app upgrade REPLACEBYYOURAPP -u https://github.com/YunoHost-Apps/REPLACEBYYOURAPP_ynh/tree/testing --debug
-```

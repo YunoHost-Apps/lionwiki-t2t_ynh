@@ -113,7 +113,7 @@ ynh_app_setting_set --app=$app --key=port --value=$port
 ###		- As well as the section "REINSTALL DEPENDENCIES" in the restore script
 ###		- And the section "UPGRADE DEPENDENCIES" in the upgrade script
 
-#ynh_install_app_dependencies $pkg_dependencies
+ynh_install_app_dependencies $pkg_dependencies
 
 #=================================================
 # CREATE A MYSQL DATABASE
@@ -183,7 +183,7 @@ ynh_add_fpm_config
 cp ../conf/config.php $final_path/
 
 cp ../conf/minimaxing.less $final_path/templates/minimaxing/
-#cp ../conf/minimaxing.css $final_path/templates/minimaxing/
+cp ../conf/minimaxing.css $final_path/templates/minimaxing/minimaxing_org.css
 
 # we already use the default html template
 #cp ../conf/minimaxing.html $final_path/templates/

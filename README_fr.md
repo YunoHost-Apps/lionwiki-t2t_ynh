@@ -1,77 +1,88 @@
-# App exemple pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/REPLACEBYYOURAPP.svg)](https://dash.yunohost.org/appci/app/REPLACEBYYOURAPP)  
-[![Installer REPLACEBYYOURAPP avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=REPLACEBYYOURAPP)
+
+# Lionwiki-t2t pour YunoHost
+
 
 *[Read this readme in english.](./README.md)* 
 
-> *Ce package vous permet d'installer REPLACEBYYOURAPP rapidement et simplement sur un serveur Yunohost.  
+> *Ce package vous permet d'installer Lionwiki-t2t rapidement et simplement sur un serveur Yunohost.  
 Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
 
 ## Vue d'ensemble
-Description rapide de cette application.
 
-**Version incluse:** 1.0
+Lionwiki-t2t est un système de type wiki minimaliste, programmé en PHP. Il est extensible et n'utilise que des fichiers plats pour sa base de données. Il est adapté pour la création de petits sites web, de notes personnelles ou de journaux. Cette version utilise le langage de balisage léger TXT2TAGS.
 
-## Captures d'écran
 
-![](Lien vers une capture d'écran pour cette application)
+## Capture d'écran
 
-## Démo
+![](screenshot_lionwikit2t.png)
 
-* [Démo officielle](Lien vers un site de démonstration pour cette application)
 
 ## Configuration
 
-Comment configurer cette application: via le panneau d'administration, un fichier brut en SSH ou tout autre moyen.
+Dans le dossier racine de l'application il y a 2 fichiers, config.php et config.t2t qui permettent de modifier le mot de passe et le comportement général.
 
 ## Documentation
 
- * Documentation officielle: Lien vers la documentation officielle de cette application
- * Documentation YunoHost: Si une documentation spécifique est nécessaire, n'hésitez pas à contribuer.
+ * Documentation officielle: https://github.com/farvardin/lionwiki-t2t
+ * À propos de txt2tags: https://github.com/farvardin/whatistxt2tags
 
 ## Caractéristiques spécifiques YunoHost
 
 #### Support multi-utilisateurs
 
-L'authentification LDAP et HTTP est-elle prise en charge?
-L'application peut-elle être utilisée par plusieurs utilisateurs?
+Il y a un seul mot de passe pour éditer ce wiki (dans le fichier config.php), et un autre pour l'administration. C'est le même qui a a été créé lors de l'installation par YunoHost.
+
+Vous pouvez passer le wiki en mode privé ou public, selon vos usages.
+
 
 #### Architectures supportées
 
-* x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/REPLACEBYYOURAPP%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/REPLACEBYYOURAPP/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/REPLACEBYYOURAPP%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/REPLACEBYYOURAPP/)
-* Jessie x86-64b - [![Build Status](https://ci-stretch.nohost.me/ci/logs/REPLACEBYYOURAPP%20%28Apps%29.svg)](https://ci-stretch.nohost.me/ci/apps/REPLACEBYYOURAPP/)
+* Toutes, cela utilise PHP.
 
 ## Limitations
 
-* Limitations connues.
+* Un seul compte utilisateur. Configuration seulement par fichier éditable en ssh.
 
 ## Informations additionnelles
 
-* Autres informations à ajouter sur cette application
+Vous devez définir une couleur de base durant l'installation, au format hexadécimal. Vous pouvez la choisir en utilisant cet outil en ligne : https://www.w3schools.com/colors/colors_picker.asp
 
-**Plus d'informations sur la page de documentation:**  
-https://yunohost.org/packaging_apps
+La couleur choisie va modifier le fichier templates/minimaxing/minimaxing.less et le compiler en utilisant la commande lessc (du paquet node-less).
+
+Après l'installation, vous pouvez éditer la couleur de base dans le fichier /var/www/lionwikit2t/templates/minimaxing/minimaxing.less 
+
+Recherchez pour :
+
+```
+/* For YunoHost config */
+@MainColor: #D17732;
+```
+
+Allez dans le dossier d'installation (à adapter à votre cas, si c'est la seconde instance installée, cela sera nommé /var/www/lionwikit2t__2/):
+
+```
+cd /var/www/lionwikit2t
+```
+
+Ensuite compilez le fichier avec :
+
+```
+lessc templates/minimaxing/minimaxing.less > templates/minimaxing/minimaxing.css
+```
+
+Si quelque chose se passe mal, vous pouvez revenir au fichier original :
+
+```
+cp templates/minimaxing/minimaxing_org.css templates/minimaxing/minimaxing.css
+```
+
+
 
 ## Liens
 
- * Signaler un bug: https://github.com/YunoHost-Apps/REPLACEBYYOURAPP_ynh/issues
- * Site de l'application: Lien vers le site officiel de cette application
- * Dépôt de l'application principale: Lien vers le dépôt officiel de l'application principale
+ * Signaler un bug: https://github.com/farvardin/lionwiki-t2t_ynh/issues
+ * Site de l'application: https://github.com/farvardin/lionwiki-t2t
  * Site web YunoHost: https://yunohost.org/
 
----
 
-Informations pour les développeurs
-----------------
-
-**Seulement si vous voulez utiliser une branche de test pour le codage, au lieu de fusionner directement dans la banche principale.**
-Merci de faire vos pull request sur la [branche testing](https://github.com/YunoHost-Apps/REPLACEBYYOURAPP_ynh/tree/testing).
-
-Pour essayer la branche testing, procédez comme suit.
-```
-sudo yunohost app install https://github.com/YunoHost-Apps/REPLACEBYYOURAPP_ynh/tree/testing --debug
-ou
-sudo yunohost app upgrade REPLACEBYYOURAPP -u https://github.com/YunoHost-Apps/REPLACEBYYOURAPP_ynh/tree/testing --debug
-```
