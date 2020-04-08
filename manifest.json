@@ -4,7 +4,7 @@
     "packaging_format": 1,
     "description": {
         "en": "A lightweight wiki-style CMS using the txt2tags syntax",
-        "fr": "Un CMS géré sous forme de wiki utilisant la syntaxe txt2tags"
+        "fr": "Un CMS léger, géré sous forme de wiki utilisant la syntaxe txt2tags"
     },
     "version": "1.0~ynh1",
     "url": "https://lionwiki-t2t.sourceforge.io/",
