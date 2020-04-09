@@ -1,10 +1,10 @@
 {
-    "name": "Wiki",
-    "id": "lionwikit2t",
+    "name": "Lionwiki",
+    "id": "lionwiki-t2t",
     "packaging_format": 1,
     "description": {
-        "en": "Lionwiki-t2t is a simple CMS (content management system) in the form of a wiki engine, based on lionwiki and the txt2tags syntax, and using flat files as database.",
-        "fr": "Lionwiki-t2t est un système CMS de type wiki pour la création et l'entretien collectif de sites internet, utilisant des fichiers textes comme base de données."
+        "en": "A lightweight wiki-style CMS using the txt2tags syntax",
+        "fr": "Un CMS léger, géré sous forme de wiki utilisant la syntaxe txt2tags"
     },
     "version": "1.0~ynh1",
     "url": "https://lionwiki-t2t.sourceforge.io/",
