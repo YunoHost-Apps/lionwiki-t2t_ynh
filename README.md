@@ -84,7 +84,8 @@ If something goes wrong, you can go back to the original default file:
 ```
 cp templates/minimaxing/minimaxing_org.css templates/minimaxing/minimaxing.css
 ```
-
+## License
+MIT license
 
 
 ## Links
