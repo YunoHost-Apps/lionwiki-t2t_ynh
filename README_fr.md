@@ -77,7 +77,8 @@ Si quelque chose se passe mal, vous pouvez revenir au fichier original :
 cp templates/minimaxing/minimaxing_org.css templates/minimaxing/minimaxing.css
 ```
 
-
+## Licence
+Licence MIT
 
 ## Liens
 
