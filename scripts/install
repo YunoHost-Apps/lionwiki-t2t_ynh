@@ -191,8 +191,8 @@ cp ../conf/minimaxing.css $final_path/templates/minimaxing/minimaxing_org.css
 # Set the password
 ynh_replace_string --match_string="__YNH_PASSWORD__" --replace_string="$password"    --target_file="$final_path/config.php"
 
-# Set the "admin" user
-#ynh_replace_string --match_string="__YNH_TITLE__" --replace_string="$password"    --target_file="$final_path/config.php"
+# Set the "admin" user (not used, admin password = user password)
+#ynh_replace_string --match_string="__YNH_ADMINPASSWORD__" --replace_string="$password"    --target_file="$final_path/config.php"
 
 ynh_replace_string --match_string="__YNH_LANG__" --replace_string="$language"    --target_file="$final_path/config.php"
 
