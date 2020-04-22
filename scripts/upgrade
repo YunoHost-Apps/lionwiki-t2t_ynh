@@ -167,10 +167,10 @@ ynh_use_logrotate --non-append
 #=================================================
 # SETUP SYSTEMD
 #=================================================
-ynh_script_progression --message="Upgrading systemd configuration..." --time --weight=1
+#ynh_script_progression --message="Upgrading systemd configuration..." --time --weight=1
 
 # Create a dedicated systemd config
-ynh_add_systemd_config
+#ynh_add_systemd_config
 
 #=================================================
 # GENERIC FINALIZATION
@@ -204,9 +204,9 @@ fi
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --time --weight=1
+#ynh_script_progression --message="Starting a systemd service..." --time --weight=1
 
-ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
+#ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # RELOAD NGINX
