@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Lionwiki-t2t for YunoHost
 #=================================================
 # GENERIC START
 #=================================================
@@ -191,8 +192,8 @@ cp ../conf/minimaxing.css $final_path/templates/minimaxing/minimaxing_org.css
 # Set the password
 ynh_replace_string --match_string="__YNH_PASSWORD__" --replace_string="$password"    --target_file="$final_path/config.php"
 
-# Set the "admin" user (not used, admin password = user password)
-#ynh_replace_string --match_string="__YNH_ADMINPASSWORD__" --replace_string="$password"    --target_file="$final_path/config.php"
+# Set the "admin" user (not used, admin password = user password, you can modify it later)
+# ynh_replace_string --match_string="__YNH_ADMINPASSWORD__" --replace_string="$password"    --target_file="$final_path/config.php"
 
 ynh_replace_string --match_string="__YNH_LANG__" --replace_string="$language"    --target_file="$final_path/config.php"
 
@@ -202,6 +203,7 @@ ynh_replace_string --match_string="__YNH_LABEL__" --replace_string="$wiki"    --
 #ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color"    --target_file="$final_path/templates/minimaxing/minimaxing.less"
 
 # test if the color was correctly set (6 hexadecimal values)
+# if not, we'll use a default grey color (#555555)
 
 if echo "$color" | grep -q -E '[A-Fa-f0-9]{6}'
 then
@@ -214,7 +216,6 @@ fi
 # lessc --js $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
 
 lessc $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
-
 
 
 
