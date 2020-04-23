@@ -20,7 +20,12 @@ Lionwiki-t2t est un système de type wiki minimaliste, programmé en PHP. Il est
 
 ## Configuration
 
-Dans le dossier racine de l'application il y a 2 fichiers, config.php et config.t2t qui permettent de modifier le mot de passe et le comportement général.
+Dans le dossier racine de l'application il y a 2 fichiers, config.php et config.t2t
+
+- config.php permet de modifier le mot de passe, le choix du template utilisé et la page par défaut. Vous pouvez également définir ici un mot de passe administrateur (pour bloquer certaines pages en édition)
+
+- config.t2t est pour customiser votre syntaxe wiki. Vous pouvez définir là de nouvelles balises (utilisant les règles txt2tags) pour des comportements spécifiques.
+
 
 ## Documentation
 
@@ -78,7 +83,9 @@ cp templates/minimaxing/minimaxing_org.css templates/minimaxing/minimaxing.css
 ```
 
 ## Licence
+
 Licence MIT
+
 
 ## Liens
 

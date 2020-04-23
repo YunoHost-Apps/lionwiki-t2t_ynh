@@ -3,7 +3,6 @@
 # Lionwiki-t2t for YunoHost
 
 
-
 *[Lire ce readme en français.](./README_fr.md)*
 
 > *This package allow you to install Lionwiki-t2t quickly and simply on a YunoHost server.  
@@ -11,7 +10,7 @@ If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to
 
 ## Overview
 
-LionWiki is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. This version is using the lightweight markup language TXT2TAGS.
+LionWiki-t2t is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. This version is using the lightweight markup language TXT2TAGS.
 
 
 ## Screenshot
@@ -21,7 +20,12 @@ LionWiki is a minimalist Wiki engine programmed in PHP. It is extensible, templa
 
 ## Configuration
 
-In the root folder of this app, there are two files: config.php and config.t2t for changing password and general behavior. 
+In the root folder of this app, there are two files: config.php and config.t2t
+
+- config.php is for changing password, the template used, default page. You can also define an administrator password which has some more rights (it's possible to lock some pages and modify them only with the administrator password, add some IP address to a blacklist)
+
+- config.t2t is for tweaking your wiki syntax. You can define more tags (using the txt2tags rules) for specific behaviors.
+
 
 ## Documentation
 
@@ -87,6 +91,7 @@ cp templates/minimaxing/minimaxing_org.css templates/minimaxing/minimaxing.css
 
 
 ## License
+
 MIT license
 
 
