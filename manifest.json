@@ -8,7 +8,7 @@
     },
     "version": "1.0~ynh1",
     "url": "https://lionwiki-t2t.sourceforge.io/",
-    "license": "free",
+    "license": "MIT",
     "maintainer": {
         "name": "Eric Forgeot"
     },
@@ -56,6 +56,10 @@
                 "ask": {
                     "en": "Is it a public application?",
                     "fr": "Est-ce une application publique ?"
+                },
+				"help": {
+                    "en": "If it's not public, only SSO registered users will be able to user it.",
+                    "fr": "Si ce n'est pas public, seuls les utilisateurs enregistrés sur le SSO pourront l'utiliser."
                 },
                 "default": true
             },
