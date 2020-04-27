@@ -160,10 +160,10 @@ ynh_store_file_checksum --file="$final_path/CONFIG_FILE"
 #=================================================
 # SETUP LOGROTATE
 #=================================================
-ynh_script_progression --message="Upgrading logrotate configuration..." --time --weight=1
+# ynh_script_progression --message="Upgrading logrotate configuration..." --time --weight=1
 
 # Use logrotate to manage app-specific logfile(s)
-ynh_use_logrotate --non-append
+# ynh_use_logrotate --non-append
 
 #=================================================
 # SETUP SYSTEMD

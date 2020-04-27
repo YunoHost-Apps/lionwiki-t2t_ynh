@@ -335,7 +335,7 @@ ynh_script_progression --message="Configuring log rotation..." --time --weight=1
 ###		- And the section "SETUP LOGROTATE" in the upgrade script
 
 # Use logrotate to manage application logfile(s)
-ynh_use_logrotate
+# ynh_use_logrotate
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
