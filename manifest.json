@@ -97,7 +97,8 @@
                     "en": "This name will be displayed in the header of the wiki.",
                     "fr": "Ce nom sera affiché dans l'entête de votre wiki."
                 },
-                "example": "My Wiki"
+                "example": "My Wiki",
+				"default": "My Wiki"
             },
             {
                 "name": "color",
@@ -110,7 +111,8 @@
                     "en": "Use hexadecimal value (6 figures without #)",
                     "fr": "Utilisez une valeur hexadecimale (6 chiffres sans # devant)"
                 },
-                "example": "D17732"
+                "example": "D17732",
+				"default": "D17732"
             }
         ]
     }
