@@ -97,7 +97,7 @@ MIT license
 
 ## Links
 
- * Report a bug: https://github.com/farvardin/lionwiki-t2t_ynh/issues
+ * Report a bug: https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/issues
  * App website: https://github.com/farvardin/lionwiki-t2t
  * YunoHost website: https://yunohost.org/
 
