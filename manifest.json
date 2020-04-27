@@ -77,12 +77,12 @@
                 "name": "password",
                 "type": "password",
                 "ask": {
-                    "en": "Set the administrator password",
-                    "fr": "Définissez le mot de passe administrateur"
+                    "en": "Set the password for edition",
+                    "fr": "Définissez le mot de passe pour l'édition"
                 },
                 "help": {
-                    "en": "Use the help field to add an information for the admin about this question.",
-                    "fr": "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
+                    "en": "Define a password which will be used for wiki edition and administration.",
+                    "fr": "Veuillez définir un mot de passe qui sera valable pour l'édition des pages de ce wiki ainsi que pour l'administration."
                 },
                 "example": "Choose a password"
             },
