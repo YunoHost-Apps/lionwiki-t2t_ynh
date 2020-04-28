@@ -3,6 +3,10 @@
 # Lionwiki-t2t pour YunoHost
 
 
+[![Niveau d'intégration](https://dash.yunohost.org/integration/lionwikit2t.svg)](https://dash.yunohost.org/appci/app/lionwikit2t)  
+[![Installer Lionwiki-t2t grâce à YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=lionwikit2t)
+
+
 *[Read this readme in english.](./README.md)* 
 
 > *Ce package vous permet d'installer Lionwiki-t2t rapidement et simplement sur un serveur Yunohost.  
@@ -43,7 +47,10 @@ Vous pouvez passer le wiki en mode privé ou public, selon vos usages.
 
 #### Architectures supportées
 
-* Toutes, cela utilise PHP.
+* x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/lionwikit2t%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/lionwikit2t/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/lionwikit2t%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/lionwikit2t/)
+
+* En général toutes les architectures sont supportées, cela utilise PHP.
 
 ## Limitations
 

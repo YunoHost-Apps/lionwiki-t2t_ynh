@@ -2,6 +2,9 @@
 
 # Lionwiki-t2t for YunoHost
 
+[![Integration level](https://dash.yunohost.org/integration/lionwikit2t.svg)](https://dash.yunohost.org/appci/app/lionwikit2t)  
+[![Install Lionwiki-t2t with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=lionwikit2t)
+
  
 *[Lire ce readme en français.](./README_fr.md)*
 
@@ -45,6 +48,9 @@ You can install multiple instance of this app.
 
 
 #### Supported architectures
+
+* x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/lionwikit2t%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/lionwikit2t/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/lionwikit2t%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/lionwikit2t/)
 
 * All. It's only using PHP.
 
