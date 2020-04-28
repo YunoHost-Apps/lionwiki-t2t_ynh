@@ -296,6 +296,10 @@ fi
 # Calculate and store the config file checksum into the app settings
 ##ynh_store_file_checksum --file="$final_path/CONFIG_FILE"
 
+ynh_store_file_checksum --file="$final_path/config.php"
+ynh_store_file_checksum --file="$final_path/config.t2t"
+ynh_store_file_checksum --file="$final_path/menu.php"
+
 #=================================================
 # GENERIC FINALIZATION
 #=================================================
