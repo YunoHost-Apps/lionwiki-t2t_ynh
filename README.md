@@ -2,8 +2,8 @@
 
 # Lionwiki-t2t for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/lionwikit2t.svg)](https://dash.yunohost.org/appci/app/lionwikit2t)  
-[![Install Lionwiki-t2t with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=lionwikit2t)
+[![Integration level](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://dash.yunohost.org/appci/app/lionwiki-t2t)  
+[![Install Lionwiki-t2t with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=lionwiki-t2t)
 
  
 *[Lire ce readme en français.](./README_fr.md)*
