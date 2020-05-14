@@ -1,5 +1,5 @@
 SOURCE_URL=https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t.zip
-SOURCE_SUM=7512d7a35e846f19fbce6a3276594f37afba746db513a25378f1460d4d52c30a
+SOURCE_SUM=e2b1cbb539375ebb53a2be3a3df766517039258f1dbeea8bba449cbbabed168c
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
 SOURCE_IN_SUBDIR=true

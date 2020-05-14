@@ -186,6 +186,8 @@ cp ../conf/config.php $final_path/
 cp ../conf/minimaxing.less $final_path/templates/minimaxing/
 cp ../conf/minimaxing.css $final_path/templates/minimaxing/minimaxing_org.css
 
+cp ../conf/pheditor.php $final_path/
+
 # we already use the default html template
 #cp ../conf/minimaxing.html $final_path/templates/
 
@@ -195,9 +197,17 @@ ynh_replace_string --match_string="__YNH_PASSWORD__" --replace_string="$password
 # Set the "admin" user (not used, admin password = user password, you can modify it later)
 # ynh_replace_string --match_string="__YNH_ADMINPASSWORD__" --replace_string="$password"    --target_file="$final_path/config.php"
 
+# set user password in pheditor
+
+pheditorhash=`python -c 'import hashlib; import sys; a=str(sys.argv[1]); print(hashlib.sha512(a.encode("UTF-8")).hexdigest())' $password`
+
+ynh_replace_string --match_string="__YNH_PASSWORD__" --replace_string="$pheditorhash"    --target_file="$final_path/pheditor.php"
+
+
 ynh_replace_string --match_string="__YNH_LANG__" --replace_string="$language"    --target_file="$final_path/config.php"
 
 ynh_replace_string --match_string="__YNH_LABEL__" --replace_string="$wiki"    --target_file="$final_path/config.php"
+
 
 
 #ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color"    --target_file="$final_path/templates/minimaxing/minimaxing.less"
@@ -208,14 +218,18 @@ ynh_replace_string --match_string="__YNH_LABEL__" --replace_string="$wiki"    --
 if echo "$color" | grep -q -E '[A-Fa-f0-9]{6}'
 then
 	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color"    --target_file="$final_path/templates/minimaxing/minimaxing.less"
+	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color"    --target_file="$final_path/templates/ggp/ggp.less"
 else
 	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="555555"    --target_file="$final_path/templates/minimaxing/minimaxing.less"
+	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="555555"    --target_file="$final_path/templates/ggp/ggp.less"
 fi
 
 # soon lessc will require the --js option
 # lessc --js $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
 
 lessc $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
+
+lessc $final_path/templates/ggp/ggp.less > $final_path/templates/ggp/ggp.css
 
 
 
@@ -316,6 +330,9 @@ chown -R root: $final_path
 # Wiki needs to write inside these folders. Make "Wiki" owner
 chown -R $app:root $final_path/var
 chown -R $app:root $final_path/templates
+
+# write everything, even config files, for pheditor:
+chown -R $app:root $final_path/
 
 # Allow access to public assets like style sheets
 find $final_path/templates -type f -print0 | xargs -0 chmod 0644

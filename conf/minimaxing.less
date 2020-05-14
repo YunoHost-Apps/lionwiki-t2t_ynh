@@ -62,8 +62,8 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 @HeaderColor: (@MainColor - #111); 	
 
 /* or a complementary color: */
-@HeaderColor: (#ffffff - @MainColor - (#ffffff - @MainColor)/3); 
-
+/*@HeaderColor: (#ffffff - @MainColor - (#ffffff - @MainColor)/3); */
+@HeaderColor: spin(@MainColor, 180); 
 
 
 @MainFontColor: (#878e83 - #111);
@@ -386,7 +386,8 @@ th, thead, #previewPane th, #previewPane thead {
 body {
     font-size: @MainFontSize;
     font-family: sans-serif;
-    background-color: (@Bg-extra-light/1.1 + #111);
+    /*background-color: (@Bg-extra-light/1.1 + #111);*/
+	background: #fff;
     font-family: @MainFontFamily;
     color: @MainFontColor;
 }
@@ -468,7 +469,7 @@ p {
 
 
 #main-row strong, b {
-    color: #555;
+    /*color: #555;*/
 }
 
 
@@ -924,6 +925,8 @@ a.toolbarTextareaItem b  {
     #main {
         background: #fff;
         padding: 3% 0 3% 0;
+		margin-left: 8px;
+		margin-right: 4px;
     }
     #main .controls {
     }
@@ -1079,6 +1082,9 @@ a.toolbarTextareaItem b  {
     
      #main {
         /*overflow: auto;*/
+		background: #fff;
+		margin-left: 8px;
+		margin-right: 4px;
     }
 
     /* from 5grid/core.css */

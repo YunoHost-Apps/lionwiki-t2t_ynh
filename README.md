@@ -29,10 +29,13 @@ In the root folder of this app, there are two files: config.php and config.t2t
 
 - config.t2t is for tweaking your wiki syntax. You can define more tags (using the txt2tags rules) for specific behaviors.
 
+The pheditor.php tool at the root of the site allows you to edit all the necessary configuration files. You can remove or rename it from its interface. The password is the same as the one defined during installation.
+
+
 
 ## Documentation
 
- * Official documentation: https://github.com/farvardin/lionwiki-t2t
+ * Official documentation: https://lionwiki-t2t.sourceforge.io/
  * More about txt2tags: https://github.com/farvardin/whatistxt2tags
  
 
@@ -57,7 +60,7 @@ You can install multiple instance of this app.
 
 ## Limitations
 
-* No different user accounts. Configuration only by ssh.
+* No different user accounts. 
 
 
 ## Additional information
@@ -104,6 +107,6 @@ MIT license
 ## Links
 
  * Report a bug: https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/issues
- * App website: https://github.com/farvardin/lionwiki-t2t
+ * App website: https://lionwiki-t2t.sourceforge.io/
  * YunoHost website: https://yunohost.org/
 

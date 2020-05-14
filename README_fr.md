@@ -30,10 +30,12 @@ Dans le dossier racine de l'application il y a 2 fichiers, config.php et config.
 
 - config.t2t est pour customiser votre syntaxe wiki. Vous pouvez définir là de nouvelles balises (utilisant les règles txt2tags) pour des comportements spécifiques.
 
+- L'outil pheditor.php à la racine du site permet d'éditer tous les fichiers de configuration nécessaires. Vous pouvez le retirer ou le renommer depuis son interface. Le mot de passe est le même que celui définit lors de l'installation.
+
 
 ## Documentation
 
- * Documentation officielle: https://github.com/farvardin/lionwiki-t2t
+ * Documentation officielle: https://lionwiki-t2t.sourceforge.io/
  * À propos de txt2tags: https://github.com/farvardin/whatistxt2tags
 
 ## Caractéristiques spécifiques YunoHost
@@ -54,7 +56,8 @@ Vous pouvez passer le wiki en mode privé ou public, selon vos usages.
 
 ## Limitations
 
-* Un seul compte utilisateur. Configuration seulement par fichier éditable en ssh.
+* Un seul compte utilisateur. 
+
 
 ## Informations additionnelles
 
@@ -97,7 +100,7 @@ Licence MIT
 ## Liens
 
  * Signaler un bug: https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/issues
- * Site de l'application: https://github.com/farvardin/lionwiki-t2t
+ * Site de l'application: https://lionwiki-t2t.sourceforge.io/
  * Site web YunoHost: https://yunohost.org/
 
 
