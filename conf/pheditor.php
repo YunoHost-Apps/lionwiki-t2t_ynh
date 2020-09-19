@@ -1317,7 +1317,8 @@ function json_success($message, $params = [])
 				</div>
 
 				<div class="float-right">
-					<?php if (in_array('changepassword', $permissions)) { ?><a href="javascript:void(0);" class="change-password btn btn-sm btn-primary">Password</a> &nbsp; <?php } ?><a href="<?= $_SERVER['PHP_SELF'] ?>?logout=1" class="btn btn-sm btn-danger">Logout</a>
+					<?php if (in_array('changepassword', $permissions)) { ?><a href="javascript:void(0);" class="change-password btn btn-sm btn-primary">Password</a> &nbsp; <?php } ?><a href="<?= $_SERVER['PHP_SELF'] ?>?logout=1" class="btn btn-sm btn-danger">Logout</a> &nbsp;
+<a href="./" class="btn btn-sm btn-success">Main Website</a>
 				</div>
 			</div>
 		</div>
