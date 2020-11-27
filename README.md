@@ -1,11 +1,8 @@
-
-
 # Lionwiki-t2t for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://dash.yunohost.org/appci/app/lionwiki-t2t)  
+[![Integration level](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://dash.yunohost.org/appci/app/lionwiki-t2t) ![](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.maintain.svg)  
 [![Install Lionwiki-t2t with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=lionwiki-t2t)
 
- 
 *[Lire ce readme en français.](./README_fr.md)*
 
 > *This package allow you to install Lionwiki-t2t quickly and simply on a YunoHost server.  
@@ -15,11 +12,9 @@ If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to
 
 LionWiki-t2t is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. This version is using the lightweight markup language TXT2TAGS.
 
-
 ## Screenshot
 
 ![](screenshot_lionwikit2t.png)
-
 
 ## Configuration
 
@@ -31,14 +26,11 @@ In the root folder of this app, there are two files: config.php and config.t2t
 
 The pheditor.php tool at the root of the site allows you to edit all the necessary configuration files. You can remove or rename it from its interface. The password is the same as the one defined during installation.
 
-
-
 ## Documentation
 
  * Official documentation: https://lionwiki-t2t.sourceforge.io/
  * More about txt2tags: https://github.com/farvardin/whatistxt2tags
  
-
 ## YunoHost specific features
 
 #### Multi-users support
@@ -49,7 +41,6 @@ You can set the wiki to private (only readable when you are connected to YunoHos
 
 You can install multiple instance of this app.
 
-
 #### Supported architectures
 
 * x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/lionwikit2t%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/lionwikit2t/)
@@ -57,11 +48,9 @@ You can install multiple instance of this app.
 
 * All. It's only using PHP.
 
-
 ## Limitations
 
 * No different user accounts. 
-
 
 ## Additional information
 
@@ -109,4 +98,3 @@ MIT license
  * Report a bug: https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/issues
  * App website: https://lionwiki-t2t.sourceforge.io/
  * YunoHost website: https://yunohost.org/
-

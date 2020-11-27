@@ -3,8 +3,8 @@
     "id": "lionwiki-t2t",
     "packaging_format": 1,
     "description": {
-        "en": "A lightweight wiki-style CMS using the txt2tags syntax",
-        "fr": "Un CMS léger, géré sous forme de wiki utilisant la syntaxe txt2tags"
+        "en": "Lightweight wiki-style CMS using the txt2tags syntax",
+        "fr": "CMS léger, géré sous forme de wiki utilisant la syntaxe txt2tags"
     },
     "version": "3.2.11b~ynh4",
     "url": "https://lionwiki-t2t.sourceforge.io/",
@@ -13,7 +13,7 @@
         "name": "Eric Forgeot"
     },
     "requirements": {
-        "yunohost": ">= 3.5.0"
+        "yunohost": ">= 3.8.1"
     },
     "multi_instance": true,
     "services": [
