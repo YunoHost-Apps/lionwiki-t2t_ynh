@@ -7,6 +7,8 @@
 		language="en"
 		is_public=1	(PUBLIC|public=1|private=0)
 		password="azerty1234"
+		wiki="My Wiki"
+		color="328cc1"
 	; Checks
 		pkg_linter=1
 		setup_sub_dir=1

@@ -44,8 +44,6 @@ Vous pouvez passer le wiki en mode privé ou public, selon vos usages.
 * x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/lionwikit2t%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/lionwikit2t/)
 * ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/lionwikit2t%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/lionwikit2t/)
 
-* En général toutes les architectures sont supportées, cela utilise PHP.
-
 ## Limitations
 
 * Un seul compte utilisateur. 
@@ -54,7 +52,7 @@ Vous pouvez passer le wiki en mode privé ou public, selon vos usages.
 
 Vous devez définir une couleur de base durant l'installation, au format hexadécimal. Vous pouvez la choisir en utilisant cet outil en ligne : https://www.w3schools.com/colors/colors_picker.asp
 
-La couleur choisie va modifier le fichier templates/minimaxing/minimaxing.less et le compiler en utilisant la commande lessc (du paquet node-less).
+La couleur choisie va modifier le fichier `templates/minimaxing/minimaxing.less` et le compiler en utilisant la commande lessc (du paquet node-less).
 
 Après l'installation, vous pouvez éditer la couleur de base dans le fichier `/var/www/lionwikit2t/templates/minimaxing/minimaxing.less` 
 
@@ -65,7 +63,7 @@ Recherchez pour :
 @MainColor: #D17732;
 ```
 
-Allez dans le dossier d'installation (à adapter à votre cas, si c'est la seconde instance installée, cela sera nommé /var/www/lionwikit2t__2/):
+Allez dans le dossier d'installation (à adapter à votre cas, si c'est la seconde instance installée, cela sera nommé `/var/www/lionwikit2t__2/`) :
 
 ```
 cd /var/www/lionwikit2t
@@ -83,13 +81,21 @@ Si quelque chose se passe mal, vous pouvez revenir au fichier original :
 cp templates/minimaxing/minimaxing_org.css templates/minimaxing/minimaxing.css
 ```
 
-## Licence
-
-Licence MIT
-
-
 ## Liens
 
  * Signaler un bug: https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/issues
  * Site de l'application: https://lionwiki-t2t.sourceforge.io/
  * Site web YunoHost: https://yunohost.org/
+
+---
+
+## Informations pour les développeurs
+
+Merci de faire vos pull request sur la [branche testing](https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/tree/testing).
+
+Pour essayer la branche testing, procédez comme suit.
+```
+sudo yunohost app install https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/tree/testing --debug
+ou
+sudo yunohost app upgrade lionwiki-t2t -u https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/tree/testing --debug
+```

@@ -46,8 +46,6 @@ You can install multiple instance of this app.
 * x86-64b - [![Build Status](https://ci-apps.yunohost.org/ci/logs/lionwikit2t%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/lionwikit2t/)
 * ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/lionwikit2t%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/lionwikit2t/)
 
-* All. It's only using PHP.
-
 ## Limitations
 
 * No different user accounts. 
@@ -56,10 +54,9 @@ You can install multiple instance of this app.
 
 You must define a base color during the installation (in hexadecimal format). You can choose it using this online tool for example: https://www.w3schools.com/colors/colors_picker.asp
 
+It will modify the `templates/minimaxing/minimaxing.less` file and compile it using the lessc command (from the node-less package).
 
-It will modify the templates/minimaxing/minimaxing.less file and compile it using the lessc command (from the node-less package).
-
-After the installation, you can edit the base color found in /var/www/lionwikit2t/templates/minimaxing/minimaxing.less file.
+After the installation, you can edit the base color found in `/var/www/lionwikit2t/templates/minimaxing/minimaxing.less` file.
 
 Search for:
 
@@ -74,7 +71,6 @@ Go inside your installation folder (adapt it to your case, if it's the second in
 cd /var/www/lionwikit2t
 ```
 
-
 Then compile it with:
 
 ```
@@ -87,14 +83,21 @@ If something goes wrong, you can go back to the original default file:
 cp templates/minimaxing/minimaxing_org.css templates/minimaxing/minimaxing.css
 ```
 
-
-## License
-
-MIT license
-
-
 ## Links
 
  * Report a bug: https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/issues
  * App website: https://lionwiki-t2t.sourceforge.io/
  * YunoHost website: https://yunohost.org/
+
+---
+
+## Developer info
+
+Please send your pull request to the [testing branch](https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/tree/testing).
+
+To try the testing branch, please proceed like that.
+```
+sudo yunohost app install https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/tree/testing --debug
+or
+sudo yunohost app upgrade lionwiki-t2t -u https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/tree/testing --debug
+```
