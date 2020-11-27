@@ -18,13 +18,13 @@ LionWiki-t2t is a minimalist Wiki engine programmed in PHP. It is extensible, te
 
 ## Configuration
 
-In the root folder of this app, there are two files: config.php and config.t2t
+In the root folder of this app, there are two files: `config.php` and `config.t2t`
 
-- config.php is for changing password, the template used, default page. You can also define an administrator password which has some more rights (it's possible to lock some pages and modify them only with the administrator password, add some IP address to a blacklist)
+- `config.php` is for changing password, the template used, default page. You can also define an administrator password which has some more rights (it's possible to lock some pages and modify them only with the administrator password, add some IP address to a blacklist)
 
-- config.t2t is for tweaking your wiki syntax. You can define more tags (using the txt2tags rules) for specific behaviors.
+- `config.t2t` is for tweaking your wiki syntax. You can define more tags (using the txt2tags rules) for specific behaviors.
 
-The pheditor.php tool at the root of the site allows you to edit all the necessary configuration files. You can remove or rename it from its interface. The password is the same as the one defined during installation.
+The `pheditor.php` tool at the root of the site allows you to edit all the necessary configuration files. You can remove or rename it from its interface. The password is the same as the one defined during installation.
 
 ## Documentation
 
