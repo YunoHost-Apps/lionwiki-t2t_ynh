@@ -544,4 +544,8 @@ th, thead, #previewPane th, #previewPane thead {
     text-decoration: none;
 }
 
+progress {  color: @MainColor;  background-color: @BackgroundColor - #111;  border-radius: 0px;   border: solid 1px;  width: 10em;  height: 1em;}
+progress::-moz-progress-bar {  background: @MainColor;}
+progress::-webkit-progress-value {  background: @MainColor;}
+progress::-webkit-progress-bar {  background: @MainColor;}
 

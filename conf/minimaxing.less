@@ -5,11 +5,18 @@
 */
 
 
-
-@MainFontFamily:  Open Sans,MyManuscript,MyFont, Ubuntu, sans-serif;
-@MainFontFamilyHeader: Open Sans Condensed,MyManuscript,MyFont,LoveYaLikeASister,Ubuntu Condensed, sans-serif;
+/* 
+@MainFontFamily:  Ubuntu, Open Sans,sans-serif, MyFont;
+@MainFontFamilyHeader: Fengardo Neue, Archivo Narrow, LoveYaLikeASister, Ubuntu Condensed, Open Sans Condensed, sans-serif, MyFont;
 @MainFontCode: Monospace,Courier;
-@MainFontFamilyEdit: Open Sans,MyManuscript,MyFont,Ubuntu,sans-serif;
+@MainFontFamilyEdit: Ubuntu, Open Sans,sans-serif, MyFont;
+*/
+
+
+@MainFontFamily:  Ubuntu;
+@MainFontFamilyHeader: Fengardo Neue;
+@MainFontCode: Monospace;
+@MainFontFamilyEdit: Ubuntu;
 
 /*
 Use the part above to customise your fonts.
@@ -34,21 +41,25 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 
 @button-radius: 6px;
 
-.generateColor() { /* define mixin */
-@background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
-}
-.generateColor(); /* call the mixin which sets the variable once */
-
+/* define mixin */
+/* we disable it as it's sometimes a problem with lesscss
+.generateColor() { 
+	@background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
+	}
+.generateColor(); 
+*/
 
 /* This line below will use a random main color: */
  /* @MainColor: @background-color; */
 
 /* if you prefer to select a fixed background color, just uncomment one color from below */
 /* @MainColor: #549136; */
-/* @MainColor: #7E2434; */ 
-/* @MainColor: #7e3821; */ 
-/* @MainColor: #549136; */
-/* @MainColor: #549136; */ 
+/*@MainColor: #7E2434;*/ 
+/*@MainColor: #7e3821;*/
+/*@MainColor: #549136;*/
+/*@MainColor: #549136;*/
+/*@MainColor: #D17732;*/
+/*@MainColor: #328cc1;*/
 
 /* For YunoHost config */
 @MainColor: #__YNH_COLOR__;
@@ -66,7 +77,7 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 @HeaderColor: spin(@MainColor, 180); 
 
 
-@MainFontColor: (#878e83 - #111);
+@MainFontColor: (#878e83 - #222);
 @MainFontSize: (14pt - 2);
 
 @RedBrick: #7F4736;
@@ -129,6 +140,40 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
     font-weight: 400;
     src: local('Ubuntu Condensed'),local('UbuntuCondensed-Regular'),url(../fonts/ubuntu-condensed-regular.woff) format('woff');
 }
+
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Ubuntu'),url(../fonts/ubuntu.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: italic;
+    font-weight: normal;
+    src: local('Ubuntu Italic'),url(../fonts/ubuntu-italic.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    font-style: bold;
+    font-weight: bold;
+    src: local('Ubuntu Bold'),url(../fonts/ubuntu-bold.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    font-weight: bold;
+    font-style: italic;
+    src: local('Ubuntu Italic Bold'),url(../fonts/ubuntu-bold-italic.woff) format('woff');
+}
+
+
+
+
+
+
 /*@font-face {
     font-family: 'Open Sans';
     font-style: normal;
@@ -208,6 +253,24 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
     src: local('Open Sans Cond Light Italic'),local('OpenSans-CondensedLightItalic'),url(../fonts/OpenSans-CondensedLightItalic.woff) format('woff');
 }
 
+@font-face {
+    font-family: 'Archivo Narrow';
+    font-style: bold;
+    font-weight: 300;
+    src: url(../fonts/ArchivoNarrow-Bold.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Fengardo Neue';
+    font-style: bold;
+    font-weight: 200;
+    src: url(../fonts/fengardoneue-black.woff) format('woff');
+}
+
+
+
+
+
 /*
 	Minimaxing 1.0 by nodethirtythree design
 	http://nodethirtythree.com | @nodethirtythree
@@ -266,6 +329,15 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
     font-family: @MainFontFamilyEdit;
     font-size: 105%;
 }
+
+.markItUpEditor 
+{
+    width: 90%;
+    font-family: @MainFontFamilyEdit;
+    color: #444;
+    font-size: 140%;
+}
+
 #diff {
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -394,8 +466,8 @@ body {
 
 #header h1 {
     color: #fff;
-    margin: 0;
-    padding: 0;
+    margin: 2px;
+    padding: 2px;
     border: none;
 }
 h1, h2, h3, h4 {
@@ -403,6 +475,10 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
     color: @HeaderColor;
     font-weight: bold;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 h1, h2 {
     border-bottom: 1px solid grey;
@@ -464,6 +540,10 @@ p, ul {
 }
 p {
     line-height: 1.7em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 
@@ -494,7 +574,7 @@ s {
 pre {
     background-color: (@Bg-extra-light + #121212);
     line-height: 1.5em;
-    font-family: mono;
+    font-family: @MainFontCode;
     margin: 1.0em;
 }
 
@@ -1146,4 +1226,31 @@ font-weight: bold;
 .mycontent tr:hover,
 .mycontent tr:hover td {
  background-color: (@TableColor + #111) /*rgba(16,80,112,0.3)*/
+}
+
+
+/* Progress bar */
+
+
+progress {
+  color: @HeaderColor;
+  background-color: white;
+  border-radius: 4px; 
+  /*border: solid 1px;*/
+  width: 10em;
+  height: 1em;
+}
+
+
+progress::-moz-progress-bar {
+  background: @HeaderColor;
+}
+
+
+progress::-webkit-progress-value {
+  background: @HeaderColor;
+}
+
+progress::-webkit-progress-bar {
+  background: @HeaderColor;
 }

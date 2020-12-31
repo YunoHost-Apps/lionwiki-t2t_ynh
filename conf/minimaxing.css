@@ -1,6 +1,12 @@
 /* This CSS file was generated from the minimaxing.less template. 
  See http://lesscss.org/
 */
+/* 
+@MainFontFamily:  Ubuntu, Open Sans,sans-serif, MyFont;
+@MainFontFamilyHeader: Fengardo Neue, Archivo Narrow, LoveYaLikeASister, Ubuntu Condensed, Open Sans Condensed, sans-serif, MyFont;
+@MainFontCode: Monospace,Courier;
+@MainFontFamilyEdit: Ubuntu, Open Sans,sans-serif, MyFont;
+*/
 /*
 Use the part above to customise your fonts.
 You can create your own manuscript / handwriting font on http://www.myscriptfont.com/ or http://www.paintfont.com/
@@ -19,16 +25,28 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
  #847457 : brown
  */
 /* define mixin */
-/* call the mixin which sets the variable once */
+/* we disable it as it's sometimes a problem with lesscss
+.generateColor() { 
+	@background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
+	}
+.generateColor(); 
+*/
 /* This line below will use a random main color: */
 /* @MainColor: @background-color; */
 /* if you prefer to select a fixed background color, just uncomment one color from below */
 /* @MainColor: #549136; */
 /*@MainColor: #7E2434;*/
+/*@MainColor: #7e3821;*/
 /*@MainColor: #549136;*/
+/*@MainColor: #549136;*/
+/*@MainColor: #D17732;*/
+/*@MainColor: #328cc1;*/
+/* For YunoHost config */
+/* @MainColor: #__YNH_COLOR__; */
 /* Header color */
 /* You can use a shade of MainColor: */
 /* or a complementary color: */
+/*@HeaderColor: (#ffffff - @MainColor - (#ffffff - @MainColor)/3); */
 /* used in max-width (should be renamed) */
 /*@import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
@@ -58,6 +76,30 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
   font-style: normal;
   font-weight: 400;
   src: local('Ubuntu Condensed'), local('UbuntuCondensed-Regular'), url(../fonts/ubuntu-condensed-regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Ubuntu'), url(../fonts/ubuntu.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Ubuntu Italic'), url(../fonts/ubuntu-italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: bold;
+  font-weight: bold;
+  src: local('Ubuntu Bold'), url(../fonts/ubuntu-bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-weight: bold;
+  font-style: italic;
+  src: local('Ubuntu Italic Bold'), url(../fonts/ubuntu-bold-italic.woff) format('woff');
 }
 /*@font-face {
     font-family: 'Open Sans';
@@ -137,6 +179,18 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
   font-weight: 300;
   src: local('Open Sans Cond Light Italic'), local('OpenSans-CondensedLightItalic'), url(../fonts/OpenSans-CondensedLightItalic.woff) format('woff');
 }
+@font-face {
+  font-family: 'Archivo Narrow';
+  font-style: bold;
+  font-weight: 300;
+  src: url(../fonts/ArchivoNarrow-Bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Fengardo Neue';
+  font-style: bold;
+  font-weight: 200;
+  src: url(../fonts/fengardoneue-black.woff) format('woff');
+}
 /*
 	Minimaxing 1.0 by nodethirtythree design
 	http://nodethirtythree.com | @nodethirtythree
@@ -202,8 +256,14 @@ h6 a:hover {
 }
 .contentTextarea {
   width: 90%;
-  font-family: Open Sans, MyManuscript, MyFont, Ubuntu, sans-serif;
+  font-family: Ubuntu;
   font-size: 105%;
+}
+.markItUpEditor {
+  width: 90%;
+  font-family: Ubuntu;
+  color: #444;
+  font-size: 140%;
 }
 #diff {
   white-space: pre-wrap;
@@ -329,24 +389,29 @@ thead,
 body {
   font-size: 12pt;
   font-family: sans-serif;
-  background-color: #d8e1d4;
-  font-family: Open Sans, MyManuscript, MyFont, Ubuntu, sans-serif;
-  color: #767d72;
+  /*background-color: (@Bg-extra-light/1.1 + #111);*/
+  background: #fff;
+  font-family: Ubuntu;
+  color: #656c61;
 }
 #header h1 {
   color: #fff;
-  margin: 0;
-  padding: 0;
+  margin: 2px;
+  padding: 2px;
   border: none;
 }
 h1,
 h2,
 h3,
 h4 {
-  font-family: Open Sans Condensed, MyManuscript, MyFont, LoveYaLikeASister, Ubuntu Condensed, sans-serif;
+  font-family: Fengardo Neue;
   text-transform: uppercase;
-  color: #724986;
+  color: #21677e;
   font-weight: bold;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 h1,
 h2 {
@@ -356,7 +421,7 @@ h1 {
   font-size: 155%;
 }
 h1 a {
-  color: #724986;
+  color: #21677e;
 }
 #header-wrapper h1 {
   color: #fff;
@@ -364,15 +429,15 @@ h1 a {
   border-bottom: none;
 }
 #header-wrapper {
-  color: #65a247;
+  color: #8f4932;
 }
 #header-wrapper a {
-  color: #76b358;
+  color: #a05a43;
 }
 #header-wrapper a:hover,
 #header-wrapper a:hover {
-  background-color: #549136;
-  color: #104d00;
+  background-color: #7e3821;
+  color: #3a0000;
 }
 #header nav {
   color: #111;
@@ -414,39 +479,43 @@ ul {
 }
 p {
   line-height: 1.7em;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 #main-row strong,
 b {
-  color: #555;
+  /*color: #555;*/
 }
 s {
   color: #aaa;
 }
 ::selection {
-  background: #549136;
+  background: #7e3821;
   color: #fff;
 }
 ::-moz-selection {
-  background: #549136;
+  background: #7e3821;
   color: #fff;
 }
 pre {
-  background-color: #edf7e8;
+  background-color: #f4e8e5;
   line-height: 1.5em;
-  font-family: mono;
+  font-family: Monospace;
   margin: 1.0em;
 }
 code,
 blockquote,
 dt {
-  background-color: #edf7e8;
+  background-color: #f4e8e5;
   line-height: 1.5em;
   font-family: mono;
   /*margin: 1.0em;*/
 }
 dd {
   line-height: 1.5em;
-  font-family: Monospace, Courier;
+  font-family: Monospace;
   font-size: 0.9em;
 }
 pre,
@@ -462,7 +531,7 @@ img {
   max-width: 50%;
   max-height: 500px;
   padding: 1px;
-  border: solid 1px #76b358;
+  border: solid 1px #a05a43;
   /*display: block;*/
   /*margin: 0 auto;*/
 }
@@ -489,15 +558,15 @@ li {
 }
 #main ul li:hover,
 ul li:active {
-  background-color: #edf7e8;
+  background-color: #f4e8e5;
 }
 a {
-  color: #559237;
+  color: #7f3922;
   text-decoration: none;
 }
 a:hover {
   text-decoration: none;
-  background-color: #dce6d7;
+  background-color: #e3d7d4;
   border-radius: 4px;
 }
 ul.small-image-list li {
@@ -520,19 +589,19 @@ ul.link-list li:first-child {
 a.toolbarTextareaItem {
   display: inline-block;
   padding: 5px 10px 5px 10px;
-  background-color: #549136;
+  background-color: #7e3821;
   border-radius: 6px;
   text-transform: lowercase;
   text-decoration: none;
   color: #fff;
   font-size: 1.0em;
   letter-spacing: -1px;
-  border: solid 1px #549136;
-  box-shadow: inset 0px 0px 0px 1px #549136;
+  border: solid 1px #7e3821;
+  box-shadow: inset 0px 0px 0px 1px #7e3821;
 }
 .button:hover,
 a.toolbarTextareaItem:hover {
-  background-color: #65a247;
+  background-color: #8f4932;
   color: #fff;
 }
 a.toolbarTextareaItem b {
@@ -541,50 +610,50 @@ a.toolbarTextareaItem b {
 #copyright {
   font-size: 0.6em;
   text-align: center;
-  color: #a7b1a2;
+  color: #aea29f;
   border-top: solid 1px #ced0b7;
   line-height: 1.1em;
   padding: 3em 0 0 0;
   margin: 1% 0 0 0;
 }
 #copyright a {
-  color: #96a091;
+  color: #9d918e;
 }
 #copyright a:hover {
   color: #ffffff;
-  background-color: #b9c3b4;
+  background-color: #c0b4b1;
 }
 .txt2tagsMenu,
 input {
-  background-color: #c7d0c3;
+  background-color: #cdc3bf;
 }
 .txt2tagsMenu:hover,
 input.submit:hover {
-  background-color: #d8e1d4;
+  background-color: #ded4d0;
 }
 .button_txt2tags_true,
 input.submit {
-  background-color: #549136;
+  background-color: #7e3821;
   color: #fff;
 }
 .button_txt2tags_true:hover,
 input.submit:hover {
-  background-color: #76b358;
+  background-color: #a05a43;
 }
 .button_txt2tags_false {
-  background-color: #724986;
+  background-color: #21677e;
   color: #fff;
 }
 .button_txt2tags_false:hover {
-  background-color: #946ba8;
+  background-color: #4389a0;
 }
 .valide {
-  color: #549136;
-  background-color: #c7d0c3;
+  color: #7e3821;
+  background-color: #cdc3bf;
 }
 .refuse {
-  color: #724986;
-  background-color: #c7d0c3;
+  color: #21677e;
+  background-color: #cdc3bf;
 }
 /********************************/
 /* 1000px (>= 1000px)           */
@@ -601,7 +670,7 @@ input.submit:hover {
     margin-top: 1.5em;
   }
   #header-wrapper {
-    background-color: #549136;
+    background-color: #7e3821;
   }
   #header-wrapper h1 {
     margin-top: 0;
@@ -614,8 +683,8 @@ input.submit:hover {
     margin-top: 40px;
     padding: 0 40px 0 40px;
     border-radius: 6px;
-    border: solid 1px #549136;
-    box-shadow: inset 0px 0px 0px 1px #549136, 0px 1px 4px 0px rgba(0, 0, 0, 0);
+    border: solid 1px #7e3821;
+    box-shadow: inset 0px 0px 0px 1px #7e3821, 0px 1px 4px 0px rgba(0, 0, 0, 0);
     height: 66px;
   }
   #header h1 {
@@ -658,7 +727,7 @@ input.submit:hover {
   }
   #banner-wrapper a {
     border-bottom: none;
-    color: #724986;
+    color: #21677e;
   }
   #banner-wrapper {
     margin-top: -20px;
@@ -755,7 +824,7 @@ input.submit:hover {
     width: 490px;
   }
   #header-wrapper {
-    background-color: #549136;
+    background-color: #7e3821;
   }
   #header {
     position: relative;
@@ -763,9 +832,9 @@ input.submit:hover {
     margin-top: 40px;
     padding: 0 40px 0 40px;
     border-radius: 6px;
-    border: solid 1px #549136;
-    box-shadow: inset 0px 0px 0px 1px #549136, 0px 1px 4px 0px rgba(0, 0, 0, 0);
-    background-color: #549136;
+    border: solid 1px #7e3821;
+    box-shadow: inset 0px 0px 0px 1px #7e3821, 0px 1px 4px 0px rgba(0, 0, 0, 0);
+    background-color: #7e3821;
     height: 66px;
   }
   #header h1 {
@@ -847,6 +916,8 @@ input.submit:hover {
   #main {
     background: #fff;
     padding: 3% 0 3% 0;
+    margin-left: 8px;
+    margin-right: 4px;
   }
   #main .main-row {
     margin: 2% 0 2% 0;
@@ -903,7 +974,7 @@ input.submit:hover {
     width: 100%;
   }
   #header-wrapper {
-    background-color: #549136;
+    background-color: #7e3821;
   }
   #header-wrapper h1 {
     margin-top: 0px;
@@ -945,7 +1016,7 @@ input.submit:hover {
     padding: 10px 25px 10px 25px;
   }
   #banner-wrapper {
-    background: #549136 url(images/bg1.png);
+    background: #7e3821 url(images/bg1.png);
     display: none;
   }
   #banner {
@@ -990,13 +1061,16 @@ input.submit:hover {
   /*    important for markitup :    */
   .contentTextarea {
     width: 96%;
-    font-family: Open Sans, MyManuscript, MyFont, Ubuntu, sans-serif;
+    font-family: Ubuntu;
     font-size: 105%;
     padding: 0px;
     margin-left: -15px;
   }
   #main {
     /*overflow: auto;*/
+    background: #fff;
+    margin-left: 8px;
+    margin-right: 4px;
   }
   /* from 5grid/core.css */
   .\35 grid {
@@ -1012,7 +1086,7 @@ input.submit:hover {
   width: 98%;
   margin: 1%;
   /*box-shadow:-1px 2px 5px 1px #105070*/
-  border: 2px solid #98d57a;
+  border: 2px solid #c27c65;
 }
 .mycontent td,
 .mycontent th {
@@ -1021,29 +1095,47 @@ input.submit:hover {
   text-align: left;
 }
 .mycontent th {
-  background: #104d00;
+  background: #3a0000;
   /*#105070;*/
   color: #fff;
   font-weight: bold;
 }
 .mycontent tr {
-  background: #ccffae;
+  background: #f6b099;
   /*rgba(16,80,112,0.2);*/
   color: #111111;
 }
 .mycontent tr a:hover,
 .mycontent #header-wrapper a:hover {
-  background-color: #549136;
-  color: #98d57a;
+  background-color: #7e3821;
+  color: #c27c65;
 }
 .mycontent tr a {
-  color: #104d00;
+  color: #3a0000;
   font-weight: bold;
 }
 .mycontent tr:nth-child(even) {
-  background: #a9e68b /*rgba(16,80,112,0.1)*/;
+  background: #d38d76 /*rgba(16,80,112,0.1)*/;
 }
 .mycontent tr:hover,
 .mycontent tr:hover td {
-  background-color: #65a247 /*rgba(16,80,112,0.3)*/;
+  background-color: #8f4932 /*rgba(16,80,112,0.3)*/;
+}
+/* Progress bar */
+progress {
+  color: #21677e;
+  background-color: white;
+  border-radius: 4px;
+  /*border: solid 1px;*/
+  width: 10em;
+  height: 1em;
+}
+progress::-moz-progress-bar {
+  background: #21677e;
+}
+progress::-webkit-progress-value {
+  background: #21677e;
+}
+progress::-webkit-progress-bar {
+  background: #21677e;
 }
