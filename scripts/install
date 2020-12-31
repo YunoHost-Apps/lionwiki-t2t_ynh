@@ -201,13 +201,6 @@ find $final_path/templates/minimaxing/minimaxing.css -type f -print0 | xargs -0 
 # find  :   -rw-r--r--  1 1001 1002  241 May  3 08:36 index.html   => GOOD
 
 #=================================================
-# ADVERTISE SERVICE IN ADMIN PANEL
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
-
-yunohost service add $app --description "Lightweight wiki-style CMS" --log "/var/log/$app/$app.log"
-
-#=================================================
 # SETUP SSOWAT
 #=================================================
 ynh_script_progression --message="Configuring SSOwat..." --weight=1
