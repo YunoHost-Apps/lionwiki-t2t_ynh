@@ -30,18 +30,20 @@ $TEMPLATE = 'templates/minimaxing/minimaxing.html'; // this one is the default s
 
 //$TEMPLATE = 'templates/ElectricObsidian/ElectricObsidian.html';  // dark theme
 //$TEMPLATE = 'templates/literature/literature.html';      // light theme
+//$TEMPLATE = 'templates/newspaper/newspaper.html';      // light theme
 //$TEMPLATE = 'templates/bootstrap/bootstrap.html';  // bootstrap look. The navbar collapse menu no longer work at the moment
 
 
 // Those templates are more minimalistic and use only a basic toolbar:
 
-$TEMPLATE = 'templates/ggp/ggp.html'; 
+//$TEMPLATE = 'templates/ggp/ggp.html'; 
 //$TEMPLATE = 'templates/blazekiss/blazekiss.html';
 //$TEMPLATE = 'templates/sissou.html';   
 //$TEMPLATE = 'templates/fravashyo/fravashyo.html'; 
 //$TEMPLATE = 'templates/dandelion.html';   
 //$TEMPLATE = 'templates/minimal.html';     
-//$TEMPLATE = 'templates/terminal.html';      
+//$TEMPLATE = 'templates/terminal/terminal.html';  
+//$TEMPLATE = 'templates/terminal_green.html';      
 //$TEMPLATE = 'templates/terminal_white.html';      
 //$TEMPLATE = 'templates/light.html';         
 //$TEMPLATE = 'templates/print.html';         
