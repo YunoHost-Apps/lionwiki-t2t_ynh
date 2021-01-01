@@ -17,7 +17,7 @@
 		setup_private=1
 		setup_public=1
 		upgrade=1
-		upgrade=1	from_commit=02de615d477edb570687910e0e683d1ab073fe13
+		upgrade=1	from_commit=fde26800233eb9d312ef2885d747555c79ee779b
 		backup_restore=1
 		multi_instance=1
 		port_already_use=0
@@ -26,6 +26,6 @@
 Email=
 Notification=none
 ;;; Upgrade options
-	; commit=02de615d477edb570687910e0e683d1ab073fe13
-		name=Create check_process
+	; commit=fde26800233eb9d312ef2885d747555c79ee779b
+		name=updating to latest lionwiki-t2t release
 		manifest_arg=domain=DOMAIN&path=PATH&admin=USER&is_public=Yes&language=en&
