@@ -13,7 +13,7 @@
         "name": "Eric Forgeot"
     },
     "requirements": {
-        "yunohost": ">= 3.8.1"
+        "yunohost": ">= 4.1.7"
     },
     "multi_instance": true,
     "services": [
@@ -25,38 +25,22 @@
             {
                 "name": "domain",
                 "type": "domain",
-                "ask": {
-                    "en": "Choose a domain name for Lionwiki",
-                    "fr": "Choisissez un nom de domaine pour Lionwiki"
-                },
                 "example": "domain.org"
             },
             {
                 "name": "path",
                 "type": "path",
-                "ask": {
-                    "en": "Choose a path for Lionwiki",
-                    "fr": "Choisissez un chemin pour Lionwiki"
-                },
                 "example": "/lionwiki",
                 "default": "/lionwiki"
             },
             {
                 "name": "admin",
                 "type": "user",
-                "ask": {
-                    "en": "Choose an admin user",
-                    "fr": "Choisissez l'administrateur"
-                },
                 "example": "johndoe"
             },
             {
                 "name": "is_public",
                 "type": "boolean",
-                "ask": {
-                    "en": "Is it a public application?",
-                    "fr": "Est-ce une application publique ?"
-                },
 				"help": {
                     "en": "If it's not public, only SSO registered users will be able to user it.",
                     "fr": "Si ce n'est pas public, seuls les utilisateurs enregistrés sur le SSO pourront l'utiliser."
@@ -76,10 +60,6 @@
             {
                 "name": "password",
                 "type": "password",
-                "ask": {
-                    "en": "Set the password for edition",
-                    "fr": "Définissez le mot de passe pour l'édition"
-                },
                 "help": {
                     "en": "Define a password which will be used for wiki edition and administration.",
                     "fr": "Veuillez définir un mot de passe qui sera valable pour l'édition des pages de ce wiki ainsi que pour l'administration."
