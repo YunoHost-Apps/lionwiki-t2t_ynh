@@ -17,7 +17,7 @@
 		setup_private=1
 		setup_public=1
 		upgrade=1
-		upgrade=1	from_commit=fde26800233eb9d312ef2885d747555c79ee779b
+		upgrade=1	from_commit=69db9a386081d9241f5548e09052fd58dee45463
 		backup_restore=1
 		multi_instance=1
 		port_already_use=0
@@ -26,6 +26,6 @@
 Email=
 Notification=none
 ;;; Upgrade options
-	; commit=fde26800233eb9d312ef2885d747555c79ee779b
-		name=updating to latest lionwiki-t2t release
+	; commit=69db9a386081d9241f5548e09052fd58dee45463
+		name=Merge pull request #4 from YunoHost-Apps/testing 
 		manifest_arg=domain=DOMAIN&path=PATH&admin=USER&is_public=Yes&language=en&
