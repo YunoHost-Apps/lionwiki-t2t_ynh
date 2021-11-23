@@ -24,8 +24,7 @@
         "install" : [
             {
                 "name": "domain",
-                "type": "domain",
-                "example": "domain.org"
+                "type": "domain"
             },
             {
                 "name": "path",
@@ -35,8 +34,7 @@
             },
             {
                 "name": "admin",
-                "type": "user",
-                "example": "johndoe"
+                "type": "user"
             },
             {
                 "name": "is_public",
@@ -63,8 +61,7 @@
                 "help": {
                     "en": "Define a password which will be used for wiki edition and administration.",
                     "fr": "Veuillez définir un mot de passe qui sera valable pour l'édition des pages de ce wiki ainsi que pour l'administration."
-                },
-                "example": "Choose a password"
+                }
             },
 			{
                 "name": "wiki",
