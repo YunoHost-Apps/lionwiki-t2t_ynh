@@ -1,11 +1,11 @@
 ;; Test complet
 	auto_remove=1
 	; Manifest
-		domain="domain.tld"	(DOMAIN)
-		path="/path"	(PATH)
-		admin="john"	(USER)
+		domain="domain.tld"
+		path="/path"
+		admin="john"
 		language="en"
-		is_public=1	(PUBLIC|public=1|private=0)
+		is_public=1
 		password="azerty1234"
 		wiki="My Wiki"
 		color="328cc1"
@@ -20,7 +20,6 @@
 		upgrade=1	from_commit=69db9a386081d9241f5548e09052fd58dee45463
 		backup_restore=1
 		multi_instance=1
-		port_already_use=0
 		change_url=1
 ;;; Options
 Email=
