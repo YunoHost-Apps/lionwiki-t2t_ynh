@@ -6,14 +6,14 @@
         "en": "Lightweight wiki-style CMS using the txt2tags syntax",
         "fr": "CMS léger, géré sous forme de wiki utilisant la syntaxe txt2tags"
     },
-    "version": "3.2.11~ynh6",
+    "version": "3.2.12~ynh1",
     "url": "https://lionwiki-t2t.sourceforge.io/",
     "license": "MIT",
     "maintainer": {
         "name": "Eric Forgeot"
     },
     "requirements": {
-        "yunohost": ">= 4.1.7"
+        "yunohost": ">= 4.3.0"
     },
     "multi_instance": true,
     "services": [
@@ -24,8 +24,7 @@
         "install" : [
             {
                 "name": "domain",
-                "type": "domain",
-                "example": "domain.org"
+                "type": "domain"
             },
             {
                 "name": "path",
@@ -35,8 +34,7 @@
             },
             {
                 "name": "admin",
-                "type": "user",
-                "example": "johndoe"
+                "type": "user"
             },
             {
                 "name": "is_public",
@@ -63,8 +61,7 @@
                 "help": {
                     "en": "Define a password which will be used for wiki edition and administration.",
                     "fr": "Veuillez définir un mot de passe qui sera valable pour l'édition des pages de ce wiki ainsi que pour l'administration."
-                },
-                "example": "Choose a password"
+                }
             },
 			{
                 "name": "wiki",
