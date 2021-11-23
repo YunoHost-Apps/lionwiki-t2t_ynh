@@ -1,3 +1,19 @@
+/*-----------------------
+
+	--------------
+	- Minimaxing -
+	--------------
+	
+	a template for Lionwiki-t2t
+	https://lionwiki-t2t.sourceforge.io/
+	
+	based on 
+   
+    https://html5up.net/minimaxing
+    licence Creative Commons Attribution 3.0 Unported
+    http://creativecommons.org/licenses/by/3.0/
+	
+----------------------------*/
 /* This CSS file was generated from the minimaxing.less template. 
  See http://lesscss.org/
 */
@@ -19,124 +35,92 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
  #847457 : brown
  */
 /* define mixin */
-/* call the mixin which sets the variable once */
+/* we disable it as it's sometimes a problem with lesscss
+.generateColor() { 
+	@background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
+	}
+.generateColor(); 
+*/
 /* This line below will use a random main color: */
-/* @MainColor: @background-color; */
+/* @fg: @background-color; */
 /* if you prefer to select a fixed background color, just uncomment one color from below */
-/* @MainColor: #549136; */
-/*@MainColor: #7E2434;*/
-/*@MainColor: #549136;*/
+/* For YunoHost config */
+/* @fg: #__YNH_COLOR__; */
 /* Header color */
 /* You can use a shade of MainColor: */
 /* or a complementary color: */
-/* used in max-width (should be renamed) */
+/*@HeaderColor: (#ffffff - @fg - (#ffffff - @fg)/3); */
+/* templates */
+/* Brick Red (darker) Default color 2021 */
+/* normal or bold */
+/* overriding default values above */
+/* theme 03 */
+/*  */
+/* Dark blue */
+/*@link-hover: desaturate(darken(@fg,10%),20%);*/
+/* TODO should be HeaderColor: color: spin(@fg, 180);*/
+/* normal or bold */
 /*@import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic);
 */
 @font-face {
-  font-family: MyFont;
-  font-style: normal;
-  font-weight: 400;
-  src: url(../fonts/MyFont.ttf) format('truetype');
-}
-@font-face {
-  font-family: MyManuscript;
-  font-style: normal;
-  font-weight: 400;
-  src: url(../fonts/MyManuscript.ttf) format('truetype');
-}
-@font-face {
-  font-family: LoveYaLikeASister;
-  font-style: normal;
-  font-weight: 400;
-  src: url(../fonts/LoveYaLikeASister-Regular.woff) format('woff');
-}
-@font-face {
   font-family: 'Ubuntu Condensed';
   font-style: normal;
   font-weight: 400;
   src: local('Ubuntu Condensed'), local('UbuntuCondensed-Regular'), url(../fonts/ubuntu-condensed-regular.woff) format('woff');
 }
-/*@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 300;
-    src: local('Open Sans Light'),local('OpenSans-Light'),url(../fonts/OpenSans-Light.woff) format('woff');
-}*/
 @font-face {
-  font-family: 'Open Sans';
+  font-family: 'Ubuntu';
   font-style: normal;
-  font-weight: 400;
-  src: local('Open Sans'), local('OpenSans'), url(../fonts/OpenSans.woff) format('woff');
+  font-weight: normal;
+  src: local('Ubuntu'), url(../fonts/ubuntu.woff) format('woff');
 }
 @font-face {
-  font-family: 'Open Sans';
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Ubuntu Italic'), url(../fonts/ubuntu-italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: bold;
+  font-weight: bold;
+  src: local('Ubuntu Bold'), url(../fonts/ubuntu-bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-weight: bold;
+  font-style: italic;
+  src: local('Ubuntu Italic Bold'), url(../fonts/ubuntu-bold-italic.woff) format('woff');
+}
+/* Ubuntu            */
+@font-face {
+  font-family: Fengardo;
   font-style: normal;
-  font-weight: 600;
-  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(../fonts/OpenSans-Semibold.woff) format('woff');
+  font-weight: normal;
+  src: url(../fonts/fengardoneue-regular.woff) format('woff'), url(../fonts/fengardoneue-regular.otf) format('opentype'), url(../fonts/fengardoneue-regular.svg) format('svg');
 }
 @font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(../fonts/OpenSans-Bold.woff) format('woff');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 800;
-  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(../fonts/OpenSans-Extrabold.woff) format('woff');
-}
-@font-face {
-  font-family: 'Open Sans';
+  font-family: Fengardo;
   font-style: italic;
-  font-weight: 300;
-  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(../fonts/OpenSansLight-Italic.woff) format('woff');
+  src: url(../fonts/fengardoneue-italic.otf) format('opentype');
 }
 @font-face {
-  font-family: 'Open Sans';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(../fonts/OpenSans-Italic.woff) format('woff');
+  font-family: Fengardo;
+  font-weight: bold;
+  src: url(../fonts/fengardoneue-black.woff) format('woff'), url(../fonts/fengardoneue-black.otf) format('opentype'), url(../fonts/fengardoneue-black.svg) format('svg');
+  
+  /*font-weight: 500;*/
 }
 @font-face {
-  font-family: 'Open Sans';
-  font-style: italic;
-  font-weight: 600;
-  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(../fonts/OpenSans-SemiboldItalic.woff) format('woff');
+  font-family: 'Fengardo Neue';
+  font-style: bold;
+  font-weight: 200;
+  src: url(../fonts/fengardoneue-black.woff) format('woff');
 }
-@font-face {
-  font-family: 'Open Sans';
-  font-style: italic;
-  font-weight: 700;
-  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(../fonts/OpenSans-BoldItalic.woff) format('woff');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: italic;
-  font-weight: 800;
-  src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url(../fonts/OpenSans-ExtraboldItalic.woff) format('woff');
-}
-@font-face {
-  font-family: 'Open Sans Condensed';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(../fonts/OpenSans-CondensedBold.woff) format('woff');
-}
-@font-face {
-  font-family: 'Open Sans Condensed';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Open Sans Cond Light'), local('OpenSans-CondensedLight'), url(../fonts/OpenSans-CondensedLight.woff) format('woff');
-}
-@font-face {
-  font-family: 'Open Sans Condensed';
-  font-style: italic;
-  font-weight: 300;
-  src: local('Open Sans Cond Light Italic'), local('OpenSans-CondensedLightItalic'), url(../fonts/OpenSans-CondensedLightItalic.woff) format('woff');
-}
+/* Fengardo Neue     */
 /*
 	Minimaxing 1.0 by nodethirtythree design
 	http://nodethirtythree.com | @nodethirtythree
@@ -202,8 +186,14 @@ h6 a:hover {
 }
 .contentTextarea {
   width: 90%;
-  font-family: Open Sans, MyManuscript, MyFont, Ubuntu, sans-serif;
+  font-family: Ubuntu;
   font-size: 105%;
+}
+.markItUpEditor {
+  width: 90%;
+  font-family: Ubuntu;
+  color: #444;
+  font-size: 140%;
 }
 #diff {
   white-space: pre-wrap;
@@ -326,73 +316,95 @@ thead,
 /******************************************************************/
 /* Global                                                         */
 /******************************************************************/
+/* Mixin Macro */
+.break {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
 body {
   font-size: 12pt;
-  font-family: sans-serif;
-  background-color: #d8e1d4;
-  font-family: Open Sans, MyManuscript, MyFont, Ubuntu, sans-serif;
-  color: #767d72;
+  /*font-family: sans-serif;*/
+  /*background-color: (@Bg-extra-light/1.1 + #111);*/
+  background-color: #ffffff;
+  font-family: Ubuntu;
+  color: #656c61;
 }
 #header h1 {
   color: #fff;
-  margin: 0;
-  padding: 0;
+  margin: 2px;
+  padding: 2px;
   border: none;
 }
 h1,
 h2,
 h3,
 h4 {
-  font-family: Open Sans Condensed, MyManuscript, MyFont, LoveYaLikeASister, Ubuntu Condensed, sans-serif;
+  font-family: Fengardo Neue;
   text-transform: uppercase;
-  color: #724986;
+  color: #5d2c0b;
   font-weight: bold;
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+  padding-left: 2px;
+  padding-right: 2px;
 }
-h1,
 h2 {
   border-bottom: 1px solid grey;
 }
 h1 {
-  font-size: 155%;
+  /*font-size: 2.6em;*/
+  font-size: clamp(2em, 4vw, 6em);
+  text-align: center;
+  text-decoration: none;
 }
 h1 a {
-  color: #724986;
+  color: #5d2c0b;
 }
 #header-wrapper h1 {
-  color: #fff;
+  color: #ffffff;
   line-height: 1.3em;
   border-bottom: none;
 }
 #header-wrapper {
-  color: #65a247;
+  color: #1c4d6e;
 }
 #header-wrapper a {
-  color: #76b358;
+  color: #2d5e7f;
 }
 #header-wrapper a:hover,
 #header-wrapper a:hover {
-  background-color: #549136;
-  color: #104d00;
+  background-color: #0b3c5d;
+  color: #000019;
 }
 #header nav {
-  color: #111;
+  color: #ffffff;
   text-transform: lowercase;
 }
 #header nav a,
 #header nav li a {
   display: inline-block;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
 }
 #header nav li a:hover,
 #header nav li a:active {
   background-color: #fff;
   border-radius: 6px;
-  color: #111;
+  color: #0b3c5d;
 }
 h2 {
   font-size: 1.6em;
-  letter-spacing: -1px;
+  letter-spacing: 1px;
   margin-bottom: 0.0em;
   margin-top: 1.8em;
 }
@@ -411,42 +423,59 @@ h4 {
 p,
 ul {
   margin-bottom: 1.0em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 p {
   line-height: 1.7em;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 #main-row strong,
 b {
-  color: #555;
+  /*color: #555;*/
 }
 s {
   color: #aaa;
 }
 ::selection {
-  background: #549136;
-  color: #fff;
+  background: #0b3c5d;
+  color: #ffffff;
 }
 ::-moz-selection {
-  background: #549136;
-  color: #fff;
+  background: #0b3c5d;
+  color: #ffffff;
 }
 pre {
-  background-color: #edf7e8;
+  background-color: #f3fbff;
   line-height: 1.5em;
-  font-family: mono;
+  font-family: Monospace;
+  font-size: 11pt;
   margin: 1.0em;
 }
 code,
 blockquote,
 dt {
-  background-color: #edf7e8;
-  line-height: 1.5em;
-  font-family: mono;
+  background-color: #f3fbff;
+  font-family: Monospace;
+  font-size: 11pt;
   /*margin: 1.0em;*/
 }
 dd {
   line-height: 1.5em;
-  font-family: Monospace, Courier;
+  font-family: Monospace;
   font-size: 0.9em;
 }
 pre,
@@ -462,7 +491,7 @@ img {
   max-width: 50%;
   max-height: 500px;
   padding: 1px;
-  border: solid 1px #76b358;
+  border: solid 1px #2d5e7f;
   /*display: block;*/
   /*margin: 0 auto;*/
 }
@@ -480,6 +509,13 @@ img.noborder {
   position: absolute;
   z-index: 10;
 }
+.img-circle {
+  border-radius: 50%;
+  border: solid 0px ;
+  min-width: 100px;
+  max-width: 200px;
+  background: #5d2c0b;
+}
 li {
   line-height: 1.5em;
 }
@@ -489,16 +525,17 @@ li {
 }
 #main ul li:hover,
 ul li:active {
-  background-color: #edf7e8;
+  background-color: #ffffff;
+  background-color: #e1e9ef;
 }
 a {
-  color: #559237;
+  color: #0c3d5e;
   text-decoration: none;
 }
 a:hover {
   text-decoration: none;
-  background-color: #dce6d7;
-  border-radius: 4px;
+  background-color: #407192;
+  color: #ffffff;
 }
 ul.small-image-list li {
   margin-bottom: 1.5em;
@@ -520,71 +557,71 @@ ul.link-list li:first-child {
 a.toolbarTextareaItem {
   display: inline-block;
   padding: 5px 10px 5px 10px;
-  background-color: #549136;
+  background-color: #0b3c5d;
   border-radius: 6px;
   text-transform: lowercase;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   font-size: 1.0em;
   letter-spacing: -1px;
-  border: solid 1px #549136;
-  box-shadow: inset 0px 0px 0px 1px #549136;
+  border: solid 1px #0b3c5d;
+  box-shadow: inset 0px 0px 0px 1px #0b3c5d;
 }
 .button:hover,
 a.toolbarTextareaItem:hover {
-  background-color: #65a247;
-  color: #fff;
+  background-color: #1c4d6e;
+  color: #ffffff;
 }
 a.toolbarTextareaItem b {
-  color: #fff;
+  color: #ffffff;
 }
 #copyright {
   font-size: 0.6em;
   text-align: center;
-  color: #a7b1a2;
+  color: #0b3c5d;
   border-top: solid 1px #ced0b7;
   line-height: 1.1em;
   padding: 3em 0 0 0;
   margin: 1% 0 0 0;
 }
 #copyright a {
-  color: #96a091;
+  color: #002b4c;
 }
 #copyright a:hover {
   color: #ffffff;
-  background-color: #b9c3b4;
+  background-color: #1d4e6f;
 }
 .txt2tagsMenu,
 input {
-  background-color: #c7d0c3;
+  background-color: #ccd4d9;
 }
 .txt2tagsMenu:hover,
 input.submit:hover {
-  background-color: #d8e1d4;
+  background-color: #dde5ea;
 }
 .button_txt2tags_true,
 input.submit {
-  background-color: #549136;
+  background-color: #0b3c5d;
   color: #fff;
 }
 .button_txt2tags_true:hover,
 input.submit:hover {
-  background-color: #76b358;
+  background-color: #2d5e7f;
 }
 .button_txt2tags_false {
-  background-color: #724986;
+  background-color: #5d2c0b;
   color: #fff;
 }
 .button_txt2tags_false:hover {
-  background-color: #946ba8;
+  background-color: #7f4e2d;
 }
 .valide {
-  color: #549136;
-  background-color: #c7d0c3;
+  color: #0b3c5d;
+  background-color: #ccd4d9;
 }
 .refuse {
-  color: #724986;
-  background-color: #c7d0c3;
+  color: #5d2c0b;
+  background-color: #ccd4d9;
 }
 /********************************/
 /* 1000px (>= 1000px)           */
@@ -601,7 +638,7 @@ input.submit:hover {
     margin-top: 1.5em;
   }
   #header-wrapper {
-    background-color: #549136;
+    background-color: #0b3c5d;
   }
   #header-wrapper h1 {
     margin-top: 0;
@@ -614,8 +651,7 @@ input.submit:hover {
     margin-top: 40px;
     padding: 0 40px 0 40px;
     border-radius: 6px;
-    border: solid 1px #549136;
-    box-shadow: inset 0px 0px 0px 1px #549136, 0px 1px 4px 0px rgba(0, 0, 0, 0);
+    box-shadow: inset 0px 0px 0px 1px #0b3c5d, 0px 1px 4px 0px rgba(0, 0, 0, 0);
     height: 66px;
   }
   #header h1 {
@@ -623,7 +659,7 @@ input.submit:hover {
     left: 10px;
     top: -28px;
     font-size: 2.4em;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     /*line-height: 6px;*/
     /* pb in konqueror*/
   }
@@ -658,7 +694,7 @@ input.submit:hover {
   }
   #banner-wrapper a {
     border-bottom: none;
-    color: #724986;
+    color: #5d2c0b;
   }
   #banner-wrapper {
     margin-top: -20px;
@@ -667,7 +703,7 @@ input.submit:hover {
   #banner-wrapper h1 {
     text-align: center;
     font-size: 2.2em;
-    letter-spacing: 0px;
+    letter-spacing: 1px;
     text-decoration: none;
     border-top: 0px;
     border-bottom: 15px;
@@ -691,7 +727,7 @@ input.submit:hover {
     font-size: 3.3em;
     color: #fff;
     text-align: center;
-    letter-spacing: -2px;
+    letter-spacing: 1px;
   }
   #banner span {
     display: block;
@@ -708,7 +744,7 @@ input.submit:hover {
     opacity: 0.8;
   }
   #main {
-    background: #fff;
+    background-color: #ffffff;
     padding: 2% 0 2% 0;
     padding-top: -20px;
   }
@@ -755,7 +791,7 @@ input.submit:hover {
     width: 490px;
   }
   #header-wrapper {
-    background-color: #549136;
+    background-color: #0b3c5d;
   }
   #header {
     position: relative;
@@ -763,9 +799,7 @@ input.submit:hover {
     margin-top: 40px;
     padding: 0 40px 0 40px;
     border-radius: 6px;
-    border: solid 1px #549136;
-    box-shadow: inset 0px 0px 0px 1px #549136, 0px 1px 4px 0px rgba(0, 0, 0, 0);
-    background-color: #549136;
+    box-shadow: inset 0px 0px 0px 1px #0b3c5d, 0px 1px 4px 0px rgba(0, 0, 0, 0);
     height: 66px;
   }
   #header h1 {
@@ -828,7 +862,7 @@ input.submit:hover {
     font-size: 3em;
     color: #fff;
     text-align: center;
-    letter-spacing: -2px;
+    letter-spacing: 1px;
   }
   #banner span {
     display: block;
@@ -845,8 +879,10 @@ input.submit:hover {
     opacity: 0.8;
   }
   #main {
-    background: #fff;
+    background-color: #ffffff;
     padding: 3% 0 3% 0;
+    margin-left: 8px;
+    margin-right: 4px;
   }
   #main .main-row {
     margin: 2% 0 2% 0;
@@ -903,7 +939,7 @@ input.submit:hover {
     width: 100%;
   }
   #header-wrapper {
-    background-color: #549136;
+    background-color: #0b3c5d;
   }
   #header-wrapper h1 {
     margin-top: 0px;
@@ -945,7 +981,7 @@ input.submit:hover {
     padding: 10px 25px 10px 25px;
   }
   #banner-wrapper {
-    background: #549136 url(images/bg1.png);
+    background: #0b3c5d url(images/bg1.png);
     display: none;
   }
   #banner {
@@ -967,7 +1003,7 @@ input.submit:hover {
     font-size: 2em;
     color: #fff;
     text-align: center;
-    letter-spacing: -2px;
+    letter-spacing: 1px;
   }
   #banner span {
     display: block;
@@ -990,13 +1026,16 @@ input.submit:hover {
   /*    important for markitup :    */
   .contentTextarea {
     width: 96%;
-    font-family: Open Sans, MyManuscript, MyFont, Ubuntu, sans-serif;
+    font-family: Ubuntu;
     font-size: 105%;
     padding: 0px;
-    margin-left: -15px;
+    margin-left: -0.25px;
   }
   #main {
     /*overflow: auto;*/
+    background-color: #ffffff;
+    margin-left: 8px;
+    margin-right: 4px;
   }
   /* from 5grid/core.css */
   .\35 grid {
@@ -1012,7 +1051,7 @@ input.submit:hover {
   width: 98%;
   margin: 1%;
   /*box-shadow:-1px 2px 5px 1px #105070*/
-  border: 2px solid #98d57a;
+  border: 2px solid #4f80a1;
 }
 .mycontent td,
 .mycontent th {
@@ -1021,29 +1060,157 @@ input.submit:hover {
   text-align: left;
 }
 .mycontent th {
-  background: #104d00;
+  background: #000019;
   /*#105070;*/
   color: #fff;
   font-weight: bold;
 }
 .mycontent tr {
-  background: #ccffae;
+  background: #83b4d5;
   /*rgba(16,80,112,0.2);*/
   color: #111111;
 }
 .mycontent tr a:hover,
 .mycontent #header-wrapper a:hover {
-  background-color: #549136;
-  color: #98d57a;
+  background-color: #0b3c5d;
+  color: #4f80a1;
 }
 .mycontent tr a {
-  color: #104d00;
+  color: #000019;
   font-weight: bold;
 }
 .mycontent tr:nth-child(even) {
-  background: #a9e68b /*rgba(16,80,112,0.1)*/;
+  background: #6091b2 /*rgba(16,80,112,0.1)*/;
 }
 .mycontent tr:hover,
 .mycontent tr:hover td {
-  background-color: #65a247 /*rgba(16,80,112,0.3)*/;
+  background-color: #1c4d6e /*rgba(16,80,112,0.3)*/;
+}
+/* Progress bar */
+progress {
+  color: #5d2c0b;
+  background-color: white;
+  /*border-radius: 4px; */
+  border-radius: 0px;
+  border: solid 1px;
+  width: 10em;
+  height: 1em;
+  -webkit-appearance: none;
+}
+progress::-moz-progress-bar {
+  background: #5d2c0b;
+}
+progress::-webkit-progress-value {
+  background: #5d2c0b;
+}
+progress::-webkit-progress-bar {
+  background: white;
+}
+/* Big buttons */
+.block {
+  display: inline-block;
+  width: 65%;
+  border: 2px solid #5d2c0b;
+  background-color: #5d2c0b;
+  height: 50px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-family: Ubuntu;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: 16px;
+  color: #e1e9ef;
+  /*cursor: pointer;*/
+  text-align: center;
+  vertical-align: middle;
+  /*transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;*/
+  border-radius: 0px;
+}
+.block a {
+  display: inline-block;
+  min-width: 100%;
+  padding: 0px;
+  padding-top: 0px;
+  height: 46px;
+  line-height: 46px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0px;
+}
+/*.block:hover, */
+.block a:hover {
+  /*border: 2px solid @HeaderColor;*/
+  background-color: #fff;
+  color: #5d2c0b;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+@media only screen and (max-width: 999px) and (min-width: 1px) {
+  .block {
+    width: 90%;
+  }
+}
+/* Todotxt support */
+.todotxt_A {
+  color: #082d46;
+}
+.todotxt_B {
+  color: #1b2267;
+}
+.todotxt_C {
+  color: #462873;
+}
+.todotxt_D {
+  color: #76377d;
+}
+.todotxt_E {
+  color: #8a446e;
+}
+.todotxt_F {
+  color: #527a95;
+}
+.todotxt_context {
+  color: #5d2c0b;
+}
+.todotxt_tag {
+  color: #550b5d;
+}
+.todotxt_deleted {
+  opacity: 0.4;
+}
+.todotxt_date {
+  background-color: #f2f2f2;
+}
+@media (prefers-color-scheme: dark) {
+  /* Invert all elements on the body while attempting to not alter the hue substantially. */
+  body {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  /* Workarounds and optical adjustments. */
+  /* Firefox workaround: Set the background colour for the html
+     element separately because, unlike other browsers, Firefox
+     doesn’t apply the filter to the root element’s background. */
+  html {
+    background-color: #111;
+  }
+  /* Do not invert media (revert the invert). */
+  img,
+  video,
+  iframe {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  /* Improve contrast on icons. */
+  .icon {
+    filter: invert(15%) hue-rotate(180deg);
+  }
+  /* Re-enable code block backgrounds. */
+  pre {
+    filter: invert(6%);
+  }
+  /* Improve contrast on list item markers. */
+  li::marker {
+    color: #555;
+  }
 }
