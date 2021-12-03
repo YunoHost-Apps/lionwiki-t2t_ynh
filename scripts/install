@@ -183,6 +183,7 @@ ynh_store_file_checksum --file="$final_path/menu.php"
 
 # Set permissions to app files
 chown -R root: $final_path
+chmod -R o-rwx $final_path
 
 # Wiki needs to write inside these folders. Make "Wiki" owner
 chown -R $app:root $final_path/var
