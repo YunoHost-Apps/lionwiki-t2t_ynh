@@ -182,22 +182,10 @@ ynh_store_file_checksum --file="$final_path/menu.php"
 #=================================================
 
 # Set permissions to app files
-chown -R root: $final_path
-
-# Wiki needs to write inside these folders. Make "Wiki" owner
-chown -R $app:root $final_path/var
-chown -R $app:root $final_path/templates
-
-# write everything, even config files, for pheditor:
-chown -R $app:root $final_path/
-
-# Allow access to public assets like style sheets
-find $final_path/templates -type f -print0 | xargs -0 chmod 0644
-find $final_path/templates -type d -print0 | xargs -0 chmod 0755
-find $final_path/templates/minimaxing/minimaxing.css -type f -print0 | xargs -0 chmod 0755
-# Using "find" instead of "chmod -R 755" so files does not become executable too
-# chmod :   -rwxr-xr-x  1 root root  241 May  3 08:36 index.html   => BAD
-# find  :   -rw-r--r--  1 1001 1002  241 May  3 08:36 index.html   => GOOD
+chown -R $app:www-data $final_path
+chmod -R o-rwx $final_path
+find $final_path -type d -exec chmod g=rx {} +
+find $final_path -type f -exec chmod g=r {} +
 
 #=================================================
 # SETUP SSOWAT
