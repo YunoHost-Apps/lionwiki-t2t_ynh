@@ -125,8 +125,10 @@ ynh_restore_file -o "conf/config.php"
 #=================================================
 
 # Set permissions on app files
-chown -R root: $final_path
+chown -R $app:www-data $final_path
 chmod -R o-rwx $final_path
+find $final_path -type d -exec chmod g=rx {} +
+find $final_path -type f -exec chmod g=r {} +
 
 #=================================================
 # RELOAD NGINX
