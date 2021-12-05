@@ -118,7 +118,8 @@ ynh_store_file_checksum --file="$final_path/config.php"
 ynh_store_file_checksum --file="$final_path/config.t2t"
 ynh_store_file_checksum --file="$final_path/menu.php"
 
-ynh_restore_file -o "conf/config.php"
+#ynh_restore_file -o "conf/config.php"
+
 
 #=================================================
 # SECURE FILES AND DIRECTORIES
