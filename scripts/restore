@@ -68,7 +68,10 @@ ynh_system_user_create --username=$app
 #=================================================
 
 # Restore permissions on app files
-chown -R root: $final_path
+chown -R $app:www-data $final_path
+chmod -R o-rwx $final_path
+find $final_path -type d -exec chmod g=rx {} +
+find $final_path -type f -exec chmod g=r {} +
 
 #=================================================
 # RESTORE THE PHP-FPM CONFIGURATION
