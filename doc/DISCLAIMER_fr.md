@@ -2,25 +2,25 @@
 
 Dans le dossier racine de l'application il y a 2 fichiers, `config.php` et `config.t2t`
 
-- config.php permet de modifier le mot de passe, le choix du template utilisé et la page par défaut. Vous pouvez également définir ici un mot de passe administrateur (pour bloquer certaines pages en édition)
+- config.php permet de modifier le mot de passe, le choix du template utilisÃ© et la page par dÃ©faut. Vous pouvez Ã©galement dÃ©finir ici un mot de passe administrateur (pour bloquer certaines pages en Ã©dition)
 
-- `config.t2t` est pour customiser votre syntaxe wiki. Vous pouvez définir là de nouvelles balises (utilisant les règles txt2tags) pour des comportements spécifiques.
+- `config.t2t` est pour customiser votre syntaxe wiki. Vous pouvez dÃ©finir lÃ  de nouvelles balises (utilisant les rÃ¨gles txt2tags) pour des comportements spÃ©cifiques.
 
-- L'outil `pheditor.php` à la racine du site permet d'éditer tous les fichiers de configuration nécessaires. Vous pouvez le retirer ou le renommer depuis son interface. Le mot de passe est le même que celui définit lors de l'installation.
+- L'outil `pheditor.php` Ã  la racine du site permet d'Ã©diter tous les fichiers de configuration nÃ©cessaires. Vous pouvez le retirer ou le renommer depuis son interface. Le mot de passe est le mÃªme que celui dÃ©finit lors de l'installation.
 
 #### Support multi-utilisateurs
 
-Il y a un seul mot de passe pour éditer ce wiki (dans le fichier config.php), et un autre pour l'administration. C'est le même qui a a été créé lors de l'installation par YunoHost.
+Il y a un seul mot de passe pour Ã©diter ce wiki (dans le fichier config.php), et un autre pour l'administration. C'est le mÃªme qui a a Ã©tÃ© crÃ©Ã© lors de l'installation par YunoHost.
 
-Vous pouvez passer le wiki en mode privé ou public, selon vos usages.
+Vous pouvez passer le wiki en mode privÃ© ou public, selon vos usages.
 
 ## Informations additionnelles
 
-Vous devez définir une couleur de base durant l'installation, au format hexadécimal. Vous pouvez la choisir en utilisant cet outil en ligne : https://www.w3schools.com/colors/colors_picker.asp
+Vous devez dÃ©finir une couleur de base durant l'installation, au format hexadÃ©cimal. Vous pouvez la choisir en utilisant cet outil en ligne : https://www.w3schools.com/colors/colors_picker.asp
 
 La couleur choisie va modifier le fichier `templates/minimaxing/minimaxing.less` et le compiler en utilisant la commande lessc (du paquet node-less).
 
-Après l'installation, vous pouvez éditer la couleur de base dans le fichier `/var/www/lionwikit2t/templates/minimaxing/minimaxing.less` 
+AprÃ¨s l'installation, vous pouvez Ã©diter la couleur de base dans le fichier `/var/www/lionwikit2t/templates/minimaxing/minimaxing.less` 
 
 Recherchez pour :
 
@@ -29,7 +29,7 @@ Recherchez pour :
 @MainColor: #D17732;
 ```
 
-Allez dans le dossier d'installation (à adapter à votre cas, si c'est la seconde instance installée, cela sera nommé `/var/www/lionwikit2t__2/`) :
+Allez dans le dossier d'installation (Ã  adapter Ã  votre cas, si c'est la seconde instance installÃ©e, cela sera nommÃ© `/var/www/lionwikit2t__2/`) :
 
 ```
 cd /var/www/lionwikit2t
