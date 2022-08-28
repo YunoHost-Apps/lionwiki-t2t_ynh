@@ -6,8 +6,15 @@
         "en": "Lightweight wiki-style CMS using the txt2tags syntax",
         "fr": "CMS léger, géré sous forme de wiki utilisant la syntaxe txt2tags"
     },
-    "version": "3.2.12~ynh1",
+    "version": "3.2.12~ynh2",
     "url": "https://lionwiki-t2t.sourceforge.io/",
+    "upstream": {
+        "license": "MIT",
+        "website": "https://lionwiki-t2t.sourceforge.io/",
+        "admindoc": "https://lionwiki-t2t.sourceforge.io/",
+        "userdoc": "https://github.com/farvardin/whatistxt2tags",
+        "code": "https://sourceforge.net/projects/lionwiki-t2t"
+    },
     "license": "MIT",
     "maintainer": {
         "name": "Eric Forgeot"
@@ -21,7 +28,7 @@
         "php7.3-fpm"
     ],
     "arguments": {
-        "install" : [
+        "install": [
             {
                 "name": "domain",
                 "type": "domain"
@@ -31,10 +38,6 @@
                 "type": "path",
                 "example": "/lionwiki",
                 "default": "/lionwiki"
-            },
-            {
-                "name": "admin",
-                "type": "user"
             },
             {
                 "name": "is_public",
@@ -54,6 +57,10 @@
                 },
                 "choices": ["fr", "en"],
                 "default": "en"
+            },
+            {
+                "name": "admin",
+                "type": "user"
             },
             {
                 "name": "password",
