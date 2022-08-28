@@ -20,6 +20,7 @@ LionWiki-t2t is a minimalist Wiki engine programmed in PHP. It is extensible, te
 
 **Shipped version:** 3.2.12~ynh2
 
+
 ## Screenshots
 
 ![Screenshot of Lionwiki](./doc/screenshots/screenshot_lionwikit2t.png)
