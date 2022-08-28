@@ -3,9 +3,9 @@
 	; Manifest
 		domain="domain.tld"
 		path="/path"
-		admin="john"
-		language="en"
 		is_public=1
+		language="en"
+		admin="john"
 		password="azerty1234"
 		wiki="My Wiki"
 		color="328cc1"
@@ -17,14 +17,12 @@
 		setup_private=1
 		setup_public=1
 		upgrade=1
-		upgrade=1	from_commit=69db9a386081d9241f5548e09052fd58dee45463
+		# 3.2.12~ynh1
+		upgrade=1	from_commit=a59e01aec10bd3a749ce062d2931906151d8f8be
 		backup_restore=1
 		multi_instance=1
+		port_already_use=0
 		change_url=1
 ;;; Options
 Email=
 Notification=none
-;;; Upgrade options
-	; commit=69db9a386081d9241f5548e09052fd58dee45463
-		name=Merge pull request #4 from YunoHost-Apps/testing 
-		manifest_arg=domain=DOMAIN&path=PATH&admin=USER&is_public=Yes&language=en&
