@@ -111,7 +111,8 @@ ynh_script_progression --message="Adding a configuration file..."
 cp ../conf/config.php $final_path/
 
 cp ../conf/minimaxing.less $final_path/templates/minimaxing/
-cp ../conf/minimaxing.css $final_path/templates/minimaxing/minimaxing_org.css
+cp ../conf/minimaxing.css $final_path/templates/minimaxing/minimaxing.css
+cp ../conf/mimoza.css $final_path/templates/mimoza/
 
 cp ../conf/pheditor.php $final_path/
 
@@ -130,7 +131,6 @@ pheditorhash=`python -c 'import hashlib; import sys; a=str(sys.argv[1]); print(h
 
 ynh_replace_string --match_string="__YNH_PASSWORD__" --replace_string="$pheditorhash" --target_file="$final_path/pheditor.php"
 
-
 ynh_replace_string --match_string="__YNH_LANG__" --replace_string="$language" --target_file="$final_path/config.php"
 
 ynh_replace_string --match_string="__YNH_LABEL__" --replace_string="$wiki" --target_file="$final_path/config.php"
@@ -145,19 +145,22 @@ if echo "$color" | grep -q -E '[A-Fa-f0-9]{6}'
 then
 	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color" --target_file="$final_path/templates/minimaxing/minimaxing.less"
 	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color" --target_file="$final_path/templates/ggp/ggp.less"
+	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color" --target_file="$final_path/templates/mimoza/mimoza.css"
 else
 	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="555555" --target_file="$final_path/templates/minimaxing/minimaxing.less"
 	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="555555" --target_file="$final_path/templates/ggp/ggp.less"
+	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="555555" --target_file="$final_path/templates/mimoza/mimoza.css"
 fi
+
+## lessc seems to have a dependancy problem in debian, even with the node-tslib package it complains "Cannot find module "tslib""
+## so we'll use basic css instead at the moment
 
 # soon lessc will require the --js option
 # lessc --js $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
 
-lessc $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
+#lessc $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
+#lessc $final_path/templates/ggp/ggp.less > $final_path/templates/ggp/ggp.css
 
-lessc $final_path/templates/ggp/ggp.less > $final_path/templates/ggp/ggp.css
-
-#ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color" --target_file="$final_path/templates/minimaxing/minimaxing.css"
 
 ynh_store_file_checksum --file="$final_path/config.php"
 ynh_store_file_checksum --file="$final_path/config.t2t"
