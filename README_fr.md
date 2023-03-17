@@ -5,25 +5,25 @@ It shall NOT be edited by hand.
 
 # Lionwiki pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://dash.yunohost.org/appci/app/lionwiki-t2t) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://dash.yunohost.org/appci/app/lionwiki-t2t) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.maintain.svg)
+
 [![Installer Lionwiki avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=lionwiki-t2t)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer Lionwiki rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer Lionwiki rapidement et simplement sur un serveur YunoHost.
+Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
 Lionwiki-t2t est un système de type wiki minimaliste, programmé en PHP. Il est extensible et n'utilise que des fichiers plats pour sa base de données. Il est adapté pour la création de petits sites web, de notes personnelles ou de journaux. Cette version utilise le langage de balisage léger TXT2TAGS.
 
 
-**Version incluse :** 3.2.12~ynh2
+**Version incluse :** 3.2.12~ynh3
 
+## Captures d’écran
 
-## Captures d'écran
-
-![Capture d'écran de Lionwiki](./doc/screenshots/screenshot_lionwikit2t.png)
+![Capture d’écran de Lionwiki](./doc/screenshots/screenshot_lionwikit2t.png)
 
 ## Avertissements / informations importantes
 
@@ -79,10 +79,10 @@ cp templates/minimaxing/minimaxing_org.css templates/minimaxing/minimaxing.css
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <https://lionwiki-t2t.sourceforge.io/>
+* Site officiel de l’app : <https://lionwiki-t2t.sourceforge.io/>
 * Documentation officielle utilisateur : <https://github.com/farvardin/whatistxt2tags>
-* Documentation officielle de l'admin : <https://lionwiki-t2t.sourceforge.io/>
-* Dépôt de code officiel de l'app : <https://sourceforge.net/projects/lionwiki-t2t>
+* Documentation officielle de l’admin : <https://lionwiki-t2t.sourceforge.io/>
+* Dépôt de code officiel de l’app : <https://sourceforge.net/projects/lionwiki-t2t>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_lionwiki-t2t>
 * Signaler un bug : <https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/issues>
 
@@ -98,4 +98,4 @@ ou
 sudo yunohost app upgrade lionwiki-t2t -u https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>
