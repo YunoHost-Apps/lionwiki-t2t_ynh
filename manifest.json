@@ -6,7 +6,7 @@
         "en": "Lightweight wiki-style CMS using the txt2tags syntax",
         "fr": "CMS léger, géré sous forme de wiki utilisant la syntaxe txt2tags"
     },
-    "version": "3.2.12~ynh3",
+    "version": "3.2.12~ynh4",
     "url": "https://lionwiki-t2t.sourceforge.io/",
     "upstream": {
         "license": "MIT",
