@@ -85,7 +85,7 @@ cp templates/minimaxing/minimaxing_org.css templates/minimaxing/minimaxing.css
 * Official user documentation: <https://github.com/farvardin/whatistxt2tags>
 * Official admin documentation: <https://lionwiki-t2t.sourceforge.io/>
 * Upstream app code repository: <https://sourceforge.net/projects/lionwiki-t2t>
-* YunoHost documentation for this app: <https://yunohost.org/app_lionwiki-t2t>
+* YunoHost Store: <https://apps.yunohost.org/app/lionwiki-t2t>
 * Report a bug: <https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/issues>
 
 ## Developer info
