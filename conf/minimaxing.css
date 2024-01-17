@@ -3,18 +3,18 @@
 	--------------
 	- Minimaxing -
 	--------------
-	
+
 	a template for Lionwiki-t2t
 	https://lionwiki-t2t.sourceforge.io/
-	
-	based on 
-   
+
+	based on
+
     https://html5up.net/minimaxing
     licence Creative Commons Attribution 3.0 Unported
     http://creativecommons.org/licenses/by/3.0/
-	
+
 ----------------------------*/
-/* This CSS file was generated from the minimaxing.less template. 
+/* This CSS file was generated from the minimaxing.less template.
  See http://lesscss.org/
 */
 /*
@@ -26,9 +26,9 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
  #8B9AB8 : lighter grey blue
  #7B8AA8 : light grey blue
  #56A3B5 : turquoise blue
- #B1494D : brick red 
+ #B1494D : brick red
  #465E7C : dark blue
- #549136 : green 
+ #549136 : green
  #799037 : grass green
  #D07732 : orange
  #754496 : purple
@@ -36,16 +36,16 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
  */
 /* define mixin */
 /* we disable it as it's sometimes a problem with lesscss
-.generateColor() { 
+.generateColor() {
 	@background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
 	}
-.generateColor(); 
+.generateColor();
 */
 /* This line below will use a random main color: */
 /* @fg: @background-color; */
 /* if you prefer to select a fixed background color, just uncomment one color from below */
 /* For YunoHost config */
-/* @fg: #__YNH_COLOR__; */
+/* @fg: #__COLOR__; */
 /* Header color */
 /* You can use a shade of MainColor: */
 /* or a complementary color: */
@@ -111,7 +111,7 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
   font-family: Fengardo;
   font-weight: bold;
   src: url(../fonts/fengardoneue-black.woff) format('woff'), url(../fonts/fengardoneue-black.otf) format('opentype'), url(../fonts/fengardoneue-black.svg) format('svg');
-  
+
   /*font-weight: 500;*/
 }
 @font-face {
@@ -126,7 +126,7 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 	http://nodethirtythree.com | @nodethirtythree
 	Released under the Creative Commons Attribution 3.0 license (nodethirtythree.com/license)
 	* http://html5up.net/minimaxing/
-	
+
 	Based also on the work from http://wiki.lapetitesissone.fr/index.php?page=Lionwiki
 */
 /* LionWiki specific */

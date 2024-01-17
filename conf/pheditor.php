@@ -8,7 +8,7 @@
  * Release under MIT license
  */
 
-define('PASSWORD', '__YNH_PASSWORD__');
+define('PASSWORD', '__PASSWORD_SHA1__');
 define('DS', DIRECTORY_SEPARATOR);
 define('MAIN_DIR', __DIR__);
 define('VERSION', '2.0.0');

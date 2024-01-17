@@ -1,24 +1,24 @@
- 
+
 
 /*-----------------------
 
 	--------------
 	- Minimaxing -
 	--------------
-	
+
 	a template for Lionwiki-t2t
 	https://lionwiki-t2t.sourceforge.io/
-	
-	based on 
-   
+
+	based on
+
     https://html5up.net/minimaxing
     licence Creative Commons Attribution 3.0 Unported
     http://creativecommons.org/licenses/by/3.0/
-	
+
 ----------------------------*/
 
 
-/* This CSS file was generated from the minimaxing.less template. 
+/* This CSS file was generated from the minimaxing.less template.
  See http://lesscss.org/
 */
 
@@ -41,9 +41,9 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
  #8B9AB8 : lighter grey blue
  #7B8AA8 : light grey blue
  #56A3B5 : turquoise blue
- #B1494D : brick red 
+ #B1494D : brick red
  #465E7C : dark blue
- #549136 : green 
+ #549136 : green
  #799037 : grass green
  #D07732 : orange
  #754496 : purple
@@ -54,10 +54,10 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 
 /* define mixin */
 /* we disable it as it's sometimes a problem with lesscss
-.generateColor() { 
+.generateColor() {
 	@background-color: color(~`@{all-background-colors}.split(',')[Math.floor(Math.random()*@{all-background-colors}.split(',').length)]`);
 	}
-.generateColor(); 
+.generateColor();
 */
 
 /* This line below will use a random main color: */
@@ -73,18 +73,18 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 // @fg: #847457;     /* Marron */
 
 /* For YunoHost config */
-/* @fg: #__YNH_COLOR__; */
+/* @fg: #__COLOR__; */
 
 
- 
+
 /* Header color */
 
 /* You can use a shade of MainColor: */
-@HeaderColor: (@fg - #111); 	
+@HeaderColor: (@fg - #111);
 
 /* or a complementary color: */
 /*@HeaderColor: (#ffffff - @fg - (#ffffff - @fg)/3); */
-@HeaderColor: spin(@fg, 180); 
+@HeaderColor: spin(@fg, 180);
 
 
 @MainFontColor: (#878e83 - #222);
@@ -129,7 +129,7 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 @heading: @fg;
 @heading-weight: bold;  /* normal or bold */
 @font: Ubuntu;
-@font-heading: Fengardo Neue; 
+@font-heading: Fengardo Neue;
 
 
 @Bg-dark: (@fg - #121212);
@@ -177,7 +177,7 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 	http://nodethirtythree.com | @nodethirtythree
 	Released under the Creative Commons Attribution 3.0 license (nodethirtythree.com/license)
 	* http://html5up.net/minimaxing/
-	
+
 	Based also on the work from http://wiki.lapetitesissone.fr/index.php?page=Lionwiki
 */
 
@@ -234,7 +234,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
     font-size: 105%;
 }
 
-.markItUpEditor 
+.markItUpEditor
 {
     width: 90%;
     font-family: @fontEdit;
@@ -371,13 +371,13 @@ th, thead, #previewPane th, #previewPane thead {
 	word-break: break-all;
 	/* Instead use this non-standard one: */
 	word-break: break-word;
-	
+
 	/* Adds a hyphen where the word breaks, if supported (No Blink) */
 	-ms-hyphens: auto;
 	-moz-hyphens: auto;
 	-webkit-hyphens: auto;
 	hyphens: auto;
-}	
+}
 
 
 
@@ -492,12 +492,12 @@ s {
 }
 
 ::selection {
-	background: @fg; 
+	background: @fg;
 	color: @bg;
 	}
-	
+
 ::-moz-selection {
-	background: @fg; 
+	background: @fg;
 	color: @bg;
 }
 
@@ -533,7 +533,7 @@ img {
     /*float: left;*/
     /*margin: 2px 1.25em 0 0;*/
     margin: 1.5em;
-    
+
     max-width: 50%;
     max-height: 500px;
     padding:1px;
@@ -556,13 +556,13 @@ img.noborder {
 		position: absolute;
 		z-index: 10;
 	}
-	
+
 .img-circle {
         border-radius: 50%;
         border: solid 0px ;
         min-width:100px;
         max-width:200px;
-        background: @HeaderColor; 
+        background: @HeaderColor;
     }
 
 
@@ -701,7 +701,7 @@ a.toolbarTextareaItem b  {
 	body {
 		font-size: (@MainFontSize + 0);
 	}
-	
+
     section, article {
         margin: 0 0 60px 0;
     }
@@ -838,7 +838,7 @@ a.toolbarTextareaItem b  {
 	body {
 		font-size: (@MainFontSize + 1);
 	}
-    
+
     section, article {
         margin: 10px 10px 50px 10px;
     }
@@ -978,7 +978,7 @@ a.toolbarTextareaItem b  {
 	body {
 		font-size: (@MainFontSize + 1);
 	}
-	
+
     h2 {
         font-size: 1.4em;
     }
@@ -1098,7 +1098,7 @@ a.toolbarTextareaItem b  {
     #footer-wrapper section, #footer-wrapper article {
         border-bottom: solid 1px #ced0b7;
     }
-    
+
 /*    important for markitup :    */
 
     .contentTextarea {
@@ -1108,7 +1108,7 @@ a.toolbarTextareaItem b  {
         padding: 0px;
         margin-left: -0.25px;
     }
-    
+
      #main {
         /*overflow: auto;*/
 		background-color: @bg;
@@ -1117,12 +1117,12 @@ a.toolbarTextareaItem b  {
     }
 
     /* from 5grid/core.css */
-    
+
    .\35 grid {
 			/*overflow: hidden;*/  /* prevent horizontal scroll */
-			overflow: visible;  
+			overflow: visible;
 		}
-    
+
 }
 
 
@@ -1226,10 +1226,10 @@ progress::-webkit-progress-bar {
   /*cursor: pointer;*/
   text-align: center;
   vertical-align: middle;
-  
+
   /*transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;*/
 
-  
+
   border-radius: 0px;
 }
 
@@ -1298,17 +1298,17 @@ progress::-webkit-progress-bar {
   img, video, iframe {
     filter: invert(100%) hue-rotate(180deg);
   }
-  
+
   #header-wrapper {
     filter: invert(100%) hue-rotate(180deg);
   }
-  
+
   h1, h2, h3, h4 {
     color: @fg;
 }
 
 
-  
+
   /* Improve contrast on icons. */
   .icon {
     filter: invert(15%) hue-rotate(180deg);
@@ -1324,4 +1324,3 @@ progress::-webkit-progress-bar {
     color: #555;
   }
 }
-
