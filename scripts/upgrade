@@ -24,11 +24,20 @@ if [[ -z "${password:-}" ]]; then
     ynh_app_setting_set --app="$app" --key=password --value="$password"
 fi
 
+if [[ -z "${color:-}" ]]; then
+    color=$(grep -A1 'For YunoHost config' "$install_dir/templates/minimaxing/minimaxing.css" | grep -oP '^/\* @fg: #\K.*(?=;)')
+    if [[ -z "$password" ]]; then
+        command="yunohost app setting $app color -v 'YOUR BASE COLOR'"
+        ynh_die --message="Could not retrieve base color from config. Please run '$command' then retry the upgrade."
+    fi
+    ynh_app_setting_set --app="$app" --key=password --value="$password"
+fi
+
 #=================================================
 # INITIALIZE AND STORE SETTINGS
 #=================================================
 
-password_sha1=$(python -c 'import hashlib; import sys; a=str(sys.argv[1]); print(hashlib.sha512(a.encode("UTF-8")).hexdigest())' $password)
+password_sha1=$(python -c 'import hashlib; import sys; a=str(sys.argv[1]); print(hashlib.sha512(a.encode("UTF-8")).hexdigest())' "$password")
 
 # Validate, fix and set default value for color
 color="$(_validate_color)"
