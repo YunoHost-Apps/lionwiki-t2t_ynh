@@ -8,7 +8,8 @@
  * Release under MIT license
  */
 
-define('PASSWORD', '__YNH_PASSWORD__');
+/* "admin" by default */
+define('PASSWORD', '__PASSWORD_SHA1__');
 define('DS', DIRECTORY_SEPARATOR);
 define('MAIN_DIR', __DIR__);
 define('VERSION', '2.0.0');
@@ -20,7 +21,7 @@ define('HISTORY_PATH', MAIN_DIR . DS . '.phedhistory');
 define('MAX_HISTORY_FILES', 5);
 define('WORD_WRAP', true);
 define('PERMISSIONS', 'newfile,newdir,editfile,deletefile,deletedir,renamefile,renamedir,changepassword,uploadfile,terminal'); // empty means all
-define('PATTERN_FILES', '/^[A-Za-z0-9-_.\/]*\.(txt|php|htm|html|js|css|tpl|md|xml|json|t2t)$/i'); // empty means no pattern
+define('PATTERN_FILES', '/^[A-Za-z0-9-_.\/]*\.(txt|php|htm|html|js|css|tpl|md|xml|json|t2t|less)$/i'); // empty means no pattern
 //define('PATTERN_FILES', ''); // empty means no pattern
 define('PATTERN_DIRECTORIES', '/^((?!backup).)*$/i'); // empy means no pattern
 define('TERMINAL_COMMANDS', 'ls,ll,cp,rm,mv,whoami,pidof,pwd,whereis,kill,php,date,cd,mkdir,chmod,chown,rmdir,touch,cat,git,find,grep,echo,tar,zip,unzip,whatis,composer,help');
@@ -192,6 +193,10 @@ if (isset($_POST['action'])) {
 
 						break;
 					}
+				}
+
+				if (is_writable(__FILE__) === false) {
+					die(json_error('File is not writable'));
 				}
 
 				file_put_contents(__FILE__, implode($contents));
@@ -474,11 +479,13 @@ function json_success($message, $params = [])
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Pheditor</title>
+	<link id="favicon" rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAhFBMVEUAAAAAAAD////p6ekLCwt+fn43NzccHBzT09PIyMjFxcWysrKnp6ekpKSfn5+ampqNjY2IiIiCgoJ0dHRubm5kZGRdXV1PT09JSUlEREQjIyMTExMHBwf7+/v19fXg4ODW1tbAwMCRkZGDg4N5eXloaGhTU1M+Pj4vLy8sLCwlJSURERGNXQbaAAAAAXRSTlN4HjghaAAAAI1JREFUGNNlz0cSwkAQQ9HRdyI542xyhvvfj5opFoC167dolYzRT/5v6Qui+P6Bp3wLDakDPwM4SQGdA2B1mdFqgRw0C3wNHMVB9dr+wJMeFCHpBiqjG4n8PVEAQU5klOPtoNacpTxPRjOSrBoleA3EtmUrm5C5rpQyHSsHBWeV2JZ2lEsvhctek3GT+W8jMQY7SBmDowAAAABJRU5ErkJggg==">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.7/themes/default/style.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/codemirror.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/addon/lint/lint.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/addon/dialog/dialog.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
 	<style type="text/css">
 		h1,
 		h1 a,
@@ -507,14 +514,6 @@ function json_success($message, $params = [])
 			font-size: 1em !important;
 			font-weight: normal;
 			opacity: 1;
-		}
-
-		.alert {
-			display: none;
-			position: fixed;
-			top: 10px;
-			right: 10px;
-			cursor: pointer;
 		}
 
 		#loading {
@@ -595,7 +594,7 @@ function json_success($message, $params = [])
 
 		#terminal input.command {
 			width: 100%;
-			background: rgba(0, 0, 0, 0.8);
+			background: #333;
 			color: #fff;
 			border: 0;
 			border-radius: 0 0 5px 5px;
@@ -608,10 +607,6 @@ function json_success($message, $params = [])
 			font-size: .875rem;
 			line-height: .5;
 			border-radius: .2rem;
-		}
-
-		#terminal #prompt:fullscreen {
-			background: #fff;
 		}
 
 		#terminal #prompt:fullscreen pre {
@@ -645,6 +640,7 @@ function json_success($message, $params = [])
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/addon/search/searchcursor.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/addon/search/jump-to-line.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/addon/dialog/dialog.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
 	<script type="text/javascript">
 		var editor,
 			modes = {
@@ -655,14 +651,15 @@ function json_success($message, $params = [])
 			last_keyup_press = false,
 			last_keyup_double = false;
 
-		function alertBox(message, className) {
-			$(".alert").removeClass("alert-success alert-warning alert-danger");
-
-			$(".alert").html(message).addClass("alert-" + className).fadeIn();
-
-			setTimeout(function() {
-				$(".alert").fadeOut();
-			}, 5000);
+		function alertBox(title, message, color) {
+			iziToast.show({
+				title: title,
+				message: message,
+				color: color,
+				position: "bottomRight",
+				transitionIn: "fadeInUp",
+				transitionOut: "fadeOutRight",
+			});
 		}
 
 		function reloadFiles(hash) {
@@ -753,7 +750,7 @@ function json_success($message, $params = [])
 						action: "password",
 						password: password
 					}, function(data) {
-						alertBox(data.message, data.error ? "warning" : "success");
+						alertBox(data.error ? "Error" : "Success", data.message, data.error ? "red" : "green");
 					});
 				}
 			});
@@ -778,7 +775,7 @@ function json_success($message, $params = [])
 							file: file,
 							data: ""
 						}, function(data) {
-							alertBox(data.message, data.error ? "warning" : "success");
+							alertBox(data.error ? "Error" : "Success", data.message, data.error ? "red" : "green");
 
 							if (data.error == false) {
 								reloadFiles();
@@ -786,7 +783,7 @@ function json_success($message, $params = [])
 						});
 					}
 				} else {
-					alertBox("Please select a file or directory", "warning");
+					alertBox("Warning", "Please select a file or directory", "yellow");
 				}
 			});
 
@@ -809,7 +806,7 @@ function json_success($message, $params = [])
 							action: "make-dir",
 							dir: dir
 						}, function(data) {
-							alertBox(data.message, data.error ? "warning" : "success");
+							alertBox(data.error ? "Error" : "Success", data.message, data.error ? "red" : "green");
 
 							if (data.error == false) {
 								reloadFiles();
@@ -817,7 +814,7 @@ function json_success($message, $params = [])
 						});
 					}
 				} else {
-					alertBox("Please select a file or directory", "warning");
+					alertBox("Warning", "Please select a file or directory", "yellow");
 				}
 			});
 
@@ -835,10 +832,10 @@ function json_success($message, $params = [])
 						file: path,
 						data: data
 					}, function(data) {
-						alertBox(data.message, data.error ? "warning" : "success");
+						alertBox(data.error ? "Error" : "Success", data.message, data.error ? "red" : "green");
 					});
 				} else {
-					alertBox("Please select a file", "warning");
+					alertBox("Warning", "Please select a file", "yellow");
 				}
 			});
 
@@ -857,7 +854,7 @@ function json_success($message, $params = [])
 							action: "delete",
 							path: path
 						}, function(data) {
-							alertBox(data.message, data.error ? "warning" : "success");
+							alertBox(data.error ? "Error" : "Success", data.message, data.error ? "red" : "green");
 
 							if (data.error == false) {
 								reloadFiles();
@@ -865,7 +862,7 @@ function json_success($message, $params = [])
 						});
 					}
 				} else {
-					alertBox("Please select a file or directory", "warning");
+					alertBox("Warning", "Please select a file or directory", "yellow");
 				}
 			});
 
@@ -893,7 +890,7 @@ function json_success($message, $params = [])
 							path: path,
 							name: name
 						}, function(data) {
-							alertBox(data.message, data.error ? "warning" : "success");
+							alertBox(data.error ? "Error" : "Success", data.message, data.error ? "red" : "green");
 
 							if (data.error == false) {
 								reloadFiles(path.substring(0, path.lastIndexOf("/")) + "/" + name);
@@ -901,7 +898,7 @@ function json_success($message, $params = [])
 						});
 					}
 				} else {
-					alertBox("Please select a file or directory", "warning");
+					alertBox("Warning", "Please select a file or directory", "yellow");
 				}
 			});
 
@@ -925,6 +922,10 @@ function json_success($message, $params = [])
 					$("#files > div, .CodeMirror").css({
 						"height": ""
 					});
+				}
+
+				if (document.fullscreen) {
+					$("#prompt pre").height($(window).height() - $("#prompt input.command").height() - 20);
 				}
 			});
 
@@ -1015,7 +1016,7 @@ function json_success($message, $params = [])
 										file: encodeURIComponent(hash)
 									}, function(data) {
 										if (data.error == true) {
-											alertBox(data.message, "warning");
+											alertBox("Error", data.message, "red");
 
 											return false;
 										}
@@ -1121,7 +1122,7 @@ function json_success($message, $params = [])
 					processData: false,
 					type: "POST",
 					success: function(data, textStatus, jqXHR) {
-						alertBox(data.message, data.error ? "warning" : "success");
+						alertBox(data.error ? "Error" : "Success", data.message, data.error ? "red" : "green");
 
 						if (data.error == false) {
 							reloadFiles();
@@ -1252,12 +1253,14 @@ function json_success($message, $params = [])
 				if (element.requestFullscreen) {
 					element.requestFullscreen();
 
-					$("#prompt pre").height(screen.height - $("#prompt input.command").height() - 20);
-					$("#prompt input.command").focus();
+					setTimeout(function() {
+						$("#prompt pre").height($(window).height() - $("#prompt input.command").height() - 20);
+						$("#prompt input.command").focus();
+					}, 500);
 				}
 			});
 
-			$(window).on("fullscreenchange", function(){
+			$(window).on("fullscreenchange", function() {
 				if (document.fullscreenElement == null) {
 					$("#terminal #prompt pre").css("height", "");
 					$(window).resize();

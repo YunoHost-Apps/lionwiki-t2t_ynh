@@ -10,136 +10,93 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# LOAD SETTINGS
-#=================================================
-ynh_script_progression --message="Loading installation settings..." --weight=1
-
-app=$YNH_APP_INSTANCE_NAME
-
-domain=$(ynh_app_setting_get --app=$app --key=domain)
-path_url=$(ynh_app_setting_get --app=$app --key=path)
-language=$(ynh_app_setting_get --app=$app --key=language)
-admin=$(ynh_app_setting_get --app=$app --key=admin)
-final_path=$(ynh_app_setting_get --app=$app --key=final_path)
-phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
-
-#=================================================
-# CHECK VERSION
-#=================================================
-ynh_script_progression --message="Checking version..."
-
-upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
-# BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
-#=================================================
-ynh_script_progression --message="Backing up the app before upgrading (may take a while)..." --weight=4
-
-# Backup the current version of the app
-ynh_backup_before_upgrade
-ynh_clean_setup () {
-	# Restore it if the upgrade fails
-	ynh_restore_upgradebackup
-}
-# Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
-
-#=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
 
-# If final_path doesn't exist, create it
-if [ -z "$final_path" ]; then
-	final_path=/var/www/$app
-	ynh_app_setting_set --app=$app --key=final_path --value=$final_path
-fi
+# Settings were not backed up prior to packaging v2
+if [[ -z "${password:-}" ]] || [[ -z "${color:-}" ]] || [[ -z "${wiki:-}" ]]; then
+    password=$( grep -oP '^\$PASSWORD = sha1\(\"\K.*(?=\"\);$)' "$install_dir/config.php")
+    wiki=$(     grep -oP '^\$WIKI_TITLE = '"'\K.*(?=';)" "$install_dir/config.php")
+    color=$(grep -A1 'For YunoHost config' "$install_dir/templates/minimaxing/minimaxing.css" | grep -oP '^/\* @fg: #\K.*(?=;)')
 
-# Cleaning legacy permissions
-if ynh_legacy_permissions_exists; then
-	ynh_legacy_permissions_delete_all
-
-	ynh_app_setting_delete --app=$app --key=is_public
+    if [[ -z "$password" ]] || [[ -z "$wiki" ]] || [[ -z "$color" ]]; then
+        yunohost_app="yunohost app"
+        ynh_die --message="Previous versions did not save settings. You need to manually set them before upgrading.
+Here are the retrieved values: password='$password', wiki='$wiki', color='$color'
+And the commands to set missing values:
+$yunohost_app setting $app password -v 'YOUR PASSWORD'
+$yunohost_app setting $app wiki -v 'YOUR WIKI NAME'
+$yunohost_app setting $app color -v 'YOUR BASE COLOR'"
+    fi
+    ynh_app_setting_set --app="$app" --key=password --value="$password"
+    ynh_app_setting_set --app="$app" --key=wiki --value="$wiki"
+    ynh_app_setting_set --app="$app" --key=color --value="$color"
 fi
 
 #=================================================
-# CREATE DEDICATED USER
+# INITIALIZE AND STORE SETTINGS
 #=================================================
-ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
 
-# Create a dedicated user (if not existing)
-ynh_system_user_create --username=$app --home_dir="$final_path"
+password_sha1=$(python -c 'import hashlib; import sys; a=str(sys.argv[1]); print(hashlib.sha512(a.encode("UTF-8")).hexdigest())' "$password")
+
+# Validate, fix and set default value for color
+color="$(_validate_color)"
+ynh_app_setting_set --app="$app" --key=color --value="$color"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
+ynh_script_progression --message="Upgrading source files..." --weight=3
 
-if [ "$upgrade_type" == "UPGRADE_APP" ]
-then
-	ynh_script_progression --message="Upgrading source files..." --weight=3
+# Download, check integrity, uncompress and patch the source from app.src
+ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="config.php pheditor.php menu.php config.t2t"
 
-	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$final_path"
-fi
-
-#=================================================
-# UPGRADE DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Upgrading dependencies..." --weight=3
-
-ynh_install_app_dependencies $pkg_dependencies
-
-#=================================================
-# PHP-FPM CONFIGURATION
-#=================================================
-ynh_script_progression --message="Upgrading PHP-FPM configuration..." --weight=1
-
-# Create a dedicated PHP-FPM config
-ynh_add_fpm_config
-
-#=================================================
-# NGINX CONFIGURATION
-#=================================================
-ynh_script_progression --message="Upgrading NGINX web server configuration..." --weight=2
-
-# Create a dedicated NGINX config
-ynh_add_nginx_config
+chmod -R o-rwx "$install_dir"
+chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM
 #=================================================
+ynh_script_progression --message="Updating configuration files..."
 
-### Verify the checksum of a file, stored by `ynh_store_file_checksum` in the install script.
-### And create a backup of this file if the checksum is different. So the file will be backed up if the admin had modified it.
-ynh_backup_if_checksum_is_different --file="$final_path/config.php"
-ynh_backup_if_checksum_is_different --file="$final_path/config.t2t"
-ynh_backup_if_checksum_is_different --file="$final_path/menu.php"
-# Recalculate and store the checksum of the file for the next upgrade.
-ynh_store_file_checksum --file="$final_path/config.php"
-ynh_store_file_checksum --file="$final_path/config.t2t"
-ynh_store_file_checksum --file="$final_path/menu.php"
+# Workaround for php code containing __FILE__ and __DIR__
+file=__FILE__
+dir=__DIR__
 
-#ynh_restore_file -o "conf/config.php"
+ynh_backup_if_checksum_is_different --file="$install_dir/config.php"
+ynh_backup_if_checksum_is_different --file="$install_dir/pheditor.php"
 
+# FIXME: is it required ?
+ynh_delete_file_checksum --file="$install_dir/config.php"
+ynh_delete_file_checksum --file="$install_dir/pheditor.php"
+
+ynh_add_config --template="config.php" --destination="$install_dir/config.php"
+ynh_add_config --template="pheditor.php" --destination="$install_dir/pheditor.php"
+
+mkdir -p "$install_dir/templates/minimaxing/"
+ynh_delete_file_checksum --file="$install_dir/templates/minimaxing/minimaxing.less"
+ynh_delete_file_checksum --file="$install_dir/templates/minimaxing/minimaxing.css"
+ynh_add_config --template="minimaxing.less" --destination="$install_dir/templates/minimaxing/minimaxing.less"
+ynh_add_config --template="minimaxing.css" --destination="$install_dir/templates/minimaxing/minimaxing.css"
+
+mkdir -p "$install_dir/templates/mimoza/"
+ynh_delete_file_checksum --file="$install_dir/templates/mimoza/mimoza.css"
+ynh_add_config --template="mimoza.css" --destination="$install_dir/templates/mimoza/mimoza.css"
+
+ynh_store_file_checksum --file="$install_dir/config.t2t"
+ynh_store_file_checksum --file="$install_dir/menu.php"
 
 #=================================================
-# SECURE FILES AND DIRECTORIES
+# REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
+ynh_script_progression --message="Upgrading system configurations related to $app..." --weight=1
 
-# Set permissions on app files
-chown -R $app:www-data $final_path
-chmod -R o-rwx $final_path
-find $final_path -type d -exec chmod g=rx {} +
-find $final_path -type f -exec chmod g=r {} +
+# Create a dedicated PHP-FPM config
+ynh_add_fpm_config
 
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# RELOAD NGINX
-#=================================================
-ynh_script_progression --message="Reloading NGINX web server..." --weight=1
-
-ynh_systemd_action --service_name=nginx --action=reload
+# Create a dedicated NGINX config
+ynh_add_nginx_config
 
 #=================================================
 # END OF SCRIPT

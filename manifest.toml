@@ -1,0 +1,100 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "lionwiki-t2t"
+name = "Lionwiki"
+description.en = "Lightweight wiki-style CMS using the txt2tags syntax"
+description.fr = "CMS léger, géré sous forme de wiki utilisant la syntaxe txt2tags"
+
+version = "3.2.12~ynh5"
+
+maintainers = ["Eric Forgeot"]
+
+[upstream]
+license = "MIT"
+website = "https://lionwiki-t2t.sourceforge.io/"
+admindoc = "https://lionwiki-t2t.sourceforge.io/"
+userdoc = "https://github.com/farvardin/whatistxt2tags"
+code = "https://sourceforge.net/projects/lionwiki-t2t"
+cpe = "cpe:2.3:a:lionwiki:lionwiki"
+
+[integration]
+yunohost = ">=11.2"
+architectures = "all"
+multi_instance = true
+ldap = false
+sso = false
+disk = "50M"
+ram.build = "200M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/lionwiki"
+
+    [install.init_main_permission]
+    help.en = "If it's not public, only SSO registered users will be able to user it."
+    help.fr = "Si ce n'est pas public, seuls les utilisateurs enregistrés sur le SSO pourront l'utiliser."
+    type = "group"
+    default = "visitors"
+
+    [install.language]
+    ask.en = "Choose the application language"
+    ask.fr = "Choisissez la langue de l'application"
+    type = "select"
+    choices = ["fr", "en"]
+    default = "en"
+
+    [install.admin]
+    type = "user"
+
+    [install.password]
+    help.en = "Define a password which will be used for wiki edition and administration."
+    help.fr = "Veuillez définir un mot de passe qui sera valable pour l'édition des pages de ce wiki ainsi que pour l'administration."
+    type = "password"
+
+    [install.wiki]
+    ask.en = "Set the wiki name"
+    ask.fr = "Définissez le titre de votre wiki"
+    help.en = "This name will be displayed in the header of the wiki."
+    help.fr = "Ce nom sera affiché dans l'entête de votre wiki."
+    type = "string"
+    example = "My Wiki"
+    default = "My Wiki"
+
+    [install.color]
+    ask.en = "Set color base"
+    ask.fr = "Définissez la couleur de base"
+    help.en = "Use hexadecimal value (6 figures without #)"
+    help.fr = "Utilisez une valeur hexadecimale (6 chiffres sans # devant)"
+    type = "string"
+    example = "D17732"
+    default = "328cc1"
+
+[resources]
+    [resources.sources.main]
+    url = "https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t.zip"
+    sha256 = "081a05b07446183da5cf065b07cab2baaabe69e57d11b61c0aaf3d187ee2ff30"
+
+    autoupdate.strategy = "latest_github_commit"
+    autoupdate.asset = "tarball"
+    autoupdate.upstream = "https://github.com/farvardin/lionwiki-t2t"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.apt]
+    packages = [
+        "php7.4-fpm",
+        "node-less",
+        "acl",
+    ]

@@ -73,7 +73,7 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 // @fg: #847457;     /* Marron */
 
 /* For YunoHost config */
-/* @fg: #__YNH_COLOR__; */
+/* @fg: #__COLOR__; */
 
 
  
@@ -1215,7 +1215,7 @@ progress::-webkit-progress-bar {
   width: 65%;
   border: 2px solid @HeaderColor;
   background-color: @HeaderColor;
-  height: 50px;
+  min-height: 50px;
   margin-top: 8px;
   margin-bottom: 8px;
   font-family: @font;
@@ -1239,7 +1239,7 @@ progress::-webkit-progress-bar {
   padding:  0px;
 
   padding-top : 0px;
-  height: 46px;
+  min-height: 46px;
   line-height:46px;
   color: #fff;
   text-decoration: none;
@@ -1308,7 +1308,7 @@ progress::-webkit-progress-bar {
 }
 
 
-  
+
   /* Improve contrast on icons. */
   .icon {
     filter: invert(15%) hue-rotate(180deg);
@@ -1324,4 +1324,3 @@ progress::-webkit-progress-bar {
     color: #555;
   }
 }
-

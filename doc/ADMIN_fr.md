@@ -16,34 +16,33 @@ Vous pouvez passer le wiki en mode privé ou public, selon vos usages.
 
 ## Informations additionnelles
 
-Vous devez définir une couleur de base durant l'installation, au format hexadécimal. Vous pouvez la choisir en utilisant cet outil en ligne : https://www.w3schools.com/colors/colors_picker.asp
+Vous devez définir une couleur de base durant l'installation, au format hexadécimal. Vous pouvez la choisir en utilisant cet outil en ligne : <https://www.w3schools.com/colors/colors_picker.asp>
 
 La couleur choisie va modifier le fichier `templates/minimaxing/minimaxing.less` et le compiler en utilisant la commande lessc (du paquet node-less).
 
-Après l'installation, vous pouvez éditer la couleur de base dans le fichier `/var/www/lionwikit2t/templates/minimaxing/minimaxing.less` 
+Après l'installation, vous pouvez éditer la couleur de base dans le fichier `/var/www/lionwikit2t/templates/minimaxing/minimaxing.less`
 
 Recherchez pour :
 
-```
+```css
 /* For YunoHost config */
 @MainColor: #D17732;
 ```
 
 Allez dans le dossier d'installation (à adapter à votre cas, si c'est la seconde instance installée, cela sera nommé `/var/www/lionwikit2t__2/`) :
 
-```
+```bash
 cd /var/www/lionwikit2t
 ```
 
 Ensuite compilez le fichier avec :
 
-```
+```bash
 lessc templates/minimaxing/minimaxing.less > templates/minimaxing/minimaxing.css
 ```
 
 Si quelque chose se passe mal, vous pouvez revenir au fichier original :
 
-```
+```bash
 cp templates/minimaxing/minimaxing_org.css templates/minimaxing/minimaxing.css
 ```
-

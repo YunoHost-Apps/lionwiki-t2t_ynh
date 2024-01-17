@@ -10,93 +10,28 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# MANAGE SCRIPT FAILURE
+# INITIALIZE AND STORE SETTINGS
 #=================================================
 
-ynh_clean_setup () {
-	true
-}
-# Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
+# Password is required to regen the files...
+ynh_app_setting_set --app="$app" --key=password --value="$password"
 
-#=================================================
-# RETRIEVE ARGUMENTS FROM THE MANIFEST
-#=================================================
+password_sha1=$(python -c 'import hashlib; import sys; a=str(sys.argv[1]); print(hashlib.sha512(a.encode("UTF-8")).hexdigest())' "$password")
 
-domain=$YNH_APP_ARG_DOMAIN
-path_url=$YNH_APP_ARG_PATH
-is_public=$YNH_APP_ARG_IS_PUBLIC
-language=$YNH_APP_ARG_LANGUAGE
-admin=$YNH_APP_ARG_ADMIN
-password=$YNH_APP_ARG_PASSWORD
-wiki=$YNH_APP_ARG_WIKI
-color=$YNH_APP_ARG_COLOR
-
-app=$YNH_APP_INSTANCE_NAME
-
-#=================================================
-# CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
-#=================================================
-ynh_script_progression --message="Validating installation parameters..." --weight=1
-
-final_path=/var/www/$app
-test ! -e "$final_path" || ynh_die --message="This path already contains a folder"
-
-# Register (book) web path
-ynh_webpath_register --app=$app --domain=$domain --path_url=$path_url
-
-#=================================================
-# STORE SETTINGS FROM MANIFEST
-#=================================================
-ynh_script_progression --message="Storing installation settings..." --weight=1
-
-ynh_app_setting_set --app=$app --key=domain --value=$domain
-ynh_app_setting_set --app=$app --key=path --value=$path_url
-ynh_app_setting_set --app=$app --key=language --value=$language
-ynh_app_setting_set --app=$app --key=admin --value=$admin
-
-#=================================================
-# STANDARD MODIFICATIONS
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Installing dependencies..." --weight=3
-
-ynh_install_app_dependencies $pkg_dependencies
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-ynh_script_progression --message="Configuring system user..." --weight=1
-
-# Create a system user
-ynh_system_user_create --username=$app --home_dir="$final_path"
+# Validate, fix and set default value for color
+color="$(_validate_color)"
+ynh_app_setting_set --app="$app" --key=color --value="$color"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=4
 
-ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$final_path"
+ynh_setup_source --dest_dir="$install_dir"
 
-#=================================================
-# PHP-FPM CONFIGURATION
-#=================================================
-ynh_script_progression --message="Configuring PHP-FPM..." --weight=1
-
-# Create a dedicated PHP-FPM config
-ynh_add_fpm_config
-phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
-
-#=================================================
-# NGINX CONFIGURATION
-#=================================================
-ynh_script_progression --message="Configuring NGINX web server..." --weight=2
-
-# Create a dedicated NGINX config
-ynh_add_nginx_config
+chmod -R o-rwx "$install_dir"
+chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # SPECIFIC SETUP
@@ -105,98 +40,33 @@ ynh_add_nginx_config
 #=================================================
 ynh_script_progression --message="Adding a configuration file..."
 
-### Copy Yunohost specific configuration
-# This File cannot be modified directly by wiki, only by hand or by Yunohost
-# It will only be updated by Yunohost package or directly by adventurous users
-cp ../conf/config.php $final_path/
+# Workaround for php code containing __FILE__ and __DIR__
+file=__FILE__
+dir=__DIR__
 
-cp ../conf/minimaxing.less $final_path/templates/minimaxing/
-cp ../conf/minimaxing.css $final_path/templates/minimaxing/minimaxing.css
-cp ../conf/mimoza.css $final_path/templates/mimoza/
+ynh_add_config --template="config.php" --destination="$install_dir/config.php"
+ynh_add_config --template="pheditor.php" --destination="$install_dir/pheditor.php"
 
-cp ../conf/pheditor.php $final_path/
+mkdir -p "$install_dir/templates/minimaxing/"
+ynh_add_config --template="minimaxing.less" --destination="$install_dir/templates/minimaxing/minimaxing.less"
+ynh_add_config --template="minimaxing.css" --destination="$install_dir/templates/minimaxing/minimaxing.css"
 
-# we already use the default html template
-#cp ../conf/minimaxing.html $final_path/templates/
+mkdir -p "$install_dir/templates/mimoza/"
+ynh_add_config --template="mimoza.css" --destination="$install_dir/templates/mimoza/mimoza.css"
 
-# Set the password
-ynh_replace_string --match_string="__YNH_PASSWORD__" --replace_string="$password" --target_file="$final_path/config.php"
-
-# Set the "admin" user (not used, admin password = user password, you can modify it later)
-# ynh_replace_string --match_string="__YNH_ADMINPASSWORD__" --replace_string="$password"    --target_file="$final_path/config.php"
-
-# set user password in pheditor
-
-pheditorhash=`python -c 'import hashlib; import sys; a=str(sys.argv[1]); print(hashlib.sha512(a.encode("UTF-8")).hexdigest())' $password`
-
-ynh_replace_string --match_string="__YNH_PASSWORD__" --replace_string="$pheditorhash" --target_file="$final_path/pheditor.php"
-
-ynh_replace_string --match_string="__YNH_LANG__" --replace_string="$language" --target_file="$final_path/config.php"
-
-ynh_replace_string --match_string="__YNH_LABEL__" --replace_string="$wiki" --target_file="$final_path/config.php"
-
-
-#ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color" --target_file="$final_path/templates/minimaxing/minimaxing.less"
-
-# test if the color was correctly set (6 hexadecimal values)
-# if not, we'll use a default grey color (#555555)
-
-if echo "$color" | grep -q -E '[A-Fa-f0-9]{6}'
-then
-	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color" --target_file="$final_path/templates/minimaxing/minimaxing.less"
-	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color" --target_file="$final_path/templates/ggp/ggp.less"
-	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="$color" --target_file="$final_path/templates/mimoza/mimoza.css"
-else
-	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="555555" --target_file="$final_path/templates/minimaxing/minimaxing.less"
-	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="555555" --target_file="$final_path/templates/ggp/ggp.less"
-	ynh_replace_string --match_string="__YNH_COLOR__" --replace_string="555555" --target_file="$final_path/templates/mimoza/mimoza.css"
-fi
-
-## lessc seems to have a dependancy problem in debian, even with the node-tslib package it complains "Cannot find module "tslib""
-## so we'll use basic css instead at the moment
-
-# soon lessc will require the --js option
-# lessc --js $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
-
-#lessc $final_path/templates/minimaxing/minimaxing.less > $final_path/templates/minimaxing/minimaxing.css
-#lessc $final_path/templates/ggp/ggp.less > $final_path/templates/ggp/ggp.css
-
-
-ynh_store_file_checksum --file="$final_path/config.php"
-ynh_store_file_checksum --file="$final_path/config.t2t"
-ynh_store_file_checksum --file="$final_path/menu.php"
+ynh_store_file_checksum --file="$install_dir/config.t2t"
+ynh_store_file_checksum --file="$install_dir/menu.php"
 
 #=================================================
-# SECURE FILES AND DIRECTORIES
+# SYSTEM CONFIGURATION
 #=================================================
+ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
 
-# Set permissions to app files
-chown -R $app:www-data $final_path
-chmod -R o-rwx $final_path
-find $final_path -type d -exec chmod g=rx {} +
-find $final_path -type f -exec chmod g=r {} +
+# Create a dedicated PHP-FPM config
+ynh_add_fpm_config
 
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SETUP SSOWAT
-#=================================================
-ynh_script_progression --message="Configuring permissions..." --weight=1
-
-# Make app public if necessary
-if [ $is_public -eq 1 ]
-then
-	# Everyone can access the app.
-	# The "main" permission is automatically created before the install script.
-	ynh_permission_update --permission="main" --add="visitors"
-fi
-
-#=================================================
-# RELOAD NGINX
-#=================================================
-ynh_script_progression --message="Reloading NGINX web server..." --weight=1
-
-ynh_systemd_action --service_name=nginx --action=reload
+# Create a dedicated NGINX config
+ynh_add_nginx_config
 
 #=================================================
 # END OF SCRIPT

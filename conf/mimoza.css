@@ -1,5 +1,5 @@
 :root {
-  --couleur-primaire: #__YNH_COLOR__;
+  --couleur-primaire: #__COLOR__;
 
   --underline-max-width: 100%;
   --underline-hover-width: 0;
@@ -17,8 +17,7 @@
 
 @font-face {
   font-family: "Luciole";
-  src: url("../fonts/Luciole-Regular.woff") format("woff"),
-    url("../fonts/Luciole-Regular.woff2") format("woff2");
+  src: url("../fonts/Luciole-Regular.woff") format("woff");
   font-style: normal;
   font-weight: normal;
   text-rendering: optimizeLegibility;
@@ -26,8 +25,7 @@
 
 @font-face {
   font-family: "Luciole";
-  src: url("../fonts/Luciole-Bold.woff") format("woff"),
-    url("../fonts/Luciole-Bold.woff2") format("woff2");
+  src: url("../fonts/Luciole-Bold.woff") format("woff");
   font-style: normal;
   font-weight: 700;
   text-rendering: optimizeLegibility;
@@ -35,8 +33,7 @@
 
 @font-face {
   font-family: "Luciole";
-  src: url("../fonts/Luciole-Italic.woff") format("woff"),
-    url("../fonts/Luciole-Italic.woff2") format("woff2");
+  src: url("../fonts/Luciole-Italic.woff") format("woff");
   font-style: italic;
   font-weight: normal;
   text-rendering: optimizeLegibility;
@@ -44,12 +41,12 @@
 
 @font-face {
   font-family: "Luciole";
-  src: url("../fonts/Luciole-BoldItalic.woff") format("woff"),
-    url("../fonts/Luciole-BoldItalic.woff2") format("woff2");
+  src: url("../fonts/Luciole-BoldItalic.woff") format("woff");
   font-style: italic;
   font-weight: 700;
   text-rendering: optimizeLegibility;
 }
+
 
 html {
   font-family: "Luciole", Arial, Helvetica, sans-serif;
@@ -204,6 +201,7 @@ pre {
   color: white;
   background-color: black;
 }
+
 pre code {
   background: none;
 }
@@ -215,6 +213,7 @@ img {
 
 /* lionwiki */
 
+p span.full-edit,
 h2 span.par-edit,
 h3 span.par-edit,
 h4 span.par-edit,
@@ -223,6 +222,7 @@ h6 span.par-edit {
   float: right;
   display: none;
 }
+p:hover span.full-edit,
 h2:hover span.par-edit,
 h3:hover span.par-edit,
 h4:hover span.par-edit,
@@ -324,4 +324,17 @@ progress::-webkit-progress-bar {
 }
 .todotxt_date {
   background-color: #f2f2f2;
+}
+
+
+@media (prefers-color-scheme: dark) {
+
+ body {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+  
+    html {
+    background-color: #111;
+  }
+
 }

@@ -1,16 +1,16 @@
-<?php 
+<?php
 
 /* Configuration file for LionWiki-t2t. */
 /* https://lionwiki-t2t.sourceforge.io/ */
 
 /* **** MAIN TITLE **** */
-$WIKI_TITLE = '__YNH_LABEL__'; // name of the site
+$WIKI_TITLE = '__WIKI__'; // name of the site
 
 /* **** PASSWORDS **** */
 // SHA1 hash of password. If empty (or commented out), no password is required
 
-$PASSWORD = sha1("__YNH_PASSWORD__");
-$Admin["PASSWORD"] = sha1("__YNH_PASSWORD__");
+$PASSWORD = sha1("__PASSWORD__");
+$Admin["PASSWORD"] = sha1("__PASSWORD__");
 
 // if true, you need to enter the password for entering the wiki and reading pages.
 // before setting to true, read http://lionwiki.0o.cz/index.php?page=UserGuide%3A+How+to+use+PROTECTED_READ
@@ -25,43 +25,43 @@ $PROTECTED_READ = false;
 //$TEMPLATE = 'templates/minimaxing/minimaxing.html'; // this one is the default skin for lionwiki-t2t
 //$TEMPLATE = 'templates/minimaxing/minimaxing_links.html'; // this one is for a basic landpage without menu
 
-//$TEMPLATE = 'templates/red.html';     
+//$TEMPLATE = 'templates/red.html';
 //$TEMPLATE = 'templates/txt2tags/txt2tags.html';  // used on the txt2tags wiki
 
 
 //$TEMPLATE = 'templates/ElectricObsidian/ElectricObsidian.html';  // dark theme
 //$TEMPLATE = 'templates/literature/literature.html';      // light theme
 
-//$TEMPLATE = 'templates/bootstrap/bootstrap.html';  // bootstrap 
+//$TEMPLATE = 'templates/bootstrap/bootstrap.html';  // bootstrap
 
 
 
 
 // Those templates are more minimalistic and use only a basic toolbar:
 
-//$TEMPLATE = 'templates/ggp/ggp.html'; 
+//$TEMPLATE = 'templates/ggp/ggp.html';
 //$TEMPLATE = 'templates/newspaper/newspaper.html';      // light theme
 //$TEMPLATE = 'templates/stellar/index.html';     // in development
 //$TEMPLATE = 'templates/editorial/index0.html';  // in development
 //$TEMPLATE = 'templates/blazekiss/blazekiss.html';
-//$TEMPLATE = 'templates/sissou.html';   
-//$TEMPLATE = 'templates/fravashyo/fravashyo.html'; 
-//$TEMPLATE = 'templates/dandelion.html';   
+//$TEMPLATE = 'templates/sissou.html';
+//$TEMPLATE = 'templates/fravashyo/fravashyo.html';
+//$TEMPLATE = 'templates/dandelion.html';
 //$TEMPLATE = 'templates/flexbox.html';    // in development
-//$TEMPLATE = 'templates/minimal.html';     
-//$TEMPLATE = 'templates/terminal/terminal.html';  
-//$TEMPLATE = 'templates/terminal_green.html';      
-//$TEMPLATE = 'templates/terminal_white.html';      
-//$TEMPLATE = 'templates/geek/geek.html';        
+//$TEMPLATE = 'templates/minimal.html';
+//$TEMPLATE = 'templates/terminal/terminal.html';
+//$TEMPLATE = 'templates/terminal_green.html';
+//$TEMPLATE = 'templates/terminal_white.html';
+//$TEMPLATE = 'templates/geek/geek.html';
 //$TEMPLATE = 'templates/brut/brut.html';        // ugly colors and brutism aesthetics
-//$TEMPLATE = 'templates/lagrange/lagrange.html';      // looks like the gemini browser lagrange   
-//$TEMPLATE = 'templates/light.html';         
-//$TEMPLATE = 'templates/print.html';    
-//$TEMPLATE = 'templates/paper/paper.html';    
-$TEMPLATE = 'templates/mimoza/mimoza.html';    
-//$TEMPLATE = 'templates/wikiss.html';     
+//$TEMPLATE = 'templates/lagrange/lagrange.html';      // looks like the gemini browser lagrange
+//$TEMPLATE = 'templates/light.html';
+//$TEMPLATE = 'templates/print.html';
+//$TEMPLATE = 'templates/paper/paper.html';
+$TEMPLATE = 'templates/mimoza/mimoza.html';
+//$TEMPLATE = 'templates/wikiss.html';
 //$TEMPLATE = 'templates/skeleton/skeleton.html';    // deprecated
-//$TEMPLATE = 'templates/simple.html';  // 
+//$TEMPLATE = 'templates/simple.html';  //
 
 /* **** MORE OPTIONS **** */
 
@@ -71,9 +71,9 @@ $START_PAGE = 'main'; // Which page should be default (start page)?
 
 $RSS = '<a href="./var/rss.xml">RSS</a>';
 
-// if needed (if autodetection doesn't work), force language 
+// if needed (if autodetection doesn't work), force language
 //$LANG = fr;
-$LANG = __YNH_LANG__;
+$LANG = __LANGUAGE__;
 
 /* see the file config.t2t to tweak the syntax and even more! */
 
