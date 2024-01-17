@@ -21,13 +21,13 @@ if [[ -z "${password:-}" ]] || [[ -z "${color:-}" ]] || [[ -z "${wiki:-}" ]]; th
     color=$(grep -A1 'For YunoHost config' "$install_dir/templates/minimaxing/minimaxing.css" | grep -oP '^/\* @fg: #\K.*(?=;)')
 
     if [[ -z "$password" ]] || [[ -z "$wiki" ]] || [[ -z "$color" ]]; then
-        message="Previous versions did not save settings. You need to manually set them before upgrading.\n"
-        message+="Here are the retrieved values: password='$password', wiki='$wiki', color='$color'\n"
-        message+="And the commands to set missing values:\n"
-        message+="yunohost app setting $app password -v 'YOUR PASSWORD'\n"
-        message+="yunohost app setting $app wiki -v 'YOUR WIKI NAME'\n"
-        message+="yunohost app setting $app color -v 'YOUR BASE COLOR'\n"
-        ynh_die --message="$message"
+        yunohost_app="yunohost app"
+        ynh_die --message="Previous versions did not save settings. You need to manually set them before upgrading.
+Here are the retrieved values: password='$password', wiki='$wiki', color='$color'
+And the commands to set missing values:
+$yunohost_app setting $app password -v 'YOUR PASSWORD'
+$yunohost_app setting $app wiki -v 'YOUR WIKI NAME'
+$yunohost_app setting $app color -v 'YOUR BASE COLOR'"
     fi
     ynh_app_setting_set --app="$app" --key=password --value="$password"
     ynh_app_setting_set --app="$app" --key=wiki --value="$wiki"
