@@ -26,26 +26,25 @@ After the installation, you can edit the base color found in `/var/www/lionwikit
 
 Search for:
 
-```
+```css
 /* For YunoHost config */
 @MainColor: #D17732;
 ```
 
 Go inside your installation folder (adapt it to your case, if it's the second instance you've installed, it will be named /var/www/lionwikit2t__2/):
 
-```
+```bash
 cd /var/www/lionwikit2t
 ```
 
 Then compile it with:
 
-```
+```bash
 lessc templates/minimaxing/minimaxing.less > templates/minimaxing/minimaxing.css
 ```
 
 If something goes wrong, you can go back to the original default file:
 
-```
+```bash
 cp templates/minimaxing/minimaxing_org.css templates/minimaxing/minimaxing.css
 ```
-
