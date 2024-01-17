@@ -14,23 +14,24 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
 
-# Password was not backed up prior to packaging v2
-if [[ -z "${password:-}" ]]; then
-    password=$(grep -oP '^\$PASSWORD = sha1\(\"\K.*(?=\"\);$)' "$install_dir/config.php")
-    if [[ -z "$password" ]]; then
-        command="yunohost app setting $app password -v 'YOUR PASSWORD'"
-        ynh_die --message="Could not retrieve install password from config. Please run '$command' then retry the upgrade."
-    fi
-    ynh_app_setting_set --app="$app" --key=password --value="$password"
-fi
-
-if [[ -z "${color:-}" ]]; then
+# Settings were not backed up prior to packaging v2
+if [[ -z "${password:-}" ]] || [[ -z "${color:-}" ]] || [[ -z "${wiki:-}" ]]; then
+    password=$( grep -oP '^\$PASSWORD = sha1\(\"\K.*(?=\"\);$)' "$install_dir/config.php")
+    wiki=$(     grep -oP '^\$WIKI_TITLE = '"'\K.*(?=';)" "$install_dir/config.php")
     color=$(grep -A1 'For YunoHost config' "$install_dir/templates/minimaxing/minimaxing.css" | grep -oP '^/\* @fg: #\K.*(?=;)')
-    if [[ -z "$password" ]]; then
-        command="yunohost app setting $app color -v 'YOUR BASE COLOR'"
-        ynh_die --message="Could not retrieve base color from config. Please run '$command' then retry the upgrade."
+
+    if [[ -z "$password" ]] || [[ -z "$wiki" ]] || [[ -z "$color" ]]; then
+        message="Previous versions did not save settings. You need to manually set them before upgrading.\n"
+        message+="Here are the retrieved values: password='$password', wiki='$wiki', color='$color'\n"
+        message+="And the commands to set missing values:\n"
+        message+="yunohost app setting $app password -v 'YOUR PASSWORD'\n"
+        message+="yunohost app setting $app wiki -v 'YOUR WIKI NAME'\n"
+        message+="yunohost app setting $app color -v 'YOUR BASE COLOR'\n"
+        ynh_die --message="$message"
     fi
     ynh_app_setting_set --app="$app" --key=password --value="$password"
+    ynh_app_setting_set --app="$app" --key=wiki --value="$wiki"
+    ynh_app_setting_set --app="$app" --key=color --value="$color"
 fi
 
 #=================================================
