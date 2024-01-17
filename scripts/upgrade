@@ -10,6 +10,21 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
+
+# Password was not backed up prior to packaging v2
+if [[ -z "${password:-}" ]]; then
+    password=$(grep -oP '^\$PASSWORD = sha1\(\"\K.*(?=\"\);$)' "$install_dir/config.php")
+    if [[ -z "$password" ]]; then
+        command="yunohost app setting $app password -v 'YOUR PASSWORD'"
+        ynh_die --message="Could not retrieve install password from config. Please run '$command' then retry the upgrade."
+    fi
+    ynh_app_setting_set --app="$app" --key=password --value="$password"
+fi
+
+#=================================================
 # INITIALIZE AND STORE SETTINGS
 #=================================================
 
