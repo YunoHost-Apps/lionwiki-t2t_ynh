@@ -10,6 +10,16 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# INITIALIZE AND STORE SETTINGS
+#=================================================
+
+password_sha1=$(python -c 'import hashlib; import sys; a=str(sys.argv[1]); print(hashlib.sha512(a.encode("UTF-8")).hexdigest())' $password)
+
+# Validate, fix and set default value for color
+color="$(_validate_color)"
+ynh_app_setting_set --app="$app" --key=color --value="$color"
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Upgrading source files..." --weight=3
@@ -23,18 +33,24 @@ chown -R "$app:www-data" "$install_dir"
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM
 #=================================================
+ynh_script_progression --message="Updating configuration files..."
 
-### Verify the checksum of a file, stored by `ynh_store_file_checksum` in the install script.
-### And create a backup of this file if the checksum is different. So the file will be backed up if the admin had modified it.
-ynh_backup_if_checksum_is_different --file="$install_dir/config.php"
-ynh_backup_if_checksum_is_different --file="$install_dir/config.t2t"
-ynh_backup_if_checksum_is_different --file="$install_dir/menu.php"
-# Recalculate and store the checksum of the file for the next upgrade.
-ynh_store_file_checksum --file="$install_dir/config.php"
+# Workaround for php code containing __FILE__ and __DIR__
+file=__FILE__
+dir=__DIR__
+
+ynh_add_config --template="config.php" --destination="$install_dir/config.php"
+ynh_add_config --template="pheditor.php" --destination="$install_dir/pheditor.php"
+
+mkdir -p "$install_dir/templates/minimaxing/"
+ynh_add_config --template="minimaxing.less" --destination="$install_dir/templates/minimaxing/minimaxing.less"
+ynh_add_config --template="minimaxing.css" --destination="$install_dir/templates/minimaxing/minimaxing.css"
+
+mkdir -p "$install_dir/templates/mimoza/"
+ynh_add_config --template="mimoza.css" --destination="$install_dir/templates/mimoza/mimoza.css"
+
 ynh_store_file_checksum --file="$install_dir/config.t2t"
 ynh_store_file_checksum --file="$install_dir/menu.php"
-
-#ynh_restore_file -o "conf/config.php"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS

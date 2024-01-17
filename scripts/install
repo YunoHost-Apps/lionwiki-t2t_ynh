@@ -18,13 +18,8 @@ ynh_app_setting_set --app="$app" --key=password --value="$password"
 
 password_sha1=$(python -c 'import hashlib; import sys; a=str(sys.argv[1]); print(hashlib.sha512(a.encode("UTF-8")).hexdigest())' $password)
 
-# Remove eventual '#' prefix from color
-color=${color#"#"}
-# Check if the format is valid, put #555555 instead
-if [[ ! "$color" =~ ^[A-Fa-f0-9]{6}$ ]]; then
-    color=555555
-fi
-# Save color back
+# Validate, fix and set default value for color
+color="$(_validate_color)"
 ynh_app_setting_set --app="$app" --key=color --value="$color"
 
 #=================================================
