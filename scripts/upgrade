@@ -25,7 +25,7 @@ ynh_app_setting_set --app="$app" --key=color --value="$color"
 ynh_script_progression --message="Upgrading source files..." --weight=3
 
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep=
+ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="config.php pheditor.php menu.php config.t2t"
 
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
