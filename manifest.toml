@@ -81,6 +81,9 @@ ram.runtime = "50M"
     url = "https://sourceforge.net/projects/lionwiki-t2t/files/lionwiki-t2t.zip"
     sha256 = "081a05b07446183da5cf065b07cab2baaabe69e57d11b61c0aaf3d187ee2ff30"
 
+    autoupdate.strategy = "latest_github_commit"
+    autoupdate.asset = "tarball"
+    autoupdate.upstream = "https://github.com/farvardin/lionwiki-t2t"
 
     [resources.system_user]
 
