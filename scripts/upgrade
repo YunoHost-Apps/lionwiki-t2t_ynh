@@ -39,14 +39,24 @@ ynh_script_progression --message="Updating configuration files..."
 file=__FILE__
 dir=__DIR__
 
+ynh_backup_if_checksum_is_different --file="$install_dir/config.php"
+ynh_backup_if_checksum_is_different --file="$install_dir/pheditor.php"
+
+# FIXME: is it required ?
+ynh_delete_file_checksum --file="$install_dir/config.php"
+ynh_delete_file_checksum --file="$install_dir/pheditor.php"
+
 ynh_add_config --template="config.php" --destination="$install_dir/config.php"
 ynh_add_config --template="pheditor.php" --destination="$install_dir/pheditor.php"
 
 mkdir -p "$install_dir/templates/minimaxing/"
+ynh_delete_file_checksum --file="$install_dir/templates/minimaxing/minimaxing.less"
+ynh_delete_file_checksum --file="$install_dir/templates/minimaxing/minimaxing.css"
 ynh_add_config --template="minimaxing.less" --destination="$install_dir/templates/minimaxing/minimaxing.less"
 ynh_add_config --template="minimaxing.css" --destination="$install_dir/templates/minimaxing/minimaxing.css"
 
 mkdir -p "$install_dir/templates/mimoza/"
+ynh_delete_file_checksum --file="$install_dir/templates/mimoza/mimoza.css"
 ynh_add_config --template="mimoza.css" --destination="$install_dir/templates/mimoza/mimoza.css"
 
 ynh_store_file_checksum --file="$install_dir/config.t2t"
