@@ -232,6 +232,17 @@ h6:hover span.par-edit {
   font-size: small;
 }
 
+/* makes the top edit link invisible */
+.editlink a {
+  text-decoration: none;  
+  color: var(--couleur-primaire); 
+}
+
+.editlink2 a {
+  text-decoration: none;  
+  color: #eee; 
+}
+
 /* Progress bar */
 progress {
   color: var(--couleur-primaire);

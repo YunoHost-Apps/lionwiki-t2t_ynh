@@ -22,11 +22,11 @@ $PROTECTED_READ = false;
 
 // Some of those templates are using markitup, a convenient and advanced toolbar to edit the wiki.
 
-//$TEMPLATE = 'templates/minimaxing/minimaxing.html'; // this one is the default skin for lionwiki-t2t
+//$TEMPLATE = 'templates/minimaxing/minimaxing.html'; // this one was once the default skin for lionwiki-t2t
 //$TEMPLATE = 'templates/minimaxing/minimaxing_links.html'; // this one is for a basic landpage without menu
 
 //$TEMPLATE = 'templates/red.html';
-//$TEMPLATE = 'templates/txt2tags/txt2tags.html';  // used on the txt2tags wiki
+//$TEMPLATE = 'templates/txt2tags/txt2tags.html';  // used once on the old txt2tags wiki (now offline)
 
 
 //$TEMPLATE = 'templates/ElectricObsidian/ElectricObsidian.html';  // dark theme
@@ -43,7 +43,7 @@ $PROTECTED_READ = false;
 //$TEMPLATE = 'templates/newspaper/newspaper.html';      // light theme
 //$TEMPLATE = 'templates/stellar/index.html';     // in development
 //$TEMPLATE = 'templates/editorial/index0.html';  // in development
-//$TEMPLATE = 'templates/blazekiss/blazekiss.html';
+//$TEMPLATE = 'templates/blazekiss/blazekiss.html';  // deprecated
 //$TEMPLATE = 'templates/sissou.html';
 //$TEMPLATE = 'templates/fravashyo/fravashyo.html';
 //$TEMPLATE = 'templates/dandelion.html';
@@ -58,7 +58,9 @@ $PROTECTED_READ = false;
 //$TEMPLATE = 'templates/light.html';
 //$TEMPLATE = 'templates/print.html';
 //$TEMPLATE = 'templates/paper/paper.html';
-$TEMPLATE = 'templates/mimoza/mimoza.html';
+$TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
+//$TEMPLATE = 'templates/cafe.html';
+// $TEMPLATE = 'templates/smallweb/smallweb.html';    // not finished and not very good
 //$TEMPLATE = 'templates/wikiss.html';
 //$TEMPLATE = 'templates/skeleton/skeleton.html';    // deprecated
 //$TEMPLATE = 'templates/simple.html';  //
