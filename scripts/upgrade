@@ -18,7 +18,7 @@ ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
 if [[ -z "${password:-}" ]] || [[ -z "${color:-}" ]] || [[ -z "${wiki:-}" ]]; then
     password=$( grep -oP '^\$PASSWORD = sha1\(\"\K.*(?=\"\);$)' "$install_dir/config.php")
     wiki=$(     grep -oP '^\$WIKI_TITLE = '"'\K.*(?=';)" "$install_dir/config.php")
-    color=$(grep -A1 'For YunoHost config' "$install_dir/templates/minimaxing/minimaxing.css" | grep -oP '^/\* @fg: #\K.*(?=;)')
+    color=$(grep -A1 'For YunoHost config' "$install_dir/templates/minimaxing/minimaxing.css" | grep -oP '^/\* @fg: #\K.*(?=;)'|| true)
 
     if [[ -z "$password" ]] || [[ -z "$wiki" ]] || [[ -z "$color" ]]; then
         yunohost_app="yunohost app"
@@ -50,7 +50,8 @@ ynh_app_setting_set --app="$app" --key=color --value="$color"
 ynh_script_progression --message="Upgrading source files..." --weight=3
 
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="config.php pheditor.php menu.php config.t2t"
+ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="config.php pheditor.php menu.php config.t2t var/pages/main.txt var/pages/todo.txt var/pages/sandbox.txt var/pages/links.txt var/pages/admin.txt"
+
 
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
