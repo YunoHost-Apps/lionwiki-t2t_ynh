@@ -53,9 +53,9 @@ ynh_script_progression --message="Upgrading source files..." --weight=3
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir" --keep="config.php pheditor.php menu.php config.t2t var/pages/main.txt var/pages/todo.txt var/pages/sandbox.txt var/pages/links.txt var/pages/admin.txt"
 
-
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
+chmod -R 750 "$install_dir"
 
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM

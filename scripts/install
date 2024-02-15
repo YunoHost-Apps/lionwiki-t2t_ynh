@@ -32,7 +32,7 @@ ynh_setup_source --dest_dir="$install_dir"
 
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
-
+chmod -R 750 "$install_dir"
 
 #=================================================
 # SPECIFIC SETUP
@@ -68,10 +68,6 @@ ynh_add_fpm_config
 
 # Create a dedicated NGINX config
 ynh_add_nginx_config
-
-
-# chmod again to fix unaccessible templates / css files
-chmod -R 755 "$install_dir"
 
 #=================================================
 # END OF SCRIPT
