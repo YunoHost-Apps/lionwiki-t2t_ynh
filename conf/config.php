@@ -74,9 +74,9 @@ $START_PAGE = 'main'; // Which page should be default (start page)?
 $RSS = '<a href="./var/rss.xml">RSS</a>';
 
 // if needed (if autodetection doesn't work), force language
-$LANG = en;
-//$LANG = __LANGUAGE__;
+$LANG = __LANGUAGE__;
 // (it looks like forcing another language crashes lionwiki so it's better to keep LANG=en at the moment... autodetection seems to work anyway)
+$LANG = en;
 
 /* see the file config.t2t to tweak the syntax and even more! */
 
