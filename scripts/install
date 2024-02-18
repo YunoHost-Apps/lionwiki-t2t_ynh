@@ -73,9 +73,9 @@ ynh_add_nginx_config
 # chmod again to fix unaccessible templates / css files
 chmod -R 755 "$install_dir"
 
-# don't allow read access to config.php and pages/ for everyone
+# don't allow read access to config.php for everyone
 chmod 750 "$install_dir"/config.php
-chmod -R 750 "$install_dir"/var/pages/
+# chmod -R 750 "$install_dir"/var/pages/ # prevents from writing pages!
 
 # chmod root folder
 chmod 750 "$install_dir"
