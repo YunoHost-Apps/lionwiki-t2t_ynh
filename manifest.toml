@@ -94,7 +94,7 @@ ram.runtime = "50M"
 
     [resources.apt]
     packages = [
-        "php7.4-fpm",
+        "php8.2-fpm",
         "node-less",
         "acl",
     ]
