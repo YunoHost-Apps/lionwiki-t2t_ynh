@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # Lionwiki YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://dash.yunohost.org/appci/app/lionwiki-t2t) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.maintain.svg)
 
 [![Instalatu Lionwiki YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=lionwiki-t2t)
 
@@ -19,7 +19,7 @@ EZ editatu eskuz.
 LionWiki-t2t is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. This version is using the lightweight markup language TXT2TAGS.
 
 
-**Paketatutako bertsioa:** 2024.05.13~ynh1
+**Paketatutako bertsioa:** 2024.07.04~ynh1
 
 ## Pantaila-argazkiak
 
