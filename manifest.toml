@@ -7,7 +7,7 @@ name = "Lionwiki"
 description.en = "Lightweight wiki-style CMS using the txt2tags syntax"
 description.fr = "CMS léger, géré sous forme de wiki utilisant la syntaxe txt2tags"
 
-version = "2024.07.04~ynh1"
+version = "2024.07.12~ynh1"
 
 maintainers = ["Eric Forgeot"]
 
@@ -78,8 +78,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/farvardin/lionwiki-t2t/archive/9d64b7866194c7ec7e4f6551e2fb4fef708e9064.tar.gz"
-    sha256 = "590da8702d6cc25ce654fb02dba2baecc3f67692b1cefda5f1302849168368f6"
+    url = "https://github.com/farvardin/lionwiki-t2t/archive/dddf8984dc09b3ba1a8908e97ba6248661a6f9b1.tar.gz"
+    sha256 = "f3334577897fcde8dc69e7e05ec6928ec656de4bbdfcffe0e8cb627e6b5092da"
 
     autoupdate.strategy = "latest_github_commit"
     autoupdate.asset = "tarball"
