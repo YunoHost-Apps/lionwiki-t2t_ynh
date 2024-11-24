@@ -5,7 +5,9 @@
 
 # YunoHost 上的 Lionwiki
 
-[![集成程度](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.maintain.svg)
+[![集成程度](https://apps.yunohost.org/badge/integration/lionwiki-t2t)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/)
+![工作状态](https://apps.yunohost.org/badge/state/lionwiki-t2t)
+![维护状态](https://apps.yunohost.org/badge/maintained/lionwiki-t2t)
 
 [![使用 YunoHost 安装 Lionwiki](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=lionwiki-t2t)
 

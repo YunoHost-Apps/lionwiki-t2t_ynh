@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # Lionwiki YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/lionwiki-t2t)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/lionwiki-t2t)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/lionwiki-t2t)
 
 [![Instalatu Lionwiki YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=lionwiki-t2t)
 

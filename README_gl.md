@@ -5,7 +5,9 @@ NON debe editarse manualmente.
 
 # Lionwiki para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/lionwiki-t2t)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/)
+![Estado de funcionamento](https://apps.yunohost.org/badge/state/lionwiki-t2t)
+![Estado de mantemento](https://apps.yunohost.org/badge/maintained/lionwiki-t2t)
 
 [![Instalar Lionwiki con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=lionwiki-t2t)
 
