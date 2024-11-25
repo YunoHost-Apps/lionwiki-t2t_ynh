@@ -1,18 +1,12 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
-ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
+ynh_script_progression "Ensuring downward compatibility..."
 
 # Settings were not backed up prior to packaging v2
 if [[ -z "${password:-}" ]] || [[ -z "${color:-}" ]] || [[ -z "${wiki:-}" ]]; then
@@ -23,16 +17,16 @@ if [[ -z "${password:-}" ]] || [[ -z "${color:-}" ]] || [[ -z "${wiki:-}" ]]; th
 
     if [[ -z "$password" ]] || [[ -z "$wiki" ]] || [[ -z "$color" ]]; then
         yunohost_app="yunohost app"
-        ynh_die --message="Previous versions did not save settings. You need to manually set them before upgrading.
+        ynh_die "Previous versions did not save settings. You need to manually set them before upgrading.
 Here are the retrieved values: password='$password', wiki='$wiki', color='$color'
 And the commands to set missing values:
 $yunohost_app setting $app password -v 'YOUR PASSWORD'
 $yunohost_app setting $app wiki -v 'YOUR WIKI NAME'
 $yunohost_app setting $app color -v 'YOUR BASE COLOR'"
     fi
-    ynh_app_setting_set --app="$app" --key=password --value="$password"
-    ynh_app_setting_set --app="$app" --key=wiki --value="$wiki"
-    ynh_app_setting_set --app="$app" --key=color --value="$color"
+    ynh_app_setting_set --key=password --value="$password"
+    ynh_app_setting_set --key=wiki --value="$wiki"
+    ynh_app_setting_set --key=color --value="$color"
 fi
 
 #=================================================
@@ -43,75 +37,67 @@ password_sha1=$(python -c 'import hashlib; import sys; a=str(sys.argv[1]); print
 
 # Validate, fix and set default value for color
 color="$(_validate_color)"
-ynh_app_setting_set --app="$app" --key=color --value="$color"
+ynh_app_setting_set --key=color --value="$color"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Upgrading source files..." --weight=3
+ynh_script_progression "Upgrading source files..."
 
-# Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir" --keep="config.php pheditor.php menu.php config.t2t var/pages/main.txt var/pages/todo.txt var/pages/sandbox.txt var/pages/links.txt var/pages/admin.txt"
-
-
-chmod -R o-rwx "$install_dir"
-chown -R "$app:www-data" "$install_dir"
+ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="config.php pheditor.php menu.php config.t2t var/pages/main.txt var/pages/todo.txt var/pages/sandbox.txt var/pages/links.txt var/pages/admin.txt"
 
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM
 #=================================================
-ynh_script_progression --message="Updating configuration files..."
+ynh_script_progression "Updating configuration files..."
 
 # Workaround for php code containing __FILE__ and __DIR__
 file=__FILE__
 dir=__DIR__
 
-ynh_backup_if_checksum_is_different --file="$install_dir/config.php"
-ynh_backup_if_checksum_is_different --file="$install_dir/pheditor.php"
+ynh_backup_if_checksum_is_different "$install_dir/config.php"
+ynh_backup_if_checksum_is_different "$install_dir/pheditor.php"
 
 # FIXME: is it required ?
-ynh_delete_file_checksum --file="$install_dir/config.php"
-ynh_delete_file_checksum --file="$install_dir/pheditor.php"
+ynh_delete_file_checksum "$install_dir/config.php"
+ynh_delete_file_checksum "$install_dir/pheditor.php"
 
 # Do not overwrite existing configuration as it could have user customization's and settings.
 # Create file if it does not exist
 if [ ! -f "$install_dir/config.php" ]; then
 	# Set the default settings
-	ynh_add_config --template="../conf/config.php" --destination="$install_dir/config.php"
+	ynh_config_add --template="config.php" --destination="$install_dir/config.php"
 fi
 
 if [ ! -f "$install_dir/pheditor.php" ]; then
 	# Set the default settings
-	ynh_add_config --template="../conf/pheditor.php" --destination="$install_dir/pheditor.php"
+	ynh_config_add --template="pheditor.php" --destination="$install_dir/pheditor.php"
 fi
 
-
-# ynh_add_config --template="config.php" --destination="$install_dir/config.php"
-# ynh_add_config --template="pheditor.php" --destination="$install_dir/pheditor.php"
+# ynh_config_add --template="config.php" --destination="$install_dir/config.php"
+# ynh_config_add --template="pheditor.php" --destination="$install_dir/pheditor.php"
 
 mkdir -p "$install_dir/templates/minimaxing/"
-ynh_delete_file_checksum --file="$install_dir/templates/minimaxing/minimaxing.less"
-ynh_delete_file_checksum --file="$install_dir/templates/minimaxing/minimaxing.css"
-ynh_add_config --template="minimaxing.less" --destination="$install_dir/templates/minimaxing/minimaxing.less"
-ynh_add_config --template="minimaxing.css" --destination="$install_dir/templates/minimaxing/minimaxing.css"
+ynh_delete_file_checksum "$install_dir/templates/minimaxing/minimaxing.less"
+ynh_delete_file_checksum "$install_dir/templates/minimaxing/minimaxing.css"
+ynh_config_add --template="minimaxing.less" --destination="$install_dir/templates/minimaxing/minimaxing.less"
+ynh_config_add --template="minimaxing.css" --destination="$install_dir/templates/minimaxing/minimaxing.css"
 
 mkdir -p "$install_dir/templates/mimoza/"
-ynh_delete_file_checksum --file="$install_dir/templates/mimoza/mimoza.css"
-ynh_add_config --template="mimoza.css" --destination="$install_dir/templates/mimoza/mimoza.css"
+ynh_delete_file_checksum "$install_dir/templates/mimoza/mimoza.css"
+ynh_config_add --template="mimoza.css" --destination="$install_dir/templates/mimoza/mimoza.css"
 
-ynh_store_file_checksum --file="$install_dir/config.t2t"
-ynh_store_file_checksum --file="$install_dir/menu.php"
+ynh_store_file_checksum "$install_dir/config.t2t"
+ynh_store_file_checksum "$install_dir/menu.php"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression --message="Upgrading system configurations related to $app..." --weight=1
+ynh_script_progression "Upgrading system configurations related to $app..."
 
-# Create a dedicated PHP-FPM config
-ynh_add_fpm_config
+ynh_config_add_phpfpm
 
-# Create a dedicated NGINX config
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 # chmod again to fix unaccessible templates / css files
 chmod -R 755 "$install_dir"
@@ -128,4 +114,4 @@ chmod 750 "$install_dir"
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of $app completed" --last
+ynh_script_progression "Upgrade of $app completed"
