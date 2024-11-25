@@ -5,8 +5,9 @@
 
 # Lionwiki для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.maintain.svg)
-
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/lionwiki-t2t)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/)
+![Состояние работы](https://apps.yunohost.org/badge/state/lionwiki-t2t)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/lionwiki-t2t)
 
 [![Установите Lionwiki с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=lionwiki-t2t)
 
