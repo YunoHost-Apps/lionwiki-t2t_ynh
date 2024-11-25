@@ -7,6 +7,7 @@ Hij mag NIET handmatig aangepast worden.
 
 [![Integratieniveau](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.maintain.svg)
 
+
 [![Lionwiki met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=lionwiki-t2t)
 
 *[Deze README in een andere taal lezen.](./ALL_README.md)*

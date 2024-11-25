@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # Lionwiki untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/lionwiki-t2t)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/)
+![Status kerja](https://apps.yunohost.org/badge/state/lionwiki-t2t)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/lionwiki-t2t)
 
 [![Pasang Lionwiki dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=lionwiki-t2t)
 

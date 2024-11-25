@@ -7,6 +7,7 @@
 
 [![Уровень интеграции](https://dash.yunohost.org/integration/lionwiki-t2t.svg)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/lionwiki-t2t.maintain.svg)
 
+
 [![Установите Lionwiki с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=lionwiki-t2t)
 
 *[Прочтите этот README на других языках.](./ALL_README.md)*
