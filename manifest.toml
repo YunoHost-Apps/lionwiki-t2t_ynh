@@ -7,7 +7,7 @@ name = "Lionwiki"
 description.en = "Lightweight wiki-style CMS using the txt2tags syntax"
 description.fr = "CMS léger, géré sous forme de wiki utilisant la syntaxe txt2tags"
 
-version = "2024.07.04~ynh1"
+version = "2024.09.27~ynh1"
 
 maintainers = ["Eric Forgeot"]
 
@@ -20,7 +20,8 @@ code = "https://sourceforge.net/projects/lionwiki-t2t"
 cpe = "cpe:2.3:a:lionwiki:lionwiki"
 
 [integration]
-yunohost = ">=11.2"
+yunohost = ">=11.2.30"
+helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 ldap = false
@@ -78,8 +79,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/farvardin/lionwiki-t2t/archive/9d64b7866194c7ec7e4f6551e2fb4fef708e9064.tar.gz"
-    sha256 = "590da8702d6cc25ce654fb02dba2baecc3f67692b1cefda5f1302849168368f6"
+    url = "https://github.com/farvardin/lionwiki-t2t/archive/239365204e7e6ea1eadd9de7f66ebbab543d7c37.tar.gz"
+    sha256 = "c837a78a655855161dddc22e1f442583996d735a691aba6a1bd891d5fd2c92bb"
 
     autoupdate.strategy = "latest_github_commit"
     autoupdate.asset = "tarball"
@@ -88,13 +89,14 @@ ram.runtime = "50M"
     [resources.system_user]
 
     [resources.install_dir]
+    group = "www-data:r-x"
 
     [resources.permissions]
     main.url = "/"
 
     [resources.apt]
     packages = [
-        "php8.2-fpm",
+        "php7.4-fpm",
         "node-less",
         "acl",
     ]
