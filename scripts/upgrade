@@ -44,7 +44,7 @@ ynh_app_setting_set --key=color --value="$color"
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-# remove --full_replace 
+# please don't insert "--full_replace" otherwise it will remove all user data during upgrade!!
 ynh_setup_source --dest_dir="$install_dir" --keep="config.php pheditor.php menu.php config.t2t var/pages/main.txt var/pages/todo.txt var/pages/sandbox.txt var/pages/links.txt var/pages/admin.txt "
 
 #=================================================
@@ -83,6 +83,7 @@ ynh_delete_file_checksum "$install_dir/templates/minimaxing/minimaxing.less"
 ynh_delete_file_checksum "$install_dir/templates/minimaxing/minimaxing.css"
 ynh_config_add --template="minimaxing.less" --destination="$install_dir/templates/minimaxing/minimaxing.less"
 ynh_config_add --template="minimaxing.css" --destination="$install_dir/templates/minimaxing/minimaxing.css"
+ynh_config_add --template="minimaxing.html" --destination="$install_dir/templates/minimaxing/minimaxing.html"
 
 mkdir -p "$install_dir/templates/mimoza/"
 ynh_delete_file_checksum "$install_dir/templates/mimoza/mimoza.css"
