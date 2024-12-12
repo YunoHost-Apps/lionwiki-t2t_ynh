@@ -38,6 +38,7 @@ ynh_config_add --template="pheditor.php" --destination="$install_dir/pheditor.ph
 mkdir -p "$install_dir/templates/minimaxing/"
 ynh_config_add --template="minimaxing.less" --destination="$install_dir/templates/minimaxing/minimaxing.less"
 ynh_config_add --template="minimaxing.css" --destination="$install_dir/templates/minimaxing/minimaxing.css"
+ynh_config_add --template="minimaxing.html" --destination="$install_dir/templates/minimaxing/minimaxing.html"
 
 mkdir -p "$install_dir/templates/mimoza/"
 ynh_config_add --template="mimoza.css" --destination="$install_dir/templates/mimoza/mimoza.css"
