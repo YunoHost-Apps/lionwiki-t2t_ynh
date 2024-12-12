@@ -44,7 +44,7 @@ ynh_app_setting_set --key=color --value="$color"
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="config.php pheditor.php menu.php config.t2t var/pages/main.txt var/pages/todo.txt var/pages/sandbox.txt var/pages/links.txt var/pages/admin.txt"
+ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="config.php pheditor.php menu.php config.t2t var/pages/main.txt var/pages/todo.txt var/pages/sandbox.txt var/pages/links.txt var/pages/admin.txt var/pages/*.txt"
 
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM
