@@ -76,6 +76,13 @@ ram.runtime = "50M"
     type = "string"
     example = "D17732"
     default = "328cc1"
+    
+    [install.phpversion]
+    ask.en = "Choose a PHP version you want to use for your app (7.4 should be the most compatible)"
+    ask.fr = "Choisissez une version PHP que vous souhaitez utiliser pour votre application (7.4 devrait être la plus compatible)"
+    type = "select"
+    choices = ["7.4", "8.0", "8.1", "8.2", "8.3"]
+    default = "7.4"
 
 [resources]
     [resources.sources.main]
@@ -96,7 +103,9 @@ ram.runtime = "50M"
 
     [resources.apt]
     packages = [
-        "php7.4-fpm",
         "node-less",
         "acl",
     ]
+    packages_from_raw_bash = """
+        echo "php${phpversion}-fpm"
+    """
