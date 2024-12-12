@@ -31,8 +31,8 @@ chmod 750 "$install_dir"
 #=================================================
 ynh_script_progression "Restoring system configurations related to $app..."
 
-#ynh_restore --origin_path="/etc/php/$php_version/fpm/pool.d/$app.conf"
-ynh_restore --origin_path="/etc/php/${phpversion}/fpm/pool.d/$app.conf"
+ynh_restore --origin_path="/etc/php/$php_version/fpm/pool.d/$app.conf"
+#ynh_restore --origin_path="/etc/php/${phpversion}/fpm/pool.d/$app.conf"
 
 ynh_restore --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 
@@ -44,7 +44,8 @@ ynh_script_progression --message="Reloading NGINX web server and PHP-FPM..."
 #ynh_systemctl --service="php$php_version-fpm" --action=reload
 #ynh_systemctl --service=nginx --action=reload
 
-ynh_systemd_action --service_name=php${phpversion}-fpm --action=reload
+#ynh_systemd_action --service_name=php${phpversion}-fpm --action=reload
+ynh_systemd_action --service_name=php$php_version-fpm --action=reload
 ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================
