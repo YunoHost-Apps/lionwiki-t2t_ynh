@@ -17,10 +17,8 @@ ynh_backup "$install_dir"
 
 ynh_backup "/etc/nginx/conf.d/$domain.d/$app.conf"
 
-if [ ${phpversion} != "none" ]
-then
-    ynh_backup "/etc/php/${phpversion}/fpm/pool.d/$app.conf"
-fi
+ynh_backup "/etc/php/$php_version/fpm/pool.d/$app.conf"
+
 
 
 
