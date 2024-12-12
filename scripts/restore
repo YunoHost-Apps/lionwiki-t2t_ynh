@@ -9,7 +9,8 @@ source /usr/share/yunohost/helpers
 
 ynh_script_progression --message="Restoring the app main directory..."
 
-ynh_restore_file --origin_path="$install_dir"
+# ynh_restore_file --origin_path="$install_dir"
+ynh_restore "$install_dir"
 
 # Restore permissions on app files
 chown -R $app:www-data "$install_dir"
