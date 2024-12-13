@@ -105,6 +105,7 @@ ram.runtime = "50M"
     packages = [
         "node-less",
         "acl",
+        "php7.4-fpm",
     ]
     packages_from_raw_bash = """
         echo "php${phpversion}-fpm"
