@@ -48,6 +48,10 @@ ynh_config_add --template="the-monospace-web.html" --destination="$install_dir/t
 ynh_store_file_checksum "$install_dir/config.t2t"
 ynh_store_file_checksum "$install_dir/menu.php"
 
+# fix php8.## problem with some plugins
+
+mv "$install_dir"/plugins/wkp_RSS.php "$install_dir"/plugins/wkp_RSS.txt
+
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
@@ -65,6 +69,9 @@ chmod -R 750 "$install_dir"/var/pages/
 
 # chmod root folder
 chmod 750 "$install_dir"
+
+# fix warning with man-db on bookworm?
+touch /var/lib/man-db/auto-update
 
 #=================================================
 # END OF SCRIPT
