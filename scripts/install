@@ -52,7 +52,10 @@ ynh_store_file_checksum "$install_dir/menu.php"
 mv "$install_dir"/plugins/wkp_RSS.php "$install_dir"/plugins/wkp_RSS.txt
 
 # fix php8 problem with inline diff (hasn't been fixed yet)
-ynh_secure_remove --file="$install_dir"/plugins/InlineDiff/
+##  ynh_secure_remove: command not found????
+# ynh_secure_remove --file="$install_dir"/plugins/InlineDiff/
+mv "$install_dir"/plugins/wkp_InlineDiff.php "$install_dir"/plugins/wkp_InlineDiff.txt
+
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -68,6 +71,7 @@ chmod -R 755 "$install_dir"
 # don't allow read access to config.php and pages/ for everyone
 chmod 750 "$install_dir"/config.php
 chmod -R 750 "$install_dir"/var/pages/
+
 
 # chmod root folder
 chmod 750 "$install_dir"

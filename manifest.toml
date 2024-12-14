@@ -82,7 +82,7 @@ ram.runtime = "50M"
     ask.fr = "Choisissez une version PHP que vous souhaitez utiliser pour votre application"
     type = "select"
     choices = ["7.4", "8.0", "8.1", "8.2", "8.3", "8.4"]
-    default = "8.2"
+    default = "7.4"
 
 [resources]
     [resources.sources.main]
