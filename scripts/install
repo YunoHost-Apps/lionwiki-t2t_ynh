@@ -53,7 +53,10 @@ mv "$install_dir"/plugins/wkp_RSS.php "$install_dir"/plugins/wkp_RSS.txt
 
 # fix php8 problem with inline diff (hasn't been fixed yet)
 
-ynh_secure_remove --file="$install_dir"/plugins/InlineDiff/
+##  ynh_secure_remove: command not found????
+# ynh_secure_remove --file="$install_dir"/plugins/InlineDiff/
+mv "$install_dir"/plugins/wkp_InlineDiff.php "$install_dir"/plugins/wkp_InlineDiff.txt
+
 
 
 #=================================================
