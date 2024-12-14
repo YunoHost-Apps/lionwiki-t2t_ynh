@@ -69,6 +69,7 @@ chmod -R 755 "$install_dir"
 chmod 750 "$install_dir"/config.php
 chmod -R 750 "$install_dir"/var/pages/
 
+
 # chmod root folder
 chmod 750 "$install_dir"
 
