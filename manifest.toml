@@ -78,10 +78,10 @@ ram.runtime = "50M"
     default = "328cc1"
     
     [install.phpversion]
-    ask.en = "Choose a PHP version you want to use for your app (7.4 should be the most compatible)"
-    ask.fr = "Choisissez une version PHP que vous souhaitez utiliser pour votre application (7.4 devrait être la plus compatible)"
+    ask.en = "Choose a PHP version you want to use for your app"
+    ask.fr = "Choisissez une version PHP que vous souhaitez utiliser pour votre application"
     type = "select"
-    choices = ["7.4", "8.0", "8.1", "8.2", "8.3"]
+    choices = ["7.4", "8.0", "8.1", "8.2", "8.3", "8.4"]
     default = "7.4"
 
 [resources]
