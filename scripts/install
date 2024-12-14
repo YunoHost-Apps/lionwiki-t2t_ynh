@@ -52,7 +52,7 @@ ynh_store_file_checksum "$install_dir/menu.php"
 mv "$install_dir"/plugins/wkp_RSS.php "$install_dir"/plugins/wkp_RSS.txt
 
 # fix php8 problem with inline diff (hasn't been fixed yet)
-rm -fr "$install_dir"/plugins/InlineDiff/
+ynh_secure_remove --file="$install_dir"/plugins/InlineDiff/
 
 #=================================================
 # SYSTEM CONFIGURATION
