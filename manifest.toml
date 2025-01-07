@@ -7,7 +7,7 @@ name = "Lionwiki"
 description.en = "Lightweight wiki-style CMS using the txt2tags syntax"
 description.fr = "CMS léger, géré sous forme de wiki utilisant la syntaxe txt2tags"
 
-version = "2024.09.27~ynh1"
+version = "2024.09.27~ynh2"
 
 maintainers = ["Eric Forgeot"]
 
