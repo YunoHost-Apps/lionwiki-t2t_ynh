@@ -76,8 +76,8 @@ ram.runtime = "50M"
     type = "string"
     example = "D17732"
     default = "328cc1"
-    
-    [install.phpversion]
+
+    [install.custom_php_version]
     ask.en = "Choose a PHP version you want to use for your app"
     ask.fr = "Choisissez une version PHP que vous souhaitez utiliser pour votre application"
     type = "select"
@@ -107,5 +107,5 @@ ram.runtime = "50M"
         "acl",
     ]
     packages_from_raw_bash = """
-        echo "php${phpversion}-fpm"
+        echo "php${custom_php_version}-fpm"
     """
