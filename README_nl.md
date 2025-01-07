@@ -21,7 +21,7 @@ Hij mag NIET handmatig aangepast worden.
 LionWiki is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. This version is using the lightweight markup language TXT2TAGS.
 
 
-**Geleverde versie:** 2024.09.27~ynh2
+**Geleverde versie:** 2024.12.13~ynh1
 
 ## Schermafdrukken
 
