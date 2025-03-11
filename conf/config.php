@@ -37,33 +37,43 @@ $PROTECTED_READ = false;
 
 
 
-// Those templates are more minimalistic and use only a basic toolbar:
+// Those templates are more minimalistic and use only a basic toolbar,
+//  some other don't have any toolbar at all (but you can add it in the template)
 
+$TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/ggp/ggp.html';
 //$TEMPLATE = 'templates/newspaper/newspaper.html';      // light theme
-//$TEMPLATE = 'templates/stellar/index.html';     // in development
-//$TEMPLATE = 'templates/editorial/index0.html';  // in development
-//$TEMPLATE = 'templates/blazekiss/blazekiss.html';  // deprecated
+
+//$TEMPLATE = 'templates/the-monospace-web.html';
 //$TEMPLATE = 'templates/sissou.html';
 //$TEMPLATE = 'templates/fravashyo/fravashyo.html';
 //$TEMPLATE = 'templates/dandelion.html';
-//$TEMPLATE = 'templates/flexbox.html';    // in development
 //$TEMPLATE = 'templates/minimal.html';
 //$TEMPLATE = 'templates/terminal/terminal.html';
 //$TEMPLATE = 'templates/terminal_green.html';
 //$TEMPLATE = 'templates/terminal_white.html';
 //$TEMPLATE = 'templates/geek/geek.html';
-//$TEMPLATE = 'templates/brut/brut.html';        // ugly colors and brutism aesthetics
-//$TEMPLATE = 'templates/lagrange/lagrange.html';      // looks like the gemini browser lagrange
 //$TEMPLATE = 'templates/light.html';
 //$TEMPLATE = 'templates/print.html';
 //$TEMPLATE = 'templates/paper/paper.html';
-$TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/cafe.html';
-// $TEMPLATE = 'templates/smallweb/smallweb.html';    // not finished and not very good
 //$TEMPLATE = 'templates/wikiss.html';
-//$TEMPLATE = 'templates/skeleton/skeleton.html';    // deprecated
+
 //$TEMPLATE = 'templates/simple.html';  //
+
+$TEMPLATE = '__CUSTOM_TEMPLATE_VERSION__' ; // selected template from installation script
+
+// Some templates have been moved to https://github.com/farvardin/lionwiki-templates
+//$TEMPLATE = 'templates/lagrange/lagrange.html';      // looks like the gemini browser lagrange
+//$TEMPLATE = 'templates/brut/brut.html';        // ugly colors and brutism aesthetics
+//$TEMPLATE = 'templates/skeleton/skeleton.html';    // deprecated
+//$TEMPLATE = 'templates/blazekiss/blazekiss.html';  // deprecated
+
+// Some are not publicly available because they are in development:
+//$TEMPLATE = 'templates/stellar/index.html';     // in development
+//$TEMPLATE = 'templates/editorial/index0.html';  // in development
+//$TEMPLATE = 'templates/flexbox.html';    // in development
+//$TEMPLATE = 'templates/smallweb/smallweb.html';    // not finished and not very good
 
 /* **** MORE OPTIONS **** */
 

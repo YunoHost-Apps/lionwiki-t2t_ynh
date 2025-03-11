@@ -83,6 +83,15 @@ ram.runtime = "50M"
     type = "select"
     choices = ["7.4", "8.0", "8.1", "8.2", "8.3", "8.4"]
     default = "7.4"
+    # next: 8.2
+
+    [install.custom_template_version]
+    ask.en = "Choose the default template"
+    ask.fr = "Choisissez le thème par défaut"
+    type = "select"
+    choices = ["templates/mimoza/mimoza.html", "templates/the-monospace-web.html", "templates/minimaxing/minimaxing.html", "templates/bootstrap/bootstrap.html", "templates/minimal.html", "templates/wikiss.html", "templates/terminal_green.html"]
+    default = "templates/mimoza/mimoza.html"
+    # next: 8.2
 
 [resources]
     [resources.sources.main]
