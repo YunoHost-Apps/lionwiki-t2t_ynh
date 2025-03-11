@@ -1,0 +1,83 @@
+#!/bin/bash
+
+source _common.sh
+source /usr/share/yunohost/helpers
+
+#=================================================
+# INITIALIZE AND STORE SETTINGS
+#=================================================
+
+# Password is required to regen the files...
+ynh_app_setting_set --key=password --value="$password"
+
+password_sha1=$(python -c 'import hashlib; import sys; a=str(sys.argv[1]); print(hashlib.sha512(a.encode("UTF-8")).hexdigest())' "$password")
+
+# Validate, fix and set default value for color
+color="$(_validate_color)"
+ynh_app_setting_set --key=color --value="$color"
+
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+ynh_script_progression "Setting up source files..."
+
+ynh_setup_source --dest_dir="$install_dir"
+
+#=================================================
+# ADD A CONFIGURATION
+#=================================================
+ynh_script_progression "Adding $app's configuration..."
+
+# Workaround for php code containing __FILE__ and __DIR__
+file=__FILE__
+dir=__DIR__
+
+ynh_config_add --template="config.php" --destination="$install_dir/config.php"
+ynh_config_add --template="pheditor.php" --destination="$install_dir/pheditor.php"
+
+mkdir -p "$install_dir/templates/minimaxing/"
+ynh_config_add --template="minimaxing.less" --destination="$install_dir/templates/minimaxing/minimaxing.less"
+ynh_config_add --template="minimaxing.css" --destination="$install_dir/templates/minimaxing/minimaxing.css"
+ynh_config_add --template="minimaxing.html" --destination="$install_dir/templates/minimaxing/minimaxing.html"
+
+mkdir -p "$install_dir/templates/mimoza/"
+ynh_config_add --template="mimoza.css" --destination="$install_dir/templates/mimoza/mimoza.css"
+
+ynh_config_add --template="the-monospace-web.html" --destination="$install_dir/templates/the-monospace-web.html"
+
+ynh_store_file_checksum "$install_dir/config.t2t"
+ynh_store_file_checksum "$install_dir/menu.php"
+
+# fix php8.## problem with some plugins (has been fixed in latest lionwiki)
+mv "$install_dir"/plugins/wkp_RSS.php "$install_dir"/plugins/wkp_RSS.txt
+
+# fix php8 problem with inline diff (hasn't been fixed yet)
+ynh_safe_rm "$install_dir"/plugins/InlineDiff/
+
+#=================================================
+# SYSTEM CONFIGURATION
+#=================================================
+ynh_script_progression "Adding system configurations related to $app..."
+
+ynh_config_add_phpfpm
+
+ynh_config_add_nginx
+
+# chmod again to fix unaccessible templates / css files
+chmod -R 755 "$install_dir"
+# don't allow read access to config.php and pages/ for everyone
+chmod 750 "$install_dir"/config.php
+chmod -R 750 "$install_dir"/var/pages/
+
+
+# chmod root folder
+chmod 750 "$install_dir"
+
+# fix warning with man-db on bookworm?
+touch /var/lib/man-db/auto-update
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression "Installation of $app completed"

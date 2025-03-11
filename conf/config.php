@@ -64,6 +64,7 @@ $TEMPLATE = 'templates/mimoza/mimoza.html';  // current default template
 //$TEMPLATE = 'templates/wikiss.html';
 //$TEMPLATE = 'templates/skeleton/skeleton.html';    // deprecated
 //$TEMPLATE = 'templates/simple.html';  //
+$TEMPLATE = '__CUSTOM_TEMPLATE_VERSION__' ; // selected template from installation script
 
 /* **** MORE OPTIONS **** */
 
