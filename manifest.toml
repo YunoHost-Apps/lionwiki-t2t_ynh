@@ -89,7 +89,7 @@ ram.runtime = "50M"
     ask.en = "Choose the default template"
     ask.fr = "Choisissez le thème par défaut"
     type = "select"
-    choices = ["templates/mimoza/mimoza.html", "templates/the-monospace-web.html", "templates/minimaxing/minimaxing.html"]
+    choices = ["templates/mimoza/mimoza.html", "templates/the-monospace-web.html", "templates/minimaxing/minimaxing.html", "templates/bootstrap/bootstrap.html", "templates/minimal.html", "templates/wikiss.html", "templates/terminal_green.html"]
     default = "templates/mimoza/mimoza.html"
     # next: 8.2
 
