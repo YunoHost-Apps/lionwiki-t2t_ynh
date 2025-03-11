@@ -7,7 +7,7 @@ name = "Lionwiki"
 description.en = "Lightweight wiki-style CMS using the txt2tags syntax"
 description.fr = "CMS léger, géré sous forme de wiki utilisant la syntaxe txt2tags"
 
-version = "2024.09.27~ynh1"
+version = "2024.12.13~ynh1"
 
 maintainers = ["Eric Forgeot"]
 
@@ -76,8 +76,8 @@ ram.runtime = "50M"
     type = "string"
     example = "D17732"
     default = "328cc1"
-    
-    [install.phpversion]
+
+    [install.custom_php_version]
     ask.en = "Choose a PHP version you want to use for your app"
     ask.fr = "Choisissez une version PHP que vous souhaitez utiliser pour votre application"
     type = "select"
@@ -86,8 +86,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/farvardin/lionwiki-t2t/archive/239365204e7e6ea1eadd9de7f66ebbab543d7c37.tar.gz"
-    sha256 = "c837a78a655855161dddc22e1f442583996d735a691aba6a1bd891d5fd2c92bb"
+    url = "https://github.com/farvardin/lionwiki-t2t/archive/1b719287ba600f8d323b0b54c7f26ff1766ebb4d.tar.gz"
+    sha256 = "22b58d108988c8ac51b6b25e4a695835a035d3ce8e72316bcc3939a279a67d0a"
 
     autoupdate.strategy = "latest_github_commit"
     autoupdate.asset = "tarball"
@@ -107,5 +107,5 @@ ram.runtime = "50M"
         "acl",
     ]
     packages_from_raw_bash = """
-        echo "php${phpversion}-fpm"
+        echo "php${custom_php_version}-fpm"
     """
