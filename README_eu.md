@@ -21,7 +21,7 @@ EZ editatu eskuz.
 LionWiki is a minimalist Wiki engine programmed in PHP. It is extensible, templatable, file based (it doesn't need database like MySQL) and requires just one file to function (30 kb). It is suitable for small websites, personal notebooks or journals. This version is using the lightweight markup language TXT2TAGS.
 
 
-**Paketatutako bertsioa:** 2024.12.13~ynh1
+**Paketatutako bertsioa:** 2025.03.30~ynh1
 
 ## Pantaila-argazkiak
 
@@ -40,7 +40,7 @@ LionWiki is a minimalist Wiki engine programmed in PHP. It is extensible, templa
 
 Bidali `pull request`a [`testing` abarrera](https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/tree/testing).
 
-`testing` abarra probatzeko, ondorengoa egin:
+`testing` abarra probatzeko, honakoa egin:
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/tree/testing --debug
