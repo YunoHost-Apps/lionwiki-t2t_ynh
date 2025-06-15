@@ -11,7 +11,7 @@ It shall NOT be edited by hand.
 Lightweight wiki-style CMS using the txt2tags syntax
 
 [![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://lionwiki-t2t.sourceforge.io/)
-[![Version: 2025.04.17~ynh1](https://img.shields.io/badge/Version-2025.04.17~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/)
+[![Version: 2025.06.10~ynh1](https://img.shields.io/badge/Version-2025.06.10~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/lionwiki-t2t"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
