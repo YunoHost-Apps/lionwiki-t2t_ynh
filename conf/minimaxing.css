@@ -129,6 +129,13 @@ You can create your own manuscript / handwriting font on http://www.myscriptfont
 	Based also on the work from http://wiki.lapetitesissone.fr/index.php?page=Lionwiki
 */
 /* LionWiki specific */
+
+.spoiler { color: black ; background-color: black ; }
+.spoiler:active { background-color: white ;  }
+.spoiler:hover { background-color: white ;  }
+.spoiler::selection { background-color: #888 ;  }
+
+
 a.pending {
   color: #7F4736;
 }
