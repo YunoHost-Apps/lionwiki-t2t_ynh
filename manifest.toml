@@ -97,8 +97,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/farvardin/lionwiki-t2t/archive/3e056643bc33324dd45ace66bbc724a40c20524e.tar.gz"
-    sha256 = "6cc1e1c834e285461ba28587fe7053d7f4f812b4518ed712cf9998d0a83f81fb"
+    url = "https://github.com/farvardin/lionwiki-t2t/archive/d843722405a5dab8ae5c1d652867c592bf6781f1.tar.gz"
+    sha256 = "a3e1b1abac33e5dc537b0e3ba75f01bac7e1123c61671ec49436e240b0382605"
 
     autoupdate.strategy = "latest_github_commit"
     autoupdate.asset = "tarball"
