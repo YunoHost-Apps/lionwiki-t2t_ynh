@@ -16,7 +16,7 @@ license = "MIT"
 website = "https://lionwiki-t2t.sourceforge.io/"
 admindoc = "https://lionwiki-t2t.sourceforge.io/"
 userdoc = "https://github.com/farvardin/whatistxt2tags"
-code = "https://sourceforge.net/projects/lionwiki-t2t"
+code = "https://github.com/farvardin/lionwiki-t2t"
 cpe = "cpe:2.3:a:lionwiki:lionwiki"
 
 [integration]
