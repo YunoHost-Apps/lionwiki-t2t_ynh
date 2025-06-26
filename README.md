@@ -22,7 +22,7 @@ Lightweight wiki-style CMS using the txt2tags syntax
 
 [![Automatic tests level](https://apps.yunohost.org/badge/cilevel/lionwiki-t2t)](https://ci-apps.yunohost.org/ci/apps/lionwiki-t2t/)
 
-🛠️ Upstream Lionwiki repository: <https://sourceforge.net/projects/lionwiki-t2t>
+🛠️ Upstream Lionwiki repository: <https://github.com/farvardin/lionwiki-t2t>
 
 Pull request are welcome and should target the [`testing` branch](https://github.com/YunoHost-Apps/lionwiki-t2t_ynh/tree/testing).
 
